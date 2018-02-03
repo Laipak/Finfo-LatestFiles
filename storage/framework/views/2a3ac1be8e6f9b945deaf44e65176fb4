@@ -1,0 +1,167 @@
+<?php $__env->startSection('content'); ?>
+<section class="content" id="company">
+      <?php if(count($errors) > 0): ?>
+        <div class="alert alert-danger text-center">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <?php foreach($errors->all() as $error): ?>
+              <?php echo e($error); ?><br>
+          <?php endforeach; ?>
+      </div>
+      <?php endif; ?>
+
+
+      <?php if(Session::has('message')): ?>
+        <div class="alert alert-success text-center">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <?php echo e(Session::get('message')); ?>
+
+        </div>
+      <?php endif; ?>
+<br>
+
+<br>
+<div class="row">
+      <div class="col-sm-6">
+        <div class="head-search">
+            <h2 style="margin:0;">Profile</h2>
+        </div>
+        <div class="box col-sm-12">
+          <div class="box-body">
+              
+              <?php echo Form::open(['url'=>'backend/admin/users/profile/update', 'class'=>'form-horizontal']); ?>
+
+
+                <div class="form-group <?php echo e($errors->has('first_name') ? ' has-error' : ''); ?>">
+                  <label>First name:</label>
+               
+                    <input name="first_name" class="form-control" value="<?php echo e($user->first_name); ?>" type="text">
+          
+                </div>
+                <div class="form-group <?php echo e($errors->has('last_name') ? ' has-error' : ''); ?>">
+                  <label>Last name:</label>
+            
+                    <input name="last_name" class="form-control" value="<?php echo e($user->last_name); ?>" type="text">
+           
+                </div>
+                <div class="form-group <?php echo e($errors->has('email_address') ? ' has-error' : ''); ?>">
+                  <label>Email:</label>
+              
+                    <input name="email_address" class="form-control" value="<?php echo e($user->email_address); ?>" type="text">
+               
+                </div>
+
+                <div class="form-group">
+
+      
+                    <input class="btn btn-primary" type="submit" value="Save Change">
+                    <a href="<?php echo e(route('finfo.user.backend.list')); ?>" class="btn btn-danger">Back</a>
+       
+                </div>
+
+            <?php echo Form::close(); ?>
+
+            </div>
+        </div>
+    </div>
+  <div class="col-sm-6">
+      <div class="head-search">
+        <h2 style="margin:0;">Update Password</h2>
+      </div>
+        <div class="box">
+            <div class="box-body">
+               <?php echo Form::open(array('route' => 'finfo.user.profile.update.password', 'id' => 'frm_profile_password')); ?>
+
+                  <div class="form-group<?php echo e($errors->has('current_password') || Session::has('message-error') ? ' has-error' : ''); ?>">
+                        <?php echo Form::label('current_password', 'Password'); ?>
+
+                        <?php echo Form::password('current_password', ['class' => 'form-control', 'placeholder' => 'Current Password']); ?>
+
+
+                        <?php if(Session::has('message-error')): ?>
+                            <span class="help-block" style="color:red;"><?php echo e(Session::get('message-error')); ?></span>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="form-group<?php echo e($errors->has('new_password') ? ' has-error' : ''); ?>">
+                        <?php echo Form::label('new_password', 'Password'); ?>
+
+                        <?php echo Form::password('new_password',['class' => 'form-control', 'placeholder' => 'New Password', 'minlength' => 8]); ?>
+
+                    </div>
+                
+                    <div class="form-group<?php echo e($errors->has('new_password_confirmation') ? ' has-error' : ''); ?>">
+                        <?php echo Form::label('new_password_confirmation', 'Password confirmation'); ?>
+
+                        <?php echo Form::password('new_password_confirmation', ['class' => 'form-control', 'placeholder' => 'Confirm New Password', 'minlength' => 8]); ?>
+
+                    </div>
+
+                    <div class="form-group">
+                        <?php echo Form::submit('Update', ['class' => 'btn btn-primary']); ?>
+
+                        <a href="<?php echo e(route('finfo.user.backend.list')); ?>" class="btn btn-danger">Back</a>
+                    </div>
+                    
+                <?php echo Form::close(); ?>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('style'); ?>
+  <style type="text/css">
+    .btn{
+      border-radius: 0;
+    }
+    .error{
+      color: red;
+      font-weight: 500;
+    }
+  </style>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+    <?php echo Html::script('backend/js/jquery.validate.min.js'); ?>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $.ajaxSetup({
+                headers:{
+                    'X-CSRF-TOKEN':'<?php echo csrf_token(); ?>'
+                }
+            });
+
+            jQuery.validator.addMethod("pwcheck", function(value, element) {
+
+               return   /([A-Z])/.test(value) // upper case
+                    &&  /([!,%,&,@,#,$,^,*,?,_,~])/.test(value) // has spacial character
+                    &&  /[a-z]/.test(value) // has a lowercase letter
+                    &&  /\d/.test(value) // has a digit
+            }, "Password must contain at least one letter, one capital letter, number and special character.");
+
+            $("#frm_profile_password").validate({
+                rules: {
+                    'current_password': 'required',
+                    'new_password' : {
+                        required: true,
+                        pwcheck: true
+                    },
+                    'new_password_confirmation' : {
+                        required: true,
+                        pwcheck: true,
+                        equalTo: "#new_password"
+                    }
+                },
+
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+        });
+    </script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make($app_template['backend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

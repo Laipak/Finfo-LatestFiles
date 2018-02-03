@@ -1,0 +1,61 @@
+<?php $__env->startSection('content'); ?>
+
+<div class="row title" id="forgot">
+    <div class="col-md-12">
+      Forgot Password
+    </div>
+</div>
+
+<div class="row option-row">	
+	<div class="col-md-6 col-md-offset-3">  
+			<?php echo Form::open(array('route' => 'client.users.do.forget.password')); ?>
+
+			    <div class="box-body">
+			    	<?php if(Session::has('message')): ?>
+			    		<?php
+			    			$alert 		= 'danger';
+			    			$message 	= Session::get('message');
+
+			    			if($message['status'] == 1){
+			    				$alert = 'success';
+			    			}
+			    		?>
+						<div class="alert alert-<?php echo e($alert); ?> text-center">               
+				            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>              
+				                <?php echo e($message['message']); ?>				                             
+			            </div>
+					<?php endif; ?>
+			        <div class="form-group<?php echo e($errors->has('email_address') ? ' has-error' : ''); ?>">
+			            <input type="text" name="email_address" class="form-control"
+			                   placeholder="Email" value="<?php echo e(Input::old('email_address')); ?>" />
+			            <?php echo $errors->first('email_address', '<span class="help-block">:message</span>'); ?>
+
+			        </div>
+			    </div>
+			    <div class="box-footer">
+			        <button type="submit" class="btn btn-block btn-customize">Reset Password</button>
+			        <p><a href="<?php echo e(URL::to('backend/admin/login')); ?>">Back to Login</a></p>
+			    </div>
+			<?php echo Form::close(); ?>
+
+	</div>
+</div>
+	
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('seo'); ?>
+    <title><?php echo e(ucfirst(Session::get('company_name'))); ?> | Forget password</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+	<?php echo Html::style('backend/css/package/general-style.css'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+<script type="text/javascript">
+   $('#forget-password').addClass('active');
+</script>
+ 
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make($app_template['client.frontend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

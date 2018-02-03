@@ -1,0 +1,460 @@
+<?php $__env->startSection('content'); ?>
+<?php if($active_theme == "default"): ?>
+    <section class="content">
+    <div class="row title" id="financial-result">
+        <div class="col-md-12">
+         Financials
+        </div>
+    </div>
+
+    <div class="row" style="border-bottom: 2px solid #ddd">
+        <div class="col-sm-3 col-md-3 left-col">
+            
+            
+            
+            
+            
+            
+            <p class="description">Financial Highlights</p>
+        </div> 
+        <div class="col-sm-9 col-md-9 right-col">
+            <?php if(isset($no_data)): ?>
+                <p class="no-data">No data</p>
+            <?php else: ?>
+                <?php if(isset($getCurrentFinancialData) && !empty($getCurrentFinancialData)): ?> 
+                    <p style="font-size: 16px; margin-bottom: 0">Latest Financial Results</p>
+                    <p style="font-size: 16px; font-weight: 600; color: #171b1e">
+                        <?php echo e($getCurrentFinancialData->quarterName); ?> <?php echo e($getCurrentFinancialData->year); ?>
+
+                    </p>
+                <?php endif; ?>
+                <div class="row icon-wrapper nav-tabs" role="tablist">
+             <?php foreach($menu as $menus): ?>
+               <?php if($menus->menus_id == 6): ?>
+                    <?php if(isset($getWebcastData)): ?>
+                        <div class="col-sm-<?php echo e($tabDev); ?> box-icon">
+                            <a href="<?php echo e(isset($getWebcastData) ? $getWebcastData : "#"); ?>" target="<?php echo e(isset($getWebcastData) ? "_blank" : "#"); ?>" class="btn" id="webcast-red">Webcast</a>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>       
+            <?php endforeach; ?>
+                    <?php if(isset($getPresentationData)): ?>
+                    <div class="col-sm-<?php echo e($tabDev); ?> box-icon"><a href="<?php echo e(isset($getPresentationData) ? $getPresentationData : "#"); ?>" target="<?php echo e(isset($getPresentationData) ? "_blank" : "#"); ?>" class="btn" id="presentation-red">Presentation</a></div>
+                    <?php endif; ?>
+                     <?php if(isset($getAnnouncementData)): ?>
+                        <div class="col-sm-<?php echo e($tabDev); ?> box-icon">
+                            <?php if($getAnnouncementData['option_selected'] == 'wysiwyg'): ?> 
+                                <a href="/backend/announcements/<?php echo e($getAnnouncementData['link']); ?>" class="btn" id="announcement-red">Announcements</a>
+                            <?php else: ?>
+                                <a href="/backend/files/announcements/<?php echo e($getAnnouncementData['file_upload']); ?>" target="_blank" class="btn" id="announcement-red">Announcements</a>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?> 
+                    <?php if(isset($getPressReleaseData)): ?>
+                        <div class="col-sm-<?php echo e($tabDev); ?> box-icon">
+                            <?php if($getPressReleaseData['option_selected'] == 'wysiwyg'): ?> 
+                                <a href="/backend/press-releases/<?php echo e($getPressReleaseData['link']); ?>" class="btn" id="press-red">Press Release</a>
+                            <?php else: ?>
+                                <a href="<?php echo e($getPressReleaseData['file_upload']); ?>" target="_blank" class="btn" id="press-red">Press Release</a>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+                <div class="row">
+                    <div class="tab-content">
+                        <!-- LATEST FINANCIAL HIGHLIGHT -->
+
+                        <?php if(isset($getCurrentFinancialData) && !empty($getCurrentFinancialData)): ?> 
+                            <div class="tab-pane active">
+                                <div class="col-md-12">                            
+                                    <div class="p-five">
+                                        <div class="table-responsive financial-highlights">
+                                            <table class="table">
+                                                <tr class="tbl-header-row">
+                                                    <td>For the <?php echo e(strtolower($getCurrentFinancialData->quarterName)); ?> ended <?php echo e($getCurrentFinancialData->title); ?></td>
+                                                    <td><?php echo e($getCurrentFinancialData->quarter); ?>Q<?php echo e(substr($getCurrentFinancialData->year,-2)); ?></td>
+                                                    <td><?php echo e($getCurrentFinancialData->quarter); ?>Q<?php echo e(substr($getCurrentFinancialData->year - 1, -2)); ?></td>
+                                                    <td>Growth %</td>
+                                                </tr>
+                                                <?php /**/ $index = 0 /**/ ?>
+                                                <?php foreach($getFinancialItemsData as $financialItem): ?>
+                                                    <tr>
+                                                        <td><?php echo e($financialItem->title); ?></td>
+                                                        <td>
+                                                            <?php if(strstr($financialItem->value, '-')): ?>
+                                                                <?php echo e("(".str_replace("-","", $financialItem->value.")")); ?>
+
+                                                            <?php else: ?>
+                                                                <?php echo e(($financialItem->value == 0) ? "-" : $financialItem->value); ?>
+
+                                                            <?php endif; ?>
+                                                        </td>
+                                                        <?php if(isset($getArchiveFinancialItemsData) && !empty($getArchiveFinancialItemsData)): ?>
+                                                            <?php if(isset($getArchiveFinancialItemsData[$index]) && !empty($getArchiveFinancialItemsData[$index]->value)): ?> 
+                                                                <td>
+                                                                    <?php if(strstr($getArchiveFinancialItemsData[$index]->value, '-')): ?>
+                                                                        <?php echo e("(".str_replace("-","", $getArchiveFinancialItemsData[$index]->value.")")); ?>
+
+                                                                    <?php else: ?>
+                                                                        <?php echo e(($getArchiveFinancialItemsData[$index]->value == 0) ? "-" : $getArchiveFinancialItemsData[$index]->value); ?>
+
+                                                                    <?php endif; ?>
+                                                                </td>
+                                                            <?php else: ?>
+                                                                <td>-</td>
+                                                            <?php endif; ?>
+                                                        <?php else: ?>
+                                                            <td>-</td>
+                                                        <?php endif; ?>
+                                                        <td>
+                                                        <?php 
+                                                            if(isset($getArchiveFinancialItemsData) && !empty($getArchiveFinancialItemsData) ){
+                                                                if(isset($getArchiveFinancialItemsData[$index]) && !empty($getArchiveFinancialItemsData[$index]->value)) {
+                                                                        $old = $getArchiveFinancialItemsData[$index]->value;
+                                                                    
+                                                                }else{
+                                                                    $old = 0;
+                                                                }
+                                                            }else{
+                                                                $old = 0;
+                                                            }
+
+                                                            $new = $financialItem->value;
+                                                            if($new != 0 && $old != 0){
+                                                                $growth = (($new - $old) / $old ) * 100;
+                                                                $growth = round($growth);
+                                                            }else{
+                                                                $growth = '';
+                                                            }
+                                                            
+
+                                                            if(strstr($growth, '-')){
+                                                                $growth_persen = '('.str_replace("-","", $growth).')';
+                                                            }elseif($growth == ''){
+                                                                $growth_persen = '-';
+                                                            }else{
+                                                                $growth_persen = $growth;
+                                                            }
+                                                         ?>
+                                                        <?php echo e($growth_persen); ?>
+
+                                                        </td>
+                                                    </tr>
+                                                   <?php /**/ $index++ /**/ ?>
+                                                <?php endforeach; ?>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <!-- END LATEST FINANCIAL HIGHLIGHT -->
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3 col-md-3 left-col">
+            <p class="description">Financial Results</p>
+        </div>  
+        <div class="col-sm-9 col-md-9 right-col text-center">
+            <?php if(isset($no_data)): ?>
+                <p class="no-data">No data</p>
+            <?php else: ?>
+                <?php if($controller->getCountYear() > 4): ?>
+                    <div class="row">
+                        <div class="col-xs-1 col-md-1">
+                            <a class='btn-prev-financial' href='#' title='Previous'><p style="color: #ef3f34; font-size:24px"><img src="<?php echo e(asset('backend/img/client/prev.png')); ?>" alt="prev"></p></a>
+                        </div>
+                        <div class="col-md-1 pull-right">
+                           <a class='btn-next-financial' href='#' title='Next'><p style="color: #ef3f34; font-size:24px"><img src="<?php echo e(asset('backend/img/client/next.png')); ?>" alt="next"></p></a>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if(isset($getArchiveResultsList) && !empty($getArchiveResultsList)): ?>   
+                    <div class="responsive">                
+                        <?php echo $getArchiveResultsList; ?>
+
+                    </div>
+                <?php endif; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+    </section>
+<?php else: ?> 
+
+    <h2>Financial Report</h2>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#financial-highlights">Financial Highlights</a></li>
+        <li><a href="#finan-result">Financial Results</a></li>
+        <li><a href="<?php echo e(isset($getWebcastData) ? $getWebcastData : "#"); ?>" target="<?php echo e(isset($getWebcastData) ? "_blank" : "#"); ?>" class="btn" id="webcast">Webcast</a></li>
+        <li><a href="<?php echo e(isset($getPresentationData) ? $getPresentationData : "#"); ?>" target="<?php echo e(isset($getPresentationData) ? "_blank" : "#"); ?>" class="btn" id="presentation">Presentation</a></li>
+        <li><a href="<?php echo e(isset($getAnnouncementData) ? '/backend/files/announcements/'.$getAnnouncementData: "#"); ?>" target="<?php echo e(isset($getAnnouncementData) ? "_blank" : "#"); ?>" class="btn" id="announcement">Announcements</a></li>
+        <li><a href="<?php echo e(isset($getPressReleaseData) ? $getPressReleaseData : "#"); ?>" target="<?php echo e(isset($getPressReleaseData) ? "_blank" : "#"); ?>" class="btn" id="press-releases">Press Release</a></li>
+    </ul>
+
+
+  <div class="tab-content">
+    <div id="financial-highlights" class="tab-pane fade in active">
+      <h3>Financial Highlights</h3>
+      <br>
+        <?php if(isset($getCurrentFinancialData) && !empty($getCurrentFinancialData)): ?> 
+            <p style="font-size: 16px; margin-bottom: 0">Latest Financial Results</p>
+            <p style="font-size: 16px; font-weight: 600; color: #171b1e">
+                <?php echo e($getCurrentFinancialData->quarterName); ?> <?php echo e($getCurrentFinancialData->year); ?>
+
+            </p>
+        <?php endif; ?>
+        <div class="col-md-12">
+              <div class="row finan-highlight">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                For the <?php echo e(strtolower($getCurrentFinancialData->quarterName)); ?> ended <?php echo e($getCurrentFinancialData->title); ?>          
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3">
+                <?php echo e($getCurrentFinancialData->quarter); ?>Q<?php echo e(substr($getCurrentFinancialData->year,-2)); ?>
+
+                <?php if(isset($getArchiveFinancialData) && !empty($getArchiveFinancialData)): ?>
+                    <?php echo e($getArchiveFinancialData->quarter); ?>Q<?php echo e(substr($getArchiveFinancialData->year, -2)); ?>
+
+                <?php endif; ?>
+            </div>
+            <div class="col-xs-12 col-sm-3 col-md-3">Growth %</div>
+        </div>
+        </div>
+       <?php /**/ $index = 0 /**/ ?>
+        <?php foreach($getFinancialItemsData as $financialItem): ?>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6"><?php echo e($financialItem->title); ?></div>
+                  
+                <div class="col-xs-12 col-sm-3 col-md-3">
+                    <?php if(strstr($financialItem->value, '-')): ?>
+                        <?php echo e("(".str_replace("-","", $financialItem->value.")")); ?>
+
+                    <?php else: ?>
+                        <?php echo e(($financialItem->value == 0) ? "-" : $financialItem->value); ?>
+
+                    <?php endif; ?>
+                    <?php if(isset($getArchiveFinancialItemsData) && !empty($getArchiveFinancialItemsData)): ?>
+                        <?php if(isset($getArchiveFinancialItemsData[$index]) && !empty($getArchiveFinancialItemsData[$index]->value)): ?> 
+                            <div class="col-xs-12 col-sm-3 col-md-3">
+                                <?php if(strstr($getArchiveFinancialItemsData[$index]->value, '-')): ?>
+                                    <?php echo e("(".str_replace("-","", $getArchiveFinancialItemsData[$index]->value.")")); ?>
+
+                                <?php else: ?>
+                                    <?php echo e(($getArchiveFinancialItemsData[$index]->value == 0) ? "-" : $getArchiveFinancialItemsData[$index]->value); ?>
+
+                                <?php endif; ?>
+                            </div>
+                        <?php else: ?>
+                           <div class="col-xs-12 col-sm-3 col-md-3">-</div>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                </div>
+                
+                <div class="col-xs-12 col-sm-3 col-md-3">Growth</div>
+            </div>
+        </div>
+        <?php /**/ $index++ /**/ ?>
+        <?php endforeach; ?>
+    </div>
+    <div id="finan-result" class="tab-pane fade">
+      <h3>Financial Results</h3> 
+      <br>     
+        <?php if(isset($getArchiveResultsList) && !empty($getArchiveResultsList)): ?>
+        <div class="row">            
+            <div class="col-xs-1 col-md-1">
+                <a href="<?php echo e(($getPagination->previousPageUrl() == '') ? 'javascript: void(0)' : $getPagination->previousPageUrl()); ?>"><p style="color: #ef3f34; font-size:24px"><img src="<?php echo e(asset('img/client/prev.png')); ?>" alt="prev"></p></a>
+            </div>
+            <div class="col-md-3">
+                <?php echo $getArchiveResultsList; ?>
+
+            </div>
+            <div class="col-md-1 pull-right">
+                <a href="<?php echo e(($getPagination->nextPageUrl() == '') ? 'javascript: void(0)' : $getPagination->nextPageUrl()); ?>"><p style="color: #ef3f34; font-size:24px"><img src="<?php echo e(asset('img/client/next.png')); ?>" alt="next"></p></a>
+            </div>
+        </div>
+        <?php endif; ?>
+    <div id="webcast" class="tab-pane fade">
+      <h4>Webcast</h4>
+    </div>
+    <div id="presentation" class="tab-pane fade">
+      <h4>Presentation</h4>
+    </div>
+    <div id="announcement" class="tab-pane fade">
+      <h4>Announcements</h4>      
+    </div>
+    <div id="press-releases" class="tab-pane fade">
+      <h4>Press Release</h4>
+    </div>
+  </div>
+
+
+<?php endif; ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('seo'); ?>
+    <title><?php echo e(ucfirst(Session::get('company_name'))); ?> | Financials </title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+<?php if($active_theme == "default"): ?>
+    <?php echo Html::style('backend/css/package/general-style.css'); ?>
+
+    <?php echo Html::style('backend/css/client/financial-result.css'); ?>
+
+    <?php echo Html::style('backend/css/client/slick.css'); ?>
+
+    <?php echo Html::style('backend/css/client/slick-theme.css'); ?>
+
+    <style type="text/css">
+        .slick-prev, .slick-next{
+            display: none !important;
+        }  
+        .responsive h4 {
+            background: #8A97A0;
+            padding: 10px 0;
+            color: #fff;
+            margin: 0;
+        }
+        table>tbody>tr.tbl-header-row {
+            background: #171b1e;
+            color: #fff !important;
+        }
+        table>tbody>tr.tbl-header-row>td {
+            color: #fff !important;
+        }
+        .responsive .list-item {
+            background: #fff;
+            padding: 26px 0;
+            height: 168px;
+        }
+        .responsive .list-item a{
+            text-decoration: none;            
+        }
+        .responsive .list-item p{
+            color: #B82226;
+        }
+        .box-icon:last-child{
+            border-right: none;
+        }
+        .slick-prev:before, .slick-next:before{
+          color:red;
+        }
+        
+        .responsive .slick-dots {display: none !important;}
+        .responsive .slick-prev {
+            left: -9px;
+            z-index: 11;
+        }
+        .responsive .slick-next{
+            right: -9px;
+        }
+        p.no-data {
+            text-align: center;
+            font-size: 18px;
+            color: #272c30;
+        }
+        .list-item  p{
+            text-decoration: underline;
+        }
+        .list-item  p:hover{
+            text-decoration: none
+        }
+        
+    </style>
+<?php endif; ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+<?php echo Html::script('backend/js/client/slick.min.js'); ?>
+
+<script type="text/javascript">
+$(document).ready(function(){
+$('.responsive').slick({
+  dots: true,
+  infinite: false,
+  speed: 300,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+});
+});
+    $('.menu-active').removeClass('menu-active');
+    $('#financial-result').addClass('menu-active');
+
+
+    $(document).ready(function() { 
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            var target = $(e.target).attr("href");
+            if(target == '#announcements_tab') {
+                localStorage.setItem('lastTab', $(this).attr('href'));
+            } else {
+               localStorage.setItem('lastTab', ''); 
+            }
+            
+        });
+        var lastTab = localStorage.getItem('lastTab');
+        if (lastTab) {
+            $('[href="' + lastTab + '"]').tab('show');
+        }
+
+        $('#financial-result, p.description').click(function(){
+            localStorage.setItem('lastTab', '');
+        });   
+        $('.btn-prev-financial').click(function(e){
+            e.preventDefault();
+           $('.slick-prev').click(); 
+        });
+        $('.btn-next-financial').click(function(e){
+            e.preventDefault();
+           $('.slick-next').click(); 
+        });
+
+    });
+</script>
+    <?php if($active_theme !== "default"): ?>
+    <script>
+    $(document).ready(function(){
+        $(".nav-tabs a").click(function(){
+            $(this).tab('show');
+        });
+        $('.nav-tabs a').on('shown.bs.tab', function(event){
+            var x = $(event.target).text();         // active tab
+            var y = $(event.relatedTarget).text();  // previous tab
+            $(".act span").text(x);
+            $(".prev span").text(y);
+        });
+    });
+    </script>
+    <?php endif; ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make($app_template['client.frontend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

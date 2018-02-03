@@ -1,0 +1,59 @@
+<?php $__env->startSection('title'); ?>
+Newsletter & Broadcast
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+    <section class="content" id="financial-annual-report">
+        <div class="row head-search">
+            <div class="col-sm-6">
+                <lable class="label-title">Edit Email Test</lable>
+            </div>
+        </div>
+        <div class="row">
+            <?php echo Form::open(array('route' => ['package.admin.newsletter-broadcast.email-seed-list.save', $email_sl->id ], 'id' => 'frm-reports', 'files'=> true)); ?>
+
+            <div class="col-md-6">
+
+               <div class="form-group">
+                        <?php echo Form::label('name', 'Name'); ?>
+
+                        <?php echo Form::text('name', $email_sl->name, ['class' => 'form-control', 'placeholder' => 'Name']); ?>
+
+                        <?php echo $errors->first('name', '<span class="help-block">:message</span>'); ?>
+
+                </div>
+                <div class="form-group">
+                        <?php echo Form::label('email', 'Email'); ?>
+
+                        <?php echo Form::text('email', $email_sl->email, ['class' => 'form-control', 'placeholder' => 'Email']); ?>
+
+                        <?php echo $errors->first('email', '<span class="help-block">:message</span>'); ?>
+
+                </div>
+
+                <div class="form-group" style="margin-top:30px;">
+                    <?php echo Form::submit('Save', ['class' => 'btn btn-primary btn-save']); ?>
+
+                    <a href="<?php echo e(route('package.admin.newsletter-broadcast.email-seed-list')); ?>" class="btn btn-danger btn-overwrite-cancel">Cancel</a>
+                </div>
+            </div>
+
+            
+            <?php echo Form::close(); ?>
+
+        </div>
+    </section>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+    <?php echo Html::style('css/package/financial-annual-report.css'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+<script type="text/javascript">
+    $('.active').removeClass('active');
+    $('.news_brod').addClass('active');
+    //$('.news_brod_email_seed_list').addClass('active');
+</script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make($app_template['client.backend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

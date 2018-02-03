@@ -1,0 +1,58 @@
+<?php $__env->startSection('content'); ?>
+<section class="content">
+<div class="row title" id="announcement">
+    <div class="col-md-12">
+    	 Sitemap
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" id="table">
+        <div class="content-data sitemap">
+            <ul>
+                <li><a href='/' title='Home'>Home</a></li>
+                <?php if(Session::get('set_package_id') != 1): ?> 
+                    <li>
+                        <a href='<?php echo e(route('client.company_info.slug')); ?>' title='Home'>Company info</a>
+                        <ul class="sub-title">
+                            <?php foreach($sitemap['pages'] as $sitemapPages): ?>
+                                <li><a href='<?php echo e(route('client.company_info.slug',$sitemapPages->name)); ?>' title='<?php echo e($sitemapPages->title); ?>'><?php echo e($sitemapPages->title); ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </li>
+                <?php endif; ?>
+                <?php foreach($sitemap['modules'] as $sitemapModules): ?>
+                    <?php if(!empty($sitemapModules->route_frontend)): ?>
+                        <li><a href='<?php echo e(route($sitemapModules->route_frontend)); ?>' title='<?php echo e($sitemapModules->name); ?>'><?php echo e($controller->getMenuNavigation($sitemapModules->route_frontend)); ?></a></li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+</section>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('seo'); ?>
+    <title><?php echo e(ucfirst(Session::get('company_name'))); ?> | Sitemap</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+    <?php echo Html::style('backend/css/package/general-style.css'); ?>
+
+    <style type="text/css">
+        .content .sitemap ul li a {
+            color: <?php echo e($setting->font_color); ?>;
+        }
+        .content-data{
+            min-height: 400px;
+        }
+        .sort{
+            height: 38px !important;
+        }
+    </style>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make($app_template['client.frontend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

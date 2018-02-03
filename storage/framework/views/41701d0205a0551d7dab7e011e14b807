@@ -1,0 +1,56 @@
+<div class="navbar navbar-default default navbar-fixed-top navbar-shrink tLight " role="navigation">
+             
+            <!-- BEGIN: NAV-CONTAINER -->
+            <div class="nav-container container">
+                <div class="navbar-header">
+                    
+                    <!-- BEGIN: TOGGLE BUTTON (RESPONSIVE)-->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    
+                    <style>
+                        @media (max-width: 479px) {
+                            .navbar-shrink .logo { margin-top: 0 !important; }
+                        }
+                    </style>
+                    <!-- BEGIN: LOGO -->
+                    <!--a class="navbar-brand nav-to logo" href="<?php echo e(URL::to('/')); ?>" title="FINFO"-->
+					<a class="navbar-brand nav-to logo" href="https://wizwerx.info/wordpress/" title="FINFO">
+                        <img src="<?php echo e(asset('img/finfo/imgs/finfo-logo-normal.png')); ?>"  data-at2x="<?php echo e(asset('img/finfo/imgs/finfo-logo-normal.png')); ?>" alt="FINFO" />
+                    </a>
+
+               <!-- BEGIN: WPML MENU --> 
+
+                </div>
+                <div class="icons-style-mobile">      
+                </div>               
+                <div class="menu-dikka-one-page-menu-container">
+                        <div class="collapse navbar-collapse ">
+                            <ul class="nav navbar-nav navbar-right sm">
+                            <?php if(Request::is('/')): ?>                                  <!--                             
+                                <li ><a class="nav-to  menu-item menu-item-type-custom menu-item-object-custom"  href="<?php echo e(URL::route('finfo.home')); ?>#what-is-finfo">About Us</a></li>
+                                <li ><a class="nav-to  menu-item menu-item-type-custom menu-item-object-custom"  href="<?php echo e(URL::route('finfo.contact')); ?>">Contact Us</a></li>
+                                -->
+                                <li ><a class="nav-to  menu-item menu-item-type-custom menu-item-object-custom"  href="<?php echo e(URL::route('finfo.pricing')); ?>">Pricing / Sign Up</a></li>
+                            <?php else: ?>
+                                <?php /* <li ><a href="<?php echo e(URL::route('finfo.home')); ?>#what-is-finfo">About Us</a></li>
+                                <li ><a href="<?php echo e(URL::route('finfo.contact')); ?>">Contact Us</a></li>
+                                <li ><a href="<?php echo e(URL::route('finfo.pricing')); ?>">Pricing / Sign Up</a></li> */ ?>
+                                <!--li ><a href="<?php echo e(URL::route('finfo.about')); ?>">About Us</a></li>
+                                <li ><a href="<?php echo e(URL::route('finfo.pricing')); ?>">Pricing</a></li-->
+								<li ><a href="https://wizwerx.info/wordpress/about-us/">About Us</a></li>
+                                <li ><a href="https://wizwerx.info/wordpress/pricing/">Pricing</a></li>
+								<li ><a href="https://wizwerx.info/wordpress/news/">News</a></li>
+                            <?php endif; ?>
+                            </ul>
+                        </div>
+                </div> 
+                <!-- END: MENU -->
+            </div>         
+
+<!--END: NAV-CONTAINER -->
+</div>

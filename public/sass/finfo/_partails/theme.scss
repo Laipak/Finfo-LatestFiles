@@ -1,0 +1,81 @@
+@import "pass-lib";
+$background-color : #F0F0F0;
+$text-title-color : #A4A2A2;
+$btn-color: #6aa501;
+body{
+  background-color: #ecf0f5;
+}
+#themes{
+  .sub-title {
+    margin-bottom: 15px;
+  }
+  .table-header {
+    background-color: $background-color;
+  }
+  table {
+    tr {
+      th {
+        color: $text-title-color;
+      }
+      td {
+        color: $btn-color;
+        @include media-query(414px) {
+          font-size: 10px;
+        }
+        a {
+          color: $btn-color;
+          i {
+            color: $text-title-color;
+          }
+        }
+      }
+    }
+  }
+  .paginate {
+    color: black;
+  }
+  .head-search{
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
+  
+  .hid.sorting_asc:after{
+    content: "";
+  }
+  
+  .table.dataTable thead .sorting_asc, .table.dataTable thead .sorting_desc{
+    padding: 0 3px 5px 9px;
+  }
+
+  .box-user{
+    margin-bottom: 20px;
+    background: #F6F6F6;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+  }
+  .btn{
+      border-radius: 0px;
+      width: 100%;
+  }
+    @include media-query(992px) {
+        .btn-upload, .btn-install-theme {
+            margin-top: 10px;
+        }
+    }
+    .individual-theme {
+        max-width: 300px;
+        min-height: 100px;
+        max-height: 300px;
+        border: solid 1px #E9EAED;
+        border-radius: 4px;
+    }
+    .theme-action{
+        padding-top:10px;
+    }
+    span.error-block{
+        color: red;
+    }
+    .individual-theme img{
+        max-width: 300px;
+    }
+}

@@ -1,0 +1,30 @@
+<?php $__env->startSection('content'); ?>
+    <section class="content" id="home_expired">
+        <div class="row main-title">
+            <div class="col-md-12">
+               Access Denied
+            </div>
+        </div>
+        <div class="row main-content">
+            <div class="col-md-12">
+                <p>This page currently was disable by FINFO Administrator, please contact administrator.</p>
+            </div>
+        </div>
+    </section>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+<style>
+    .main-content {
+        padding-top: 50px;
+        text-align: center;
+    }
+</style>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('seo'); ?>
+    <title></title>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
+<script type="text/javascript">
+</script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make($app_template['client.frontend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

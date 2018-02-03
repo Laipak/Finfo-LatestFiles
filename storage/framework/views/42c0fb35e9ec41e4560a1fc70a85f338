@@ -1,0 +1,145 @@
+<?php $__env->startSection('content'); ?>
+
+
+  
+<?php 
+
+$actual_link ="$_SERVER[REQUEST_URI]";
+
+?>
+     <?php echo $__env->make('resources.views.templates.client.template2.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+     
+	<div class="clearfix"></div>
+    <header class="pge-header thm-bgclr">
+      <div class="container">        
+        <div class="row">          
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12">           
+              <h3 class="secondaryBackground">Financials</h3>  
+          </div>          
+        </div>        
+      </div>
+    </header>
+
+    <!--cmpy Info -->
+    <section class="page-cnt-sec">
+      <div class="container">
+		<div class="page-cnt-sec-lay">
+			<div class="page-cnt-sec-inr">						
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-12 col-lg-12 fianc-cnt-sec">
+						<div id="accordion" role="tablist" class="fianc-cnt-sec-acc thm-bdrclr">	
+						
+				<?php $i = 0; ?>	
+				<?php if(!empty($getLastestInfoData)): ?>
+				<?php foreach($getLastestInfoData as $getLastestInfoData): ?>
+				
+				<?php $i++; ?>
+			    <?php if($i == 1){
+			        
+			        $collaps = "";
+			        $heading = "headingOne";
+			        $coll    = "collapseOne";
+			        $show    = "show";
+			    }else {
+			        
+			        $collaps = "collapsed";
+			        $heading = "headingOne".$i;
+			        $coll    = "collapseOne".$i;
+			        $show    = "";
+			    }
+			    ?>
+			    
+						<div class="card">
+							<div class="card-header" role="tab" id=<?php echo e($heading); ?>>
+							  <h5 class="mb-0">
+								<a class="<?php echo e($collaps); ?>" data-toggle="collapse" href="#<?php echo e($coll); ?>" aria-expanded="true" aria-controls=<?php echo e($coll); ?>>
+								    
+								 Financial Results for Year <?php echo e($getLastestInfoData->year); ?> <i class="fa fa-chevron-down finac-icn thm-hgt-clr" aria-hidden="true"></i>
+								</a>
+							  </h5>
+							</div>
+							<div id=<?php echo e($coll); ?> class="collapse <?php echo e($show); ?> fianc-cnt-acc-col" role="tabpanel" aria-labelledby=<?php echo e($heading); ?> data-parent="#accordion">
+			   
+				   <?php foreach($getDataLastestInfoData as $getDataLastestInfoDatas): ?>
+				           <?php if($getLastestInfoData->year == $getDataLastestInfoDatas->year): ?>
+				           
+				           <?php
+    				           if($getDataLastestInfoDatas->quarter == 1){
+    				                $period = 'First';
+    				                
+    				           }elseif($getDataLastestInfoDatas->quarter == 2){
+    				                $period = 'Second';
+    				                
+    				           }elseif($getDataLastestInfoDatas->quarter == 3){
+    				                $period = 'Third';
+    				                
+    				           }else{
+    				                $period = 'Fourth';
+    				           }
+				          ?>
+				           
+				           
+						     <div class="card-body">
+								<h5>Financial Year <?php echo e($getDataLastestInfoDatas->year); ?>, <?php echo e($getDataLastestInfoDatas->title); ?> </h5>
+								
+									
+								
+								
+							<?php foreach($getNewDetailFinancialInfoIsActive as $getNewDetailFinancialInfoIsActives): ?>
+							
+							 <?php if($getNewDetailFinancialInfoIsActives->latest_financial_highlights_id == $getDataLastestInfoDatas->id): ?>
+								<ul class="thm-lnk-clr">
+									<li><i class="fa fa-check-square-o fn-li-icn" aria-hidden="true"></i>
+									
+									<?php if($getNewDetailFinancialInfoIsActives->value != '0'): ?>    
+									
+									<a href ="<?php echo e($getNewDetailFinancialInfoIsActives->value); ?>" target="_blank" ><?php echo e($getNewDetailFinancialInfoIsActives->title); ?> </a>
+									<?php else: ?>
+									    <a><?php echo e($getNewDetailFinancialInfoIsActives->title); ?></a>
+									    <?php endif; ?>
+									
+									</li>
+								</ul>
+							<?php endif; ?>		
+							<?php endforeach; ?>	
+								
+							  </div>
+						 	<?php endif; ?>			  
+				    <?php endforeach; ?>
+							</div>
+						  </div>
+				     			  
+					<?php endforeach; ?>
+					
+				<?php else: ?>
+					<div class="card">
+							<div class="card-header" role="tab" >
+							  <h5 class="mb-0" style="text-align: center;">
+								
+								    
+								 No Data For Financial Results 
+							  </h5>
+							</div>
+						
+						  </div>
+					<?php endif; ?>	
+					</div>
+				</div>					
+					
+				</div>		
+			</div>			
+		</div>
+	  </div>
+    </section>	
+	
+
+  
+
+<?php echo $__env->make('resources.views.templates.client.template2.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <!-- Footer -->
+
+ 
+
+
+<?php $__env->stopSection(); ?> 	
+<?php echo $__env->make('resources.views.templates.client.template2.frontendhome', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

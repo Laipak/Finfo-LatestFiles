@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAIQ,+CAAa,CACT,MAAM,CAAE,eAAe",
+"sources": ["../../sass/_partails/webpage.scss"],
+"names": [],
+"file": "webpage.css"
+}

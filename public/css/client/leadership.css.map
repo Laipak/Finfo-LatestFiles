@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACA,gBAAgB,CACf,gBAAgB,CAAE,OAAO,CAIxB,yBAA0B,CAD3B,oBAAQ,CAEN,UAAU,CAAE,MAAM,EAGpB,wBAAY,CACX,KAAK,CAAE,GAAG,CACV,UAAU,CAAE,IAAI,CAEjB,2BAAe,CACd,WAAW,CAAE,IAAI,CAElB,uBAAW,CACV,WAAW,CAAE,KAAK,CAEnB,mCAAwB,CACtB,gBAAgB,CAAE,OAAO,CAG3B,oCAAyB,CACvB,gBAAgB,CAAE,OAAO",
+"sources": ["../../sass/_partails/leadership.scss"],
+"names": [],
+"file": "leadership.css"
+}

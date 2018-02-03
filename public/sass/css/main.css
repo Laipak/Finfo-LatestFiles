@@ -1,0 +1,250 @@
+@font-face {
+  font-family: 'HelveticaNeueLTStd-Cn';
+  src: url("../fonts/HelveticaNeueLTStd-Cn.eot");
+  /* IE9 Compat Modes */
+  src: url("../fonts/HelveticaNeueLTStd-Cn.eot?#iefix") format("embedded-opentype"), url("../fonts/HelveticaNeueLTStd-Cn.woff") format("woff"), url("../fonts/HelveticaNeueLTStd-Cn.ttf") format("truetype"), url("../fonts/HelveticaNeueLTStd-Cn.svg#svgFontName") format("svg");
+  /* Legacy iOS */ }
+body {
+  margin: 0;
+  overflow-x: hidden; }
+
+body, html {
+  height: 100%;
+  font-family: 'HelveticaNeueLTStd-Cn',"Helvetica Neue",Helvetica,Arial,sans-serif; }
+
+a:hover {
+  text-decoration: none; }
+
+#wrapper {
+  margin: 0px;
+  position: relative;
+  top: 100%; }
+
+#modalJcrop .modal-content {
+  margin-top: 70px !important; }
+
+input.error {
+  border-color: #a94442;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset; }
+
+.color-red {
+  color: red !important; }
+
+.pointer {
+  cursor: pointer; }
+
+#modal-loading .loading-content {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  margin-top: 50%;
+  text-align: center; }
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .modal .modal-footer .btn {
+    padding-bottom: 5px;
+    padding-top: 8px; } }
+.modal .modal-header .close {
+  margin-top: 2px; }
+.modal .modal-header .modal-header {
+  padding-top: 18px; }
+
+.header, .header2 {
+  position: fixed;
+  width: 100%;
+  top: -60px;
+  opacity: 0;
+  color: #fff;
+  z-index: 9999;
+  min-height: 60px;
+  background-image: url("../img/home/header2.png");
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0.41);
+  border: none;
+  border-radius: 0px !important;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px; }
+  .header img, .header2 img {
+    margin-top: -7px; }
+  .header .nav li .sign-up, .header2 .nav li .sign-up {
+    border-radius: 15px !important;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    background-color: transparent;
+    border: #ccc 1px solid;
+    height: 30px;
+    padding-top: 4px;
+    margin-top: 16px;
+    margin-left: 30px;
+    color: #fff; }
+    .header .nav li .sign-up:hover, .header2 .nav li .sign-up:hover {
+      color: #ccc; }
+    @media (max-width: 768px) {
+      .header .nav li .sign-up, .header2 .nav li .sign-up {
+        width: 100px; } }
+  .header .nav li .log-in, .header2 .nav li .log-in {
+    color: #fff; }
+    .header .nav li .log-in:hover, .header2 .nav li .log-in:hover {
+      color: #ccc; }
+  .header ul li a, .header2 ul li a {
+    color: #fff;
+    padding-top: 20px;
+    padding-bottom: 20px; }
+  .header .nav li a, .header2 .nav li a {
+    color: #ccc; }
+    .header .nav li a:hover, .header2 .nav li a:hover {
+      color: #fff; }
+  .header .nav .drop-profile, .header2 .nav .drop-profile {
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-right: 17px; }
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+      .header .nav .drop-profile, .header2 .nav .drop-profile {
+        margin-left: 0;
+        margin-right: 0px;
+        margin-top: 5px !important; } }
+    .header .nav .drop-profile .email-title, .header2 .nav .drop-profile .email-title {
+      color: #fff;
+      padding-top: 5px;
+      padding-bottom: 5px; }
+      @media (max-width: 667px) {
+        .header .nav .drop-profile .email-title, .header2 .nav .drop-profile .email-title {
+          color: #333; } }
+  @media only screen and (max-width: 767px) {
+    .header .nav .drop-profile, .header2 .nav .drop-profile {
+      margin-top: 0px;
+      margin-left: 0px; } }
+  .header .color-black, .header2 .color-black {
+    color: #333 !important;
+    padding-bottom: 5px;
+    padding-top: 5px; }
+  .header .nav .open > a:focus, .header2 .nav .open > a:focus, .header .nav .open > a:hover, .header2 .nav .open > a:hover {
+    background-color: transparent; }
+  @media only screen and (max-width: 1024px) {
+    .header .nav li .sign-up, .header2 .nav li .sign-up {
+      padding-top: 6px; }
+    .header .nav li a, .header2 .nav li a {
+      padding-left: 10px;
+      font-size: 13px; } }
+  @media (min-width: 769px) and (max-width: 910px) {
+    .header .nav li a, .header2 .nav li a {
+      padding-left: 0px;
+      font-size: 12px; } }
+  @media only screen and (min-width: 769px) and (max-width: 910px) and (max-width: 785px) {
+    .header .nav li a, .header2 .nav li a {
+      font-size: 11px; } }
+
+  @media only screen and (max-width: 768px) {
+    .header .nav li .sign-up, .header2 .nav li .sign-up {
+      margin: 0 !important;
+      text-align: left; }
+    .header .nav li a, .header2 .nav li a {
+      padding: 5px 5px;
+      font-size: 13px; }
+    .header .nav li:not(.divider), .header2 .nav li:not(.divider) {
+      padding-top: 10px; }
+    .header .nav li.divider, .header2 .nav li.divider {
+      margin-top: 10px;
+      margin-bottom: 10px; }
+    .header .nav .sub-list li, .header2 .nav .sub-list li {
+      padding-top: 0px;
+      padding-left: 10px; }
+    .header .nav li .sign-up, .header2 .nav li .sign-up {
+      margin-top: -1px;
+      margin-left: 10px;
+      padding-top: 5px;
+      border: #ccc 1px solid;
+      padding-left: 25px; }
+    .header img, .header2 img {
+      width: 140px;
+      margin-top: -1px; } }
+  @media only screen and (max-width: 767px) {
+    .header .navbar-collapse, .header2 .navbar-collapse {
+      background-color: #fff; }
+    .header .navbar-toggle, .header2 .navbar-toggle {
+      margin-top: 10px;
+      background-color: transparent;
+      border-radius: 50% !important;
+      -moz-border-radius: 50%;
+      -webkit-border-radius: 50%;
+      height: 40px;
+      width: 40px;
+      padding: 0px;
+      padding-left: 8px; }
+      .header .navbar-toggle:hover, .header2 .navbar-toggle:hover {
+        background-color: transparent; }
+    .header .nav li a, .header2 .nav li a {
+      padding: 5px 15px;
+      color: #333; } }
+  @media only screen and (max-width: 767px) and (max-width: 320px) {
+    .header .nav li a, .header2 .nav li a {
+      padding: 0px 15px 5px 17px; } }
+  @media only screen and (max-width: 767px) {
+    .header .nav li .sign-up, .header2 .nav li .sign-up {
+      border-radius: 15px !important;
+      -moz-border-radius: 15px;
+      -webkit-border-radius: 15px;
+      height: 30px;
+      padding-top: 4px;
+      margin-top: 16px;
+      padding-left: 15px;
+      color: #000;
+      border: none; }
+      .header .nav li .sign-up a, .header2 .nav li .sign-up a {
+        border: none; }
+      .header .nav li .sign-up:hover, .header2 .nav li .sign-up:hover {
+        color: #ccc; }
+    .header .nav li .log-in, .header2 .nav li .log-in {
+      color: #000;
+      margin-left: 0px; }
+    .header .btn:hover, .header2 .btn:hover, .header .btn:active, .header2 .btn:active {
+      border: none;
+      background-color: transparent; } }
+
+.header2 {
+  top: 0px;
+  opacity: 1;
+  background-color: rgba(253, 253, 253, 0.84); }
+  .header2 .nav li .sign-up {
+    color: #333; }
+    .header2 .nav li .sign-up:hover {
+      color: #0baeec; }
+    @media (max-width: 768px) {
+      .header2 .nav li .sign-up {
+        width: 100px; } }
+  .header2 .nav li .log-in {
+    color: #333; }
+    .header2 .nav li .log-in:hover {
+      color: #0baeec; }
+  .header2 ul li a {
+    color: #fff;
+    padding-top: 20px;
+    padding-bottom: 20px; }
+  .header2 .active-menu {
+    color: #0baeec !important; }
+  .header2 .nav li a {
+    color: #333; }
+    .header2 .nav li a:hover {
+      color: #0baeec; }
+  .header2 .nav .drop-profile .email-title {
+    color: #333;
+    padding-top: 5px;
+    padding-bottom: 5px; }
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  #bs-example-navbar-collapse-1 {
+    padding-top: 8px; } }
+
+span.filter-option.pull-left {
+  text-align: center; }
+
+.bootstrap-select .btn-group .btn .filter-option {
+  text-align: center; }
+
+.background-bg {
+  height: 100%;
+  background-image: url("/img/registator/background-registrator.png");
+  background-repeat: none;
+  background-size: cover; }
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,431 @@
+<?php $__env->startSection('content'); ?>
+  <?php if($active_theme == "default"): ?>
+    <section class="content" id="stock1">
+        <div class="row main-title">
+            <div class="col-md-12">
+                Stock Info
+            </div>
+        </div>
+          <?php if(isset($stock) && !empty($stock)): ?>
+          <div class="row">
+              <div class="content-stock">
+                  <div class="stock-pri">
+                      Stock price (<?php echo e(strtoupper($symbol)); ?>) &nbsp;&nbsp;&nbsp; <?php echo e((isset($chart_setting->refresh_frequency)? $chart_setting->refresh_frequency / 60000 : '')); ?> min delay
+
+                      <div class="pull-right refresh">
+
+                      </div>
+                  </div>
+                  <div class="col-sm-12 col-md-10 col-md-offset-1 stock-chart">
+                    <div class="loading hidden">
+                      <img id="img-loader" src="/img/loader.gif">
+                    </div>
+                      <div class="text-header">
+                          <div class="text" style="color: #272c30;">
+                              Zoom
+                          </div>
+                          <div class="text">
+                            <a href="#" class="filter_month text-active text3" data-id="3">
+                              3 months
+                            </a>
+                          </div>
+                          <div class="text">
+                            <a href="#" class="filter_month text6" data-id="6">
+                              6 months
+                            </a>
+                          </div>
+                          <div class="text">
+                            <a href="#" class="filter_month text1" data-id="12">
+                              1 year
+                            </a>
+                          </div>
+                          <div class="text">
+                            <a href="#" class="filter_month text2" data-id="24">
+                              2 years
+                            </a>
+                          </div>
+                          <div class="text">
+                            <a href="#" class="filter_month text5" data-id="60">
+                              5 years
+                            </a>
+                          </div>
+                      </div>
+                      
+                      <div id="chartContainer" >
+                      </div>
+                  </div>
+                  <div class="clearfix"></div>
+                 
+                  <div class="stock-number">
+                      <div class="row">
+                          <p class="title">Stock price</p>
+                          <div class="col-sm-3 no-padding-right mb-line">
+                              <div class="box-num-pr">
+                                  <h2 class="l-close">$<?php echo e((isset($stock[0]['Close']))? $stock[0]['Close'] : '00.00'); ?></h2>
+                              </div>
+                              <div class="box-num-pr1 text-center">
+                                  <label class="rate"><i class="icon-move fa fa-caret-<?php echo e((isset($stock[0]['Movement']) && $stock[0]['Movement'] < 0)? 'down' : 'up'); ?>"></i> <span class="l-movement"> <?php echo e((isset($stock[0]['Movement']))? str_replace('-', '',$stock[0]['Movement']) : '00.00'); ?></span></label>
+                              </div>
+                              <br />
+                               
+                              
+                          </div>
+                          <div class="col-sm-9">
+                              <div class="number-left">
+                                  <div class="row">
+                                       <div class="col-sm-6 content-box-num">
+                                          <div class="box-number"><label><strong style="font-size:18px">STOCK ID:</strong></label></div>
+                                          <div class="box-number l-high"><?php echo $stockid ?></div>
+                                      </div>
+                                      <div class="clearfix"></div>
+                                      
+                                      <div class="d-today">Today</div> <label class="l-date"><?php echo e((isset($stock[0]['AsAt']))? date("d M Y h:i a", strtotime($stock[0]['AsAt'])) : ''); ?></label>
+                                  </div>
+                                  <div class="line1"></div>
+                                  <div class="row">
+                                      <div class="col-sm-6 content-box-num">
+                                          <div class="box-number"><label>High:</label></div>
+                                          <div class="box-number l-high">$<?php echo e((isset($stock[0]['High']))? $stock[0]['High'] : '00.00'); ?></div>
+                                          <div class="box-number"><label>Low:</label></div>
+                                          <div class="box-number l-low">$<?php echo e((isset($stock[0]['Low']))? $stock[0]['Low'] : '00.00'); ?></div>
+                                      </div>
+                                      <div class="line1"></div>
+                                      <div class="col-sm-6 content-box-num">
+                                          <div class="box-number"><label>Volume:</label></div>
+                                          <div class="box-number l-volume"><?php echo e((isset($stock[0]['Volume']))? number_format($stock[0]['Volume'] / 1000000, 2) : '00.00'); ?> M</div>
+                                          <div class="box-number"><label>Currency:</label></div>
+                                          <div class="box-number">$AUD</div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <?php else: ?>
+              <div class="text-center" style="margin-top: 26vh;">
+                  <h1>Coming Soon</h1>
+              </div>
+          <?php endif; ?>
+        <input type="hidden" id="filter_value" value="3">
+    </section>   
+  <?php else: ?>
+    <?php if(isset($stock) && !empty($stock)): ?>
+        <h2>Stock Info</h2>
+        <div class="row">
+              <div class="content-stock">
+                  <div class="stock-pri">
+                      Stock price (<?php echo e(strtoupper($symbol)); ?>) &nbsp;&nbsp;&nbsp; <?php echo e((isset($chart_setting->refresh_frequency)? $chart_setting->refresh_frequency / 60000 : '')); ?> min delay
+
+                      <div class="pull-right refresh">
+
+                      </div>
+                  </div>
+                  <div class="col-sm-12 col-md-10 col-md-offset-1 stock-chart table-responsive">
+                    <div class="loading hidden">
+                      <img id="img-loader" src="/img/loader.gif">
+                    </div>
+                      <div class="text-header">
+                          <div class="text" style="color: #272c30;">
+                              Zoom
+                          </div>
+                          <div class="text">
+                            <a href="#" class="filter_month text-active" data-id="3">
+                              3 months
+                            </a>
+                          </div>
+                          <div class="text">
+                            <a href="#" class="filter_month" data-id="6">
+                              6 months
+                            </a>
+                          </div>
+                          <div class="text">
+                            <a href="#" class="filter_month" data-id="12">
+                              1 year
+                            </a>
+                          </div>
+                          <div class="text">
+                            <a href="#" class="filter_month" data-id="24">
+                              2 years
+                            </a>
+                          </div>
+                          <div class="text">
+                            <a href="#" class="filter_month" data-id="60">
+                              5 years
+                            </a>
+                          </div>
+                      </div>
+                      
+                      <div id="chartContainer" style="height: 300px; min-width: 500px;">
+                      </div>
+                  </div>
+                  <div class="clearfix"></div>
+                 
+                  <div class="stock-number">
+                      <div class="row">
+                          <p class="title">Stock price</p>
+                          <div class="col-sm-3 no-padding-right mb-line">
+                              <div class="box-num-pr">
+                                  <h2 class="l-close">$<?php echo e((isset($stock[0]['Close']))? $stock[0]['Close'] : '00.00'); ?></h2>
+                              </div>
+                              <div class="box-num-pr1 text-center">
+                                  <label class="rate"><i class="icon-move fa fa-caret-<?php echo e((isset($stock[0]['Movement']) && $stock[0]['Movement'] < 0)? 'down' : 'up'); ?>"></i> <span class="l-movement"> <?php echo e((isset($stock[0]['Movement']))? str_replace('-', '',$stock[0]['Movement']) : '00.00'); ?></span></label>
+                              </div>
+                          </div>
+                          <div class="col-sm-9">
+                              <div class="number-left">
+                                  <div class="row">
+                                      <div class="d-today">Today</div> <label class="l-date"><?php echo e((isset($stock[0]['AsAt']))? date("d M Y h:i a", strtotime($stock[0]['AsAt'])) : ''); ?></label>
+                                  </div>
+                                  <div class="line1"></div>
+                                  
+                                  <div class="row">
+                                      <div class="col-sm-6 content-box-num">
+                                          <div class="box-number"><label>High:</label></div>
+                                          <div class="box-number l-high">$<?php echo e((isset($stock[0]['High']))? $stock[0]['High'] : '00.00'); ?></div>
+                                          <div class="box-number"><label>Low:</label></div>
+                                          <div class="box-number l-low">$<?php echo e((isset($stock[0]['Low']))? $stock[0]['Low'] : '00.00'); ?></div>
+                                      </div>
+                                      <div class="line1"></div>
+                                      <div class="col-sm-6 content-box-num">
+                                          <div class="box-number"><label>Volume:</label></div>
+                                          <div class="box-number l-volume"><?php echo e((isset($stock[0]['Volume']))? number_format($stock[0]['Volume'] / 1000000, 2) : '00.00'); ?> M</div>
+                                          <div class="box-number"><label>Currency:</label></div>
+                                          <div class="box-number">$AUD</div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+    <?php else: ?>
+      <div class="text-center" style="margin: 161px auto;">
+          <h1>Coming Soon</h1>
+      </div>
+    <?php endif; ?>
+  <?php endif; ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('seo'); ?>
+    <title><?php echo e(ucfirst(Session::get('company_name'))); ?> | Stock information</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+<style type="text/css">
+  #chartContainer{
+    min-height: 300px; min-width: 500px;
+  }
+
+  @media(max-width: 678px){
+    #chartContainer{
+      min-height: 180px; min-width: 260px;
+    }
+  }
+
+</style>
+<?php if($active_theme == "default"): ?>
+	<?php echo Html::style('css/client/stock.css'); ?>
+
+  <style type="text/css">
+      .filter_month{
+        color: <?php echo $chart_setting->button_color ?> !important;
+      }
+      #stock1 .stock-chart .text-header .text a.text-active{
+        color: <?php echo $chart_setting->highlight_color ?> !important;
+      }
+      .content-stock{
+        background-color: <?php echo $chart_setting->background_color ?> !important;
+      }
+  </style>
+<?php endif; ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+<?php echo Html::script('js/canvasjs.min.js'); ?>
+
+<script type="text/javascript">
+    $('.menu-active').removeClass('menu-active');
+    $('#stock').addClass('menu-active');
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+  var d_screen = screen.width;
+  if(d_screen < 768){
+    $('.text3').text('3 mths');
+    $('.text6').text('6 mths');
+    $('.text1').text('1 yr');
+    $('.text2').text('2 yrs');
+    $('.text5').text('5 yrs');
+  }
+});
+
+
+
+  var refresh_frequency = "<?php echo e($chart_setting->refresh_frequency); ?>";
+  showLoading();
+  loadChart('3');
+
+  $('.filter_month').click(function(){
+      showLoading();
+      $('.text-active').removeClass('text-active');
+      $(this).addClass('text-active');
+      var value = $(this).data('id');
+      $('#filter_value').val(value);
+      setTimeout(function() { loadChart(value); }, 1000);
+  });
+
+  
+  // setInterval(function(){
+  //   value = $('#filter_value').val();
+  //   loadChart(value);
+  // }, 1200000);
+
+  setInterval(function(){
+    value = $('#filter_value').val();
+    loadChart(value);
+    loadData();
+  }, refresh_frequency);
+
+  $('.refresh').click(function(){
+      value = $('#filter_value').val();
+      showLoading();
+      setTimeout(function() { loadChart(value); }, 1000);
+  });
+
+
+  function loadChart(filter_value){
+
+
+    //var filter_value = $('#filter_value').val();
+    var chart_type = "<?php echo e($chart_setting->chart_template); ?>";
+    var chart_color = "<?php echo e($chart_setting->highlight_color); ?>";
+    var background_color = "<?php echo e($chart_setting->background_color); ?>";
+    var text_color = "<?php echo e($chart_setting->text_color); ?>";
+    var border_thickness = "<?php echo e($chart_setting->border_thickness); ?>";
+    var price_value = [];
+    var volume_value = [];
+
+    $.ajax({
+      url: '/admin/stock/get-data',
+      // async: false,
+      type: "POST",
+      // processData: false,
+      // contentType: false,
+      data: { 'filter_value' : filter_value},
+          success: function(data) {
+              //value = data;
+              var price_arr = [];
+              var volume_arr = [];
+              for (var i in data){
+                price_arr = {
+                    'x' : new Date(data[i].x),
+                    'y' : data[i].price
+                    };
+                volume_arr = {
+                    'x' : new Date(data[i].x),
+                    'y' : data[i].volume
+                    };
+                price_value[i] = price_arr; 
+                volume_value[i] = volume_arr; 
+              }
+            }
+      }).done(function() {
+        var chart = new CanvasJS.Chart("chartContainer",
+          {      
+            // title:{
+            //   text: "Twitter Mentions for iPhone and Samsung"
+            // },
+            animationEnabled: true,
+            zoomEnabled: true, 
+            backgroundColor: background_color,
+            axisY:{ 
+              title: "Price",
+              //includeZero: false,
+              suffix : "$",
+              lineColor: '#9CCFD7',        
+            },
+            axisY2:{ 
+              title: "Volume",
+              //includeZero: false,
+              suffix : " m",
+              lineColor: "#E1A4A2"
+            },
+            axisX:{ 
+              gridThickness: border_thickness,
+              gridColor: "lightgrey",
+              labelFontColor: text_color,
+            },
+
+            toolTip: {
+              shared: "true"
+            },
+            data: [
+            {        
+              type: chart_type, 
+              name: "Stock",
+              color: '#9CCFD7',
+              markerSize: 0,        
+              dataPoints: price_value,
+            },
+            {        
+              type: chart_type, 
+              name: "Volume",
+              color: '#E1A4A2',
+              axisYType: "secondary",
+              markerSize: 0,        
+              dataPoints: volume_value,
+            },
+           
+            ]
+          });
+
+          chart.render();
+          hideLoading();
+      });
+
+  }
+
+  function loadData(){
+    $.ajax({
+      url: '/admin/stock/get-price',
+      async: false,
+      type: "POST",
+      data: {},
+          success: function(data) {
+            if(data.Close){
+              $('.icon-move').removeClass('fa-caret-up');
+              $('.icon-move').removeClass('fa-caret-down');
+
+              //console.log(data);
+              $('.l-close').html('$'+data.Close);
+              $('.l-movement').html(data.Movement);
+              $('.l-date').html(data.AsAt);
+              $('.l-high').html('$'+data.High);
+              $('.l-low').html('$'+data.Low);
+              $('.l-volume').html(data.Volume+' M');
+              $('.icon-move').addClass('fa-caret-'+data.move_icon);
+            }
+          }
+      });
+  }
+
+  function showLoading()
+  {
+    $('.loading').removeClass('hidden');
+    //$('#modal-loading').modal('show');
+  }
+
+  function hideLoading()
+  {
+    $('.loading').addClass('hidden');
+    //$('#modal-loading').modal('hide');
+  }
+
+  
+ </script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make($app_template['client.frontend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

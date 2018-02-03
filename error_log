@@ -1,0 +1,11 @@
+[03-Jan-2018 12:46:22 Asia/Singapore] PHP Warning:  mysqli_query(): Empty query in /home/finfo/public_html/remainder.php on line 42
+[03-Jan-2018 12:59:52 Asia/Singapore] PHP Parse error:  syntax error, unexpected ';' in /home/finfo/public_html/remainder.php on line 54
+[20-Jan-2018 15:27:25 Asia/Singapore] PHP Warning:  Invalid argument supplied for foreach() in /home/finfo/public_html/json.php on line 20
+[20-Jan-2018 15:28:02 Asia/Singapore] PHP Warning:  Invalid argument supplied for foreach() in /home/finfo/public_html/json.php on line 20
+[20-Jan-2018 15:28:06 Asia/Singapore] PHP Warning:  Invalid argument supplied for foreach() in /home/finfo/public_html/json.php on line 20
+[20-Jan-2018 15:30:12 Asia/Singapore] PHP Warning:  Invalid argument supplied for foreach() in /home/finfo/public_html/json.php on line 17
+[20-Jan-2018 15:45:43 Asia/Singapore] PHP Warning:  Invalid argument supplied for foreach() in /home/finfo/public_html/json.php on line 263
+[20-Jan-2018 15:53:10 Asia/Singapore] PHP Warning:  Illegal string offset 'name' in /home/finfo/public_html/json.php on line 263
+[20-Jan-2018 16:01:16 Asia/Singapore] PHP Parse error:  syntax error, unexpected '{' in /home/finfo/public_html/json.php on line 17
+[20-Jan-2018 16:01:37 Asia/Singapore] PHP Warning:  json_decode() expects parameter 1 to be string, array given in /home/finfo/public_html/json.php on line 266
+[20-Jan-2018 16:06:07 Asia/Singapore] PHP Warning:  Invalid argument supplied for foreach() in /home/finfo/public_html/json.php on line 266

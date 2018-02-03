@@ -1,0 +1,123 @@
+<?php $__env->startSection('content'); ?>
+<div class="panel-grid" id="pg-453-5" >
+	<div class="panel-row-style-default panel-row-style nav-one-page" style="background-color: #ecf0f5; padding-top: 100px; padding-bottom: 100px; " overlay="background-color: rgba(255,255,255,0); " id="pricing">
+		<div class="container">
+			<div class="panel-grid-cell" id="pgc-453-5-0" >
+
+				<div class="panel-builder widget-builder widget_origin_title panel-first-child" id="panel-453-4-0-0">
+					<div class="origin-widget origin-widget-title origin-widget-title-simple-simple align-center text-dark">
+						<h3  class="align-center">PRICING / SIGN UP</h3><div class="divider colored"></div>
+					</div>
+				</div>
+				<div class="panel-builder widget-builder widget_origin_title panel-first-child">
+				 	<div class="col-sm-4">
+				 		<?php echo Form::open(array('url'=>route('finfo.pricing'),'method' => 'GET')); ?>
+
+	                    <div class="form-group">
+	                        <lable class="control-labe" style="margin-top: 10px; font-size:15px;"><strong>Currency:</strong></lable>
+	                        <?php echo Form::select('currency', $currencyData , (isset($_GET['currency']))?$_GET['currency']: 11 , array('class'=>'form-control spacing','onchange'=>'this.form.submit()')); ?>
+
+	                    </div>
+	                	<?php echo Form::close(); ?>
+
+				 	</div>
+				 </div>
+				<div class="panel-builder widget-builder widget_origin_spacer" id="panel-453-5-0-1">
+					<div class="origin-widget origin-widget-spacer origin-widget-spacer-simple-blank">
+						<div style="margin-bottom:60px;"></div>
+					</div>
+				</div>
+
+				<div class="well well-sm panel-builder widget-builder widget_spot" id="panel-453-5-0-2">
+					<div class="panel-grid" id="pg-905-0" >
+						<div class="panel-row-style-default panel-row-style" >
+							<div class="container">
+						<?php $i = 0; ?>
+						<?php foreach($package_module as $packages): ?>
+								<div class="panel-grid-cell" id="pgc-905-0-<?php echo e($i++); ?>" >
+									<div class="panel-builder widget-builder widget_origin_price-box panel-first-child panel-last-child" id="panel-905-0-0-0">
+										<div class="origin-widget origin-widget-price-box origin-widget-price-box-default-default animated bounceInUp">
+											<h4 style="letter-spacing: 3px !important;"><?php echo e($packages['package']['name']); ?></h4>
+											<h2>
+											<?php if(@$exchange->id == 11): ?>
+												<?php echo e($exchange->symbol); ?> 
+												<?php echo e(number_format(round($packages['package']['price_aud']), 2 , ".", "," )); ?>
+
+											<?php else: ?>
+												<?php echo e((isset($exchange->symbol))?$exchange->symbol: '$'); ?>
+
+											<?php echo e(number_format(round((isset($exchange->exchange_rate))? $packages['package']['price'] * $exchange->exchange_rate : $packages['package']['price']), 2 , ".", "," )); ?>
+
+											<?php endif; ?>
+											<span>p e r   m o n t h.</span></h2>
+											<p class="information">The <?php echo e($packages['package']['name']); ?> Solution</p>
+											<div class="origin-widget origin-widget-list origin-widget-list-default-default text-none">
+												<div class="list-body ">
+													<p>
+                                                        <?php foreach($packages['module'] as $module): ?>
+                                                            <?php echo e($module->name); ?><br/>
+                                                            <?php if($module->ordering == 4): ?>
+	                                                        	Past Financial Results<br/>
+	                                                        <?php endif; ?>
+
+		                                                    <?php if($module->ordering == 6): ?>
+	                                                            Page Manager<br/>
+	                                                        <?php endif; ?>
+	                                                        <?php if($packages['package']['name'] == 'Enterprise' && $module->ordering == 6): ?>
+	                                                        	Subscription Tool<br/>
+	                                                        <?php endif; ?>
+                                                        <?php endforeach; ?>	
+                                                        
+                                    
+													</p>
+												</div>
+											</div>
+											<div class="origin-widget origin-widget-button origin-widget-button-default-default align-center">
+												<a class="btn-color btn-color-1d   nav-to tp-button blue " href="<?php echo e(URL::to('register/'.$packages['package']['name'].'/'.$exchange->id)); ?>" >
+												SIGN UP</a>
+											</div>
+										</div>
+									</div>
+								</div>								
+						<?php endforeach; ?>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="panel-builder widget-builder widget_origin_title panel-last-child" id="panel-453-4-0-3">
+					<div class="origin-widget origin-widget-title origin-widget-title-simple-simple align-center text-dark">
+						<h3 class="align-center"></h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('seo'); ?>
+    <title>Finfo | Pricing</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+<style>
+h4{text-transform: capitalize;}
+.information{text-transform: capitalize;}
+.origin-widget-list-default-default{
+    min-height: 470px;   
+}   
+#pgc-905-0-1 .origin-widget-list .list-body {
+	padding-bottom: 150px;
+}
+@media (min-width: 769px) {
+	#pgc-905-0-0, #pgc-905-0-1, #pgc-905-0-2{
+		width: 30% !important;
+	}
+	#pgc-905-0-1 {
+		margin: 0px 30px;
+	}
+}
+</style>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make($app_template['frontend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,31 @@
+@import "pass-lib";
+.content-wrapper{
+	background-color: #f0f0f0;
+}
+#leadership {
+	.div-img{
+		@media (max-width: 767px) {
+			text-align: center;
+		}
+	}
+	.img-profile{
+		width: 90%;
+		margin-top: 24px;
+	}
+	.profile-detail{
+		margin-left: 30px;
+	}
+	.ul-profile{
+		margin-left: -39px;
+	}    
+	.profile:nth-child(odd) {
+	  background-color: #dcdcdc;
+	}
+
+	.profile:nth-child(even) {
+	  background-color: #f0f0f0;
+	}
+        .profile-detail img {
+            width:100%;
+        }
+}

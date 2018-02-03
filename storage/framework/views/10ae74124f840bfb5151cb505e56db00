@@ -1,0 +1,159 @@
+<?php $__env->startSection('title'); ?>
+Users Manager
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+    <section class="content" id="list-user">
+        <div class="row head-search">
+            <div class="col-sm-6">
+                <lable class="label-title">Add New User</lable>
+            </div>
+            
+        </div>
+        <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-body">
+                    <div class="col-sm-12 col-md-6">
+                        <?php echo Form::open(array('route' => 'client.user.backend.save', 'id' => 'frm_user')); ?>
+
+                            <div class="form-group<?php echo e($errors->has('first_name') ? ' has-error' : ''); ?>">
+                                <?php echo Form::label('first_name', 'First Name'); ?>
+
+                                <?php echo Form::text('first_name', Input::old('first_name'), ['class' => 'form-control', 'placeholder' => 'First Name']); ?>
+
+                                <?php echo $errors->first('first_name', '<span class="help-block">:message</span>'); ?>
+
+                            </div>
+                        
+                            <div class="form-group<?php echo e($errors->has('last_name') ? ' has-error' : ''); ?>">
+                                <?php echo Form::label('last_name', 'Last Name'); ?>
+
+                                <?php echo Form::text('last_name', Input::old('last_name'), ['class' => 'form-control', 'placeholder' => 'Last Name']); ?>
+
+                                <?php echo $errors->first('last_name', '<span class="help-block">:message</span>'); ?>
+
+                            </div>
+
+                            <div class="form-group<?php echo e($errors->has('email_address') ? ' has-error' : ''); ?>">
+                                <?php echo Form::label('email', 'Email'); ?>
+
+                                <?php echo Form::text('email_address', Input::old('email_address'), ['class' => 'form-control', 'placeholder' => 'Email']); ?>
+
+                                <?php echo $errors->first('email_address', '<span class="help-block">:message</span>'); ?>
+
+                            </div>
+                        
+                            <div class="form-group<?php echo e($errors->has('user_type') ? ' has-error' : ''); ?>">
+                                <?php echo Form::label('user_type', 'User type'); ?>
+
+                                <?php echo Form::select('user_type', $data['user_type'], Input::old('user_type'), ['class' => 'form-control']); ?>
+
+                                <?php echo $errors->first('user_type', '<span class="help-block">:message</span>'); ?>
+
+                            </div>
+
+                            <div class="form-group<?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
+                                <?php echo Form::label('password', 'Password'); ?>
+
+                                <?php echo Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password', 'minlength' => 8]); ?>
+
+                                <?php echo $errors->first('password', '<span class="help-block">:message</span>'); ?>
+
+                                  <span>Eg: passWord168!</span>
+                            </div>
+                        
+                            <div class="form-group<?php echo e($errors->has('password_confirmation') ? ' has-error' : ''); ?>">
+                                <?php echo Form::label('password_confirmation', 'Password confirmation'); ?>
+
+                                <?php echo Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => 'Password confirmation', 'minlength' => 8]); ?>
+
+                                <?php echo $errors->first('password_confirmation', '<span class="help-block">:message</span>'); ?>
+
+                            </div>
+
+                            <div class="form-group" style="margin-top:30px;">
+                                <?php echo Form::submit('Save', ['class' => 'btn btn-primary btn-save']); ?>
+
+                                <a href="<?php echo e(route('client.user.backend.list')); ?>" class='btn btn-danger btn-overwrite-cancel'>Cancel</a>
+                            </div>
+                            
+                        <?php echo Form::close(); ?>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+    <?php echo Html::style('css/client/list-user.css'); ?>
+
+    <style type="text/css">
+        .error{
+            color: red;
+            font-weight: 500;
+        }
+    </style>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+<?php echo Html::script('js/jquery.validate.min.js'); ?>
+
+
+<script type="text/javascript">
+    $('.active').removeClass('active');
+    $('.user').addClass('active');
+    $('.user_form').addClass('active');
+
+    $(document).ready(function(){
+        $.ajaxSetup({
+                    headers:{
+                        'X-CSRF-TOKEN':'<?php echo csrf_token(); ?>'
+                    }
+                });
+        jQuery.validator.addMethod("pwcheck", function(value, element) {
+            return   /([A-Z])/.test(value) // upper case
+                &&  /([!,%,&,@,#,$,^,*,?,_,~])/.test(value) // has spacial character
+                &&  /[a-z]/.test(value) // has a lowercase letter
+                &&  /\d/.test(value) // has a digit
+        }, "Password must contain at least one letter, one capital letter, number and special character.");
+
+        $("#frm_user").validate({
+            rules: {
+
+                'email_address'    :{
+                        required:   true,
+                        email:      true,
+                        remote: {
+                                  url: '/admin/users/check-exit-email',
+                                  type: "post",
+                                }
+                },
+                'password'      :{
+                    pwcheck: true,
+                    required: true,
+                },
+                'password_confirmation' :{
+                    pwcheck: true,
+                    required: true,
+                    equalTo: "#password"
+                }
+
+            },
+            messages: {
+                    email_address: {
+                        remote: "Email already in use!"
+                    }
+                },
+
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });        
+    });
+     
+ </script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make($app_template['client.backend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

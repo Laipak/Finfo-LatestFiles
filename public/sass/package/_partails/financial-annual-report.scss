@@ -1,0 +1,44 @@
+@import "pass-lib";
+#financial-annual-report {
+  	.sub-title {
+    	margin-bottom: 15px;
+  	}
+  	.head-search{
+	    margin-bottom: 30px;
+	    margin-top: 30px;
+	}
+	.cover_image{
+		margin-top: 15px;
+		margin-bottom: 15px;
+		min-width: 100px;
+		width: auto;
+	    min-height: 100px;
+	    max-width: 200px;
+	    background-color: #FFFFFF;
+	    cursor: pointer;
+	    background-image: url("/img/uploader_text1.png");
+	    background-size: cover;
+	    background-repeat: no-repeat;
+	    border-radius: 15px;
+	}
+	.hidden{
+		visibility: hidden;
+	}
+	.btn-upload{
+	    background-color: #6aa501;
+	    width: 100%;
+	    color: white;
+	    
+	}
+	.help-block{
+	    color: red;
+	}
+	.error{
+		color:red;
+		font-weight: 500;
+	}
+	#financial_year.error{
+		color: inherit;
+	}
+}
+

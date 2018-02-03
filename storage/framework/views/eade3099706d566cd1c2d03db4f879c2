@@ -1,0 +1,252 @@
+<?php $__env->startSection('content'); ?>
+<div class="panel-grid" id="pg-453-5" >
+	<div class="panel-row-style-default panel-row-style nav-one-page" style="background-color: #ecf0f5; padding-top: 100px; padding-bottom: 100px; " overlay="background-color: rgba(255,255,255,0); " id="pricing">
+		<div class="container">
+			<div class="panel-grid-cell" id="pgc-453-5-0" >
+
+				<div class="panel-builder widget-builder widget_origin_title panel-first-child" id="panel-453-4-0-0">
+					<div class="origin-widget origin-widget-title origin-widget-title-simple-simple align-center text-dark">
+						<h3  class="align-center">Sign up now!</h3><div class="divider colored"></div>
+					</div>
+				</div>
+
+				<div class="panel-builder widget-builder widget_origin_spacer" id="panel-453-5-0-1">
+					<div class="origin-widget origin-widget-spacer origin-widget-spacer-simple-blank">
+						<div style="margin-bottom:60px;"></div>
+					</div>
+				</div>
+				<?php if(count($errors) > 0): ?>
+              <div class="alert alert-danger text-center">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <?php foreach($errors->all() as $error): ?>
+                    <?php echo e($error); ?><br>
+                  <?php endforeach; ?>
+              </div>
+            <?php endif; ?>
+
+
+            <?php if(session()->has('success')): ?>              
+              <div class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <?php echo e(session('success')); ?>
+
+              </div>
+            <?php endif; ?>
+            <?php if(session()->has('error')): ?>              
+              <div class="alert alert-danger">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <?php echo e(session('error')); ?>
+
+              </div>
+            <?php endif; ?>
+				<div class="well well-sm panel-builder widget-builder widget_spot" id="panel-453-5-0-2">
+					<div class="col-sm-12">
+						<?php echo Form::open(array('url'=>'backend/do-register', 'class'=>'register', 'novalidate'=>'')); ?>
+
+							<legend>Package Information</legend>
+							<div class="control-group <?php echo e($errors->has('package_information') ? ' has-error' : ''); ?>">
+								<lable><strong>Package:</strong></lable>
+                                <?php echo Form::select('package_id', $package, $package_subscribed->id, ['class' => 'form-control']); ?>
+
+                            </div>
+                            <!--11-10-2017 new div class="control-group">
+                                <lable><strong>Market:</strong></lable>
+                                <?php echo Form::select('market', $market , (isset($_GET['market']))?$_GET['market']:""  , array('class'=>'form-control spacing', 'id'=> 'lunch_market')); ?>
+
+                            </div  end of 11-10-2017-->
+							
+							<div class="control-group">
+                                <lable><strong>Market:</strong></lable>
+                                <select name='market' class='form-control' id='lunch_market'>
+                                    <?php foreach($market as $key => $value): ?>
+                                        <?php if($currency_val == $key): ?>
+                                            <option value='<?php echo e($key); ?>' selected><?php echo e(ucfirst(strtolower($value))); ?></option>
+                                        <?php else: ?>
+                                            <option value='<?php echo e($key); ?>'><?php echo e(ucfirst(strtolower($value))); ?></option>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+							
+                            <div class="control-group">
+                                <lable><strong>Country:</strong></lable>
+                                <select name='country' class='form-control'>
+                                    <?php foreach($country as $key => $value): ?>
+                                        <?php if($currentCountry == $key): ?>
+                                            <option value='<?php echo e($key); ?>' selected><?php echo e(ucfirst(strtolower($value))); ?></option>
+                                        <?php else: ?>
+                                            <option value='<?php echo e($key); ?>'><?php echo e(ucfirst(strtolower($value))); ?></option>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+							
+                            <br>
+							
+                            <legend>Company Information</legend>
+                            <div class="control-group <?php echo e($errors->has('company_name') ? ' has-error' : ''); ?>">
+                                <div class="form-group floating-label-form-group controls" >
+                                    <label>Company Name</label>
+                                    <input type="text" class="form-control" placeholder="Company Name" name="company_name"  value="<?php echo e(old('company_name')); ?>" autofocus>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+							
+                            <div class="control-group <?php echo e($errors->has('account_name1') ? ' has-error' : ''); ?>">
+
+                                <div class="form-group floating-label-form-group controls">
+                                    <label>Preferred URL</label>
+                                    <input type="text" class="form-control accountName" placeholder="Name of Company" name="account_name1"  value="<?php echo e(old('account_name1')); ?>" readonly="" id="account_name1" autofocus>
+                                    <span class='surrfix-domain'></span>
+                                    <p class="help-block text-danger"></p>
+                                    <label id="account_name1-error" class="has-error" for="account_name1"></label>
+                                    <!-- <label id="account_name1-error" class="has-error" for="account_name1"></label> -->
+                                </div>
+                                
+                            </div>
+                            <!--<div class="control-group <?php echo e($errors->has('account_name2') ? ' has-error' : ''); ?>">
+                                <div class="form-group floating-label-form-group controls">
+                                    <label>Preferred Account Name 2</label>
+                                    <input type="text" class="form-control accountName" placeholder="Preferred Account Name 2" name="account_name2"  value="<?php echo e(old('account_name2')); ?>" id="account_name2" readonly="" autofocus>
+                                    <span class='surrfix-domain'></span>
+                                    <label id="account_name2-error" class="has-error" for="account_name2"></label>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                
+                            </div>!-->
+                            <div class="control-group <?php echo e($errors->has('phone_number') ? ' has-error' : ''); ?>">
+                                <div class="form-group floating-label-form-group controls">
+                                    <label>Company Phone Number</label>
+                                    <input type="text" class="form-control" placeholder="Company Phone Number" name="phone_number"  value="<?php echo e(old('phone_number')); ?>" minlength="6" maxlength="20">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="control-group <?php echo e($errors->has('company_email') ? ' has-error' : ''); ?>">
+                                <div class="form-group floating-label-form-group controls">
+                                    <label style="display: inline-block;">Company Email Address</label><p id="pop-co-email-help">(?)</p>
+                                    <input type="text" class="form-control" placeholder="Company Email Address" name="company_email"  value="<?php echo e(old('company_email')); ?>">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="control-group <?php echo e($errors->has('company_website') ? ' has-error' : ''); ?>">
+                                <div class="form-group floating-label-form-group controls">
+                                    <label>Company Website Address</label>
+                                    <input type="text" class="form-control" placeholder="Company Website Address" name="company_website"  value="<?php echo e(old('company_website')); ?>">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="control-group <?php echo e($errors->has('company_address') ? ' has-error' : ''); ?>">
+                                <div class="form-group floating-label-form-group controls">
+                                    <label>Company Address</label>
+                                    <input type="text" class="form-control" placeholder="Company Address" name="company_address"  value="<?php echo e(old('company_address')); ?>">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+							
+                            <br>
+							
+                            <legend>User Information</legend>
+							
+                            <div class="control-group <?php echo e($errors->has('first_name') ? ' has-error' : ''); ?>">
+	                              <div class="form-group floating-label-form-group controls">
+	                                <label>First Name</label> 
+	                                  <input type="text" class="form-control" placeholder="First Name" name="first_name" value="<?php echo e(old('first_name')); ?>" autofocus>
+	                                </div>
+	                        </div>
+							
+	                        <div class="control-group <?php echo e($errors->has('last_name') ? ' has-error' : ''); ?>">
+	                              <div class="form-group floating-label-form-group controls">
+	                                <label>Last Name</label> 
+	                                  <input type="text" class="form-control" placeholder="Last Name" name="last_name" value="<?php echo e(old('last_name')); ?>" autofocus>
+	                                </div>
+	                        </div>
+	                                <label class="error"></label>
+	                            <div class="control-group <?php echo e($errors->has('phone') ? ' has-error' : ''); ?>">
+	                                <div class="form-group floating-label-form-group controls">
+	                                    <label>Phone Number</label>
+	                                    <input type="text" class="form-control" id="phone" placeholder="Phone Number" name="phone" value="<?php echo e(old('phone')); ?>" autofocus minlength="6" maxlength="20">
+	                                    <p class="help-block text-danger"></p>
+	                                </div>
+	                            </div> 
+	                            <div class="control-group <?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
+	                                <div class="form-group floating-label-form-group controls">
+	                                    <label style="display: inline-block;">Email Address</label><p id="pop-email-help">(?)</p>
+	                                    <input type="email" class="form-control" id="email" placeholder="Email Address" name="email" value="<?php echo e(old('email')); ?>" autofocus>
+	                                    <p class="help-block text-danger"></p>
+	                                </div>
+	                            </div>
+	                            <div class="control-group <?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
+	                                <div class="form-group floating-label-form-group controls">
+	                                    <label>Password</label>
+	                                    <input type="password" class="form-control" placeholder="Password" name="password" id="password" minlength=8 >
+	                                    <p class="help-block text-danger"></p>
+	                                </div>
+	                            </div>
+	                            <div class="control-group <?php echo e($errors->has('password_confirmation') ? ' has-error' : ''); ?>">
+	                                <div class="form-group floating-label-form-group controls">
+	                                    <label>Confirm Password</label>
+	                                    <input class="form-control" type="password"  placeholder="Confirm Password" name="password_confirmation" minlength=8 >
+	                                    <p class="help-block text-danger"></p>
+	                                </div>
+	                            </div>
+	                            <div class="control-group">
+	                                <div class="form-group floating-label-form-group controls">
+	                                     <input name="checkbox" type="checkbox" >&nbsp&nbsp&nbsp&nbsp<lable><a href="<?php echo e(route('term-of-service')); ?>" target="_brank" style="color:inherit;">Terms and conditions</a></lable>
+	                                    <label id="checkbox-error" class="has-error" for="checkbox"></label>
+	                                </div>
+	                            </div>
+	                            <div class="clearfix"></div>
+	                            <button type="submit" class="btn btn-success btn-lg">Register</button>
+	                            <input type="hidden" name="h_package_currency_type" value="<?php echo e($package_subscribed->currencyType); ?>">
+						<?php echo Form::close(); ?>
+
+					</div>
+				</div>
+
+				<div class="panel-builder widget-builder widget_origin_title panel-last-child" id="panel-453-4-0-3">
+					<div class="origin-widget origin-widget-title origin-widget-title-simple-simple align-center text-dark">
+						<h3 class="align-center"></h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('seo'); ?>
+    <title>Finfo | Registration</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+<style type="text/css">
+ 	.has-error{
+        color: red;
+        opacity: 1 !important;
+        position: static !important;
+    }
+    .accountName{
+        width: 85% !important;
+        display: inline !important;
+    }
+    .floating-label-form-group label{
+        display: block;
+    }
+    #pop-email-help, #pop-co-email-help{
+        display: inline-block; 
+        padding-left: 10px;
+        color:#DF810C;
+        cursor: pointer;
+    }
+    .popover{
+        min-width: 500px;
+    }
+    @media (max-width: 767px){
+        .popover{
+            min-width: 200px;
+        }
+    }
+</style>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make($app_template['frontend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

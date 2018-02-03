@@ -1,0 +1,16 @@
+<?php $__env->startSection('content'); ?>
+ <section class="content" id="leadership">
+              
+          
+                <div class="row main-title">
+                    <div class="col-md-12">
+                         <?php echo $data['title']; ?>
+
+                    </div>
+                </div>
+       <?php echo html_entity_decode($data['body']); ?> 
+    </section>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make($app_template['client.frontend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

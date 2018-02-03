@@ -1,0 +1,436 @@
+<?php $__env->startSection('content'); ?>
+<div class="panel-grid" id="pg-453-5" >
+	<div class="panel-row-style-default panel-row-style nav-one-page" style="background-color: #ecf0f5; padding-top: 100px; padding-bottom: 100px; " overlay="background-color: rgba(255,255,255,0); " id="pricing">
+		<div class="container">
+			<div class="panel-grid-cell" id="pgc-453-5-0" >
+
+				<div class="panel-builder widget-builder widget_origin_title panel-first-child" id="panel-453-4-0-0">
+					<div class="origin-widget origin-widget-title origin-widget-title-simple-simple align-center text-dark">
+						<h3  class="align-center">Sign Up & Pricing</h3><div class="divider colored"></div>
+					</div>
+				</div>
+
+				<div class="panel-builder widget-builder widget_origin_spacer" id="panel-453-5-0-1">
+					<div class="origin-widget origin-widget-spacer origin-widget-spacer-simple-blank">
+						<div style="margin-bottom:60px;"></div>
+					</div>
+				</div>
+				<?php if(count($errors) > 0): ?>
+              <div class="alert alert-danger text-center">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <?php foreach($errors->all() as $error): ?>
+                    <?php echo e($error); ?><br>
+                  <?php endforeach; ?>
+              </div>
+            <?php endif; ?>
+
+
+            <?php if(session()->has('success')): ?>              
+              <div class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <?php echo e(session('success')); ?>
+
+              </div>
+            <?php endif; ?>
+            <?php if(session()->has('error')): ?>              
+              <div class="alert alert-danger">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <?php echo e(session('error')); ?>
+
+              </div>
+            <?php endif; ?>
+				<div class="well well-sm panel-builder widget-builder widget_spot" id="panel-453-5-0-2">
+					<div class="col-sm-12">
+						<?php echo Form::open(array('url'=>'do-register', 'class'=>'register', 'novalidate'=>'')); ?>
+
+							<legend>Package Information</legend>
+							<div class="control-group <?php echo e($errors->has('package_information') ? ' has-error' : ''); ?>">
+								<lable><strong>Package:</strong></lable>
+                                <?php echo Form::select('package_id', $package, $package_subscribed->id, ['class' => 'form-control']); ?>
+
+                            </div>
+                            <div class="control-group">
+                                <lable><strong>Market:</strong></lable>
+                                <?php echo Form::select('market', $market , (isset($_GET['market']))?$_GET['market']:""  , array('class'=>'form-control spacing', 'id'=> 'lunch_market')); ?>
+
+                            </div>
+                            <div class="control-group">
+                                <lable><strong>Country:</strong></lable>
+                                <select name='country' class='form-control'>
+                                    <?php foreach($country as $key => $value): ?>
+                                        <?php if($currentCountry == $key): ?>
+                                            <option value='<?php echo e($key); ?>' selected><?php echo e(ucfirst(strtolower($value))); ?></option>
+                                        <?php else: ?>
+                                            <option value='<?php echo e($key); ?>'><?php echo e(ucfirst(strtolower($value))); ?></option>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <br>
+                            <legend>Company Information</legend>
+                            <div class="control-group <?php echo e($errors->has('company_name') ? ' has-error' : ''); ?>">
+                                <div class="form-group floating-label-form-group controls" >
+                                    <label>Company Name</label>
+                                    <input type="text" class="form-control" placeholder="Company Name" name="company_name"  value="<?php echo e(old('company_name')); ?>" autofocus>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="control-group <?php echo e($errors->has('account_name1') ? ' has-error' : ''); ?>">
+
+                                <div class="form-group floating-label-form-group controls">
+                                    <label>Preferred URL</label>
+                                    <input type="text" class="form-control accountName" placeholder="Name of Company" name="account_name1"  value="<?php echo e(old('account_name1')); ?>" readonly="" id="account_name1" autofocus>
+                                    <span class='surrfix-domain'></span>
+                                    <p class="help-block text-danger"></p>
+                                    <label id="account_name1-error" class="has-error" for="account_name1"></label>
+                                    <!-- <label id="account_name1-error" class="has-error" for="account_name1"></label> -->
+                                </div>
+                                
+                            </div>
+                            <!--<div class="control-group <?php echo e($errors->has('account_name2') ? ' has-error' : ''); ?>">
+                                <div class="form-group floating-label-form-group controls">
+                                    <label>Preferred Account Name 2</label>
+                                    <input type="text" class="form-control accountName" placeholder="Preferred Account Name 2" name="account_name2"  value="<?php echo e(old('account_name2')); ?>" id="account_name2" readonly="" autofocus>
+                                    <span class='surrfix-domain'></span>
+                                    <label id="account_name2-error" class="has-error" for="account_name2"></label>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                
+                            </div>!-->
+                            <div class="control-group <?php echo e($errors->has('phone_number') ? ' has-error' : ''); ?>">
+                                <div class="form-group floating-label-form-group controls">
+                                    <label>Company Phone Number</label>
+                                    <input type="text" class="form-control" placeholder="Company Phone Number" name="phone_number"  value="<?php echo e(old('phone_number')); ?>" minlength="6" maxlength="20">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="control-group <?php echo e($errors->has('company_email') ? ' has-error' : ''); ?>">
+                                <div class="form-group floating-label-form-group controls">
+                                    <label style="display: inline-block;">Company Email Address</label><p id="pop-co-email-help">(?)</p>
+                                    <input type="text" class="form-control" placeholder="Company Email Address" name="company_email"  value="<?php echo e(old('company_email')); ?>">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="control-group <?php echo e($errors->has('company_website') ? ' has-error' : ''); ?>">
+                                <div class="form-group floating-label-form-group controls">
+                                    <label>Company Website Address</label>
+                                    <input type="text" class="form-control" placeholder="Company Website Address" name="company_website"  value="<?php echo e(old('company_website')); ?>">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="control-group <?php echo e($errors->has('company_address') ? ' has-error' : ''); ?>">
+                                <div class="form-group floating-label-form-group controls">
+                                    <label>Company Address</label>
+                                    <input type="text" class="form-control" placeholder="Company Address" name="company_address"  value="<?php echo e(old('company_address')); ?>">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <br>
+                            <legend>User Information</legend>
+                            <div class="control-group <?php echo e($errors->has('first_name') ? ' has-error' : ''); ?>">
+	                              <div class="form-group floating-label-form-group controls">
+	                                <label>First Name</label> 
+	                                  <input type="text" class="form-control" placeholder="First Name" name="first_name" value="<?php echo e(old('first_name')); ?>" autofocus>
+	                                </div>
+	                            </div>
+	                            <div class="control-group <?php echo e($errors->has('last_name') ? ' has-error' : ''); ?>">
+	                              <div class="form-group floating-label-form-group controls">
+	                                <label>Last Name</label> 
+	                                  <input type="text" class="form-control" placeholder="Last Name" name="last_name" value="<?php echo e(old('last_name')); ?>" autofocus>
+	                                </div>
+	                            </div>
+	                                <label class="error"></label>
+	                            <div class="control-group <?php echo e($errors->has('phone') ? ' has-error' : ''); ?>">
+	                                <div class="form-group floating-label-form-group controls">
+	                                    <label>Phone Number</label>
+	                                    <input type="text" class="form-control" id="phone" placeholder="Phone Number" name="phone" value="<?php echo e(old('phone')); ?>" autofocus minlength="6" maxlength="20">
+	                                    <p class="help-block text-danger"></p>
+	                                </div>
+	                            </div> 
+	                            <div class="control-group <?php echo e($errors->has('email') ? ' has-error' : ''); ?>">
+	                                <div class="form-group floating-label-form-group controls">
+	                                    <label style="display: inline-block;">Email Address</label><p id="pop-email-help">(?)</p>
+	                                    <input type="email" class="form-control" id="email" placeholder="Email Address" name="email" value="<?php echo e(old('email')); ?>" autofocus>
+	                                    <p class="help-block text-danger"></p>
+	                                </div>
+	                            </div>
+	                            <div class="control-group <?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
+	                                <div class="form-group floating-label-form-group controls">
+	                                    <label>Password</label>
+	                                    <input type="password" class="form-control" placeholder="Password" name="password" id="password" minlength=8 >
+	                                    <p class="help-block text-danger"></p>
+	                                </div>
+	                            </div>
+	                            <div class="control-group <?php echo e($errors->has('password_confirmation') ? ' has-error' : ''); ?>">
+	                                <div class="form-group floating-label-form-group controls">
+	                                    <label>Confirm Password</label>
+	                                    <input class="form-control" type="password"  placeholder="Confirm Password" name="password_confirmation" minlength=8 >
+	                                    <p class="help-block text-danger"></p>
+	                                </div>
+	                            </div>
+	                            <div class="control-group">
+	                                <div class="form-group floating-label-form-group controls">
+	                                     <input name="checkbox" type="checkbox" >&nbsp&nbsp&nbsp&nbsp<lable><a href="<?php echo e(route('term-of-service')); ?>" target="_brank" style="color:inherit;">Terms and conditions</a></lable>
+	                                    <label id="checkbox-error" class="has-error" for="checkbox"></label>
+	                                </div>
+	                            </div>
+	                            <div class="clearfix"></div>
+	                            <button type="submit" class="btn btn-success btn-lg">Register</button>
+	                            <input type="hidden" name="h_package_currency_type" value="<?php echo e($package_subscribed->currencyType); ?>">
+						<?php echo Form::close(); ?>
+
+					</div>
+				</div>
+
+				<div class="panel-builder widget-builder widget_origin_title panel-last-child" id="panel-453-4-0-3">
+					<div class="origin-widget origin-widget-title origin-widget-title-simple-simple align-center text-dark">
+						<h3 class="align-center"></h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('seo'); ?>
+    <title>Finfo | Registration</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+<style type="text/css">
+ 	.has-error{
+        color: red;
+        opacity: 1 !important;
+        position: static !important;
+    }
+    .accountName{
+        width: 85% !important;
+        display: inline !important;
+    }
+    .floating-label-form-group label{
+        display: block;
+    }
+    #pop-email-help, #pop-co-email-help{
+        display: inline-block; 
+        padding-left: 10px;
+        color:#DF810C;
+        cursor: pointer;
+    }
+    .popover{
+        min-width: 500px;
+    }
+    @media (max-width: 767px){
+        .popover{
+            min-width: 200px;
+        }
+    }
+</style>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
+    <?php echo Html::script('js/jquery.validate.min.js'); ?>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $.ajaxSetup({
+                headers:{
+                    'X-CSRF-TOKEN':'<?php echo csrf_token(); ?>'
+                }
+            });
+            $('#lunch_market').change(function(){
+                $('.surrfix-domain').text('');
+                $('.surrfix-domain').text("-"+$(this).val());
+                $('#account_name1').val('');
+                //$('#account_name2').val('');
+
+                if($(this).val() != ''){
+                    $('#account_name1').prop('readonly', false);
+                    //$('#account_name2').prop('readonly', false);
+                }else{
+                    $('.surrfix-domain').text('');
+                    $('#account_name1').prop('readonly', true);
+                    //$('#account_name2').prop('readonly', true);
+                }
+            });
+
+            jQuery.validator.addMethod("noSpace", function(value, element) { 
+              return value.indexOf(" ") < 0 || value.indexOf(/([!,%,&,@,#,$,^,*,?,_,~])/) < 0 ; 
+            }, "Cannot use space in this field.");
+
+            jQuery.validator.addMethod("pwcheck", function(value, element) {
+               return   /([A-Z])/.test(value) // upper case
+                    &&  /([!,%,&,@,#,$,^,*,?,_,~])/.test(value) // has spacial character
+                    &&  /[a-z]/.test(value) // has a lowercase letter
+                    &&  /\d/.test(value) // has a digit
+            }, "Password must contain at least one letter, one capital letter, number and special character.");
+
+            $.validator.addMethod("regex", function(value, element, regexp) {
+                if (value.indexOf(".") !== -1) {
+                    return false;
+                }
+                var check = false;
+                var re = new RegExp(regexp);
+                return this.optional(element) || re.test(value);
+            },"No special Characters allowed here.");
+
+            $.validator.addMethod("phone_number", function(value, element, regexp) {
+                if (value.indexOf(".") !== -1) {
+                    return false;
+                }
+                var check = false;
+                var re = new RegExp(regexp);
+                return this.optional(element) || re.test(value);
+            },"Allow only + sign and number");
+
+            jQuery.validator.addMethod("notEqualTo",  
+                function(value, element, param) {  
+                     return this.optional(element) || value!=$(param).val(); }, 
+                     "Preferred Account Name 1 and Preferred Account Name 2 should be different value."
+            );
+
+            $.validator.addMethod('lowercase', function(value) {
+                return value.match(/^[^A-Z]+$/);
+            }, 'No Capital letter allowed here.');
+
+
+            $(".register").validate({
+                errorClass: 'has-error',
+                highlight: function (element, errorClass) { 
+                    $(element).closest("div.control-group").addClass(errorClass);
+                },
+                unhighlight: function (element, errorClass) { 
+                    $(element).closest("div.control-group").removeClass(errorClass); 
+                },
+                rules: {
+                    'company_name': 'required',
+                    'company_email': 'required',
+                    'company_address': 'required',
+                    'market': 'required',
+                    'phone_number': {
+                        phone_number: /^[0-9,+]+$/,
+                    },
+                    'first_name': 'required',
+                    'last_name': 'required',
+                    'phone':  {
+                        phone_number: /^[0-9,+]+$/,
+                    },
+                    'email': 'required',
+                    'checkbox': 'required',
+                    'account_name1': {
+                        required: true,
+                        maxlength: 20,
+                        minlength: 6,
+                        noSpace: true,
+                        lowercase: true,
+                        regex: /^[A-Za-z0-9\.-]+$/,
+                        //notEqualTo: "#account_name2",
+                        remote: {
+                            url: '/register/check/domain_name',
+                            type: "post",
+                            data:   {
+                                        name: function()
+                                            {
+                                                return $('.register :input[name="account_name1"]').val() + '-' + $('#lunch_market').val();
+                                            }
+                                    }
+                        }             
+                    },
+                    // 'account_name2': {
+                    //     required: true,
+                    //     maxlength: 20,
+                    //     minlength: 6,
+                    //     noSpace: true,
+                    //     regex: /^[A-Za-z0-9\.-]+$/,
+                    //     notEqualTo: "#account_name1",
+                    //     lowercase: true,
+                    //     remote: {
+                    //         url: '/register/check/domain_name',
+                    //         type: "post",
+                    //         data:   {
+                    //                     name: function()
+                    //                         {
+                    //                             return $('.register :input[name="account_name2"]').val() + '-' + $('#lunch_market').val();
+                    //                         }
+                    //                 }
+                    //     }                        
+                    // },
+                    'company_email' : {
+                        email: true,
+                        required: true
+                    },
+                    // 'company_website': {
+                    //     url: true
+                    // },
+                    'password' : {
+                        required: true,
+                        pwcheck: true
+                    },
+                    'password_confirmation' : {
+                        required: true,
+                        pwcheck: true,
+                        equalTo: "#password"
+                    }
+                },
+                messages: {
+                    account_name1: {
+                        remote: "account name1 already in use!",
+                        maxlength: "This field should not be greater than 20 characters.",
+                        minlength: "This field should be at least 6 characters."
+                    },
+                    account_name2: {
+                        remote: "account name2 already in use!",
+                        maxlength: "This field should not be greater than 20 characters.",
+                        minlength: "This field should be at least 6 characters."
+                    },
+                    checkbox: {
+                        required: "Please check the Terms and conditions checkbox."
+                    }
+
+                },
+
+                submitHandler: function(form) {
+                    form.submit();
+                }
+            });
+
+            //popover help
+            $('body').on('mouseover', '#pop-email-help', function() {
+                $(this).popover({
+                                html: true,
+                                placement: 'right',
+                                content: function(){
+                                    return '<div class="pop-email-help"><strong>Note:</strong> This is the email address that is used to log in to your account</div>';
+                                }
+                        }).popover('show');
+            });
+
+            $('body').on('mouseout', '#pop-email-help', function() {
+                $('*').popover('destroy');
+            });
+
+
+            $('body').on('mouseover', '#pop-co-email-help', function() {
+                var align = 'right';
+                if($(window).width() <= 767){
+                    align = 'bottom';
+                }
+                $(this).popover({
+                                html: true,
+                                placement: align,
+                                content: function(){
+                                    return '<div class="pop-email-help"><strong>Note:</strong> This is the email address that is used for the public to contact you on your soon-to-be launched FINFO website</div>';
+                                }
+                        }).popover('show');
+            });
+
+            $('body').on('mouseout', '#pop-co-email-help', function() {
+                $('*').popover('destroy');
+            });
+
+
+            
+        });
+    </script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make($app_template['frontend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

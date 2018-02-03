@@ -1,0 +1,129 @@
+<?php $__env->startSection('content'); ?>
+    <section class="content" id="themes">
+        <?php if(session()->has('successExtract')): ?>
+            <div class='row'>
+                <div class="col-sm-12">
+                    <div class='alert alert-success'> <?php echo e(session('successExtract')); ?></div>
+                </div>
+            </div>
+        <?php elseif(session()->has('successUninstall')): ?>
+            <div class='row'>
+                <div class="col-sm-12">
+                    <div class='alert alert-danger'> <?php echo e(session('successUninstall')); ?></div>
+                </div>
+            </div>
+        <?php elseif(session()->has('successActivateTheme')): ?>
+            <div class='row'>
+                <div class="col-sm-12">
+                    <div class='alert alert-danger'> <?php echo e(session('successActivateTheme')); ?></div>
+                </div>
+            </div>
+         <?php elseif(session()->has('invalidInstallTheme')): ?>
+            <div class='row'>
+                <div class="col-sm-12">
+                    <div class='alert alert-danger'> <?php echo e(session('invalidInstallTheme')); ?></div>
+                </div>
+            </div>
+            <?php if(isset($error_remove) && !empty($error_remove)): ?>
+                <div class='row'>
+                    <div class="col-sm-12">
+                        <?php foreach($error_remove as $error_msg): ?>
+                            <div class='alert alert-danger'><?php echo e($error_msg); ?></div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endif; ?>
+        <div class="row head-search">
+            <div class="col-sm-12">
+                <h2 style="margin:0;">Themes</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label>Upload theme</label>
+                    <?php echo Form::open(array('route' => 'package.admin.theme.upload',  'method' => 'post', 'files'=> true, 'id' => 'frm_install_theme' )); ?>
+
+                    <div class="form-group">
+                        <input type="file" class="hidden" id="themes_file" name="themes_file">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6 col-sm-12">
+                                <?php echo Form::text('theme', null, ['class' => 'form-control upload-file', 'placeholder' => 'Support only (zip)', 'id' => 'theme_zip', 'readonly']); ?>
+
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-sm-12">
+                                <button type="button" class="btn btn-upload btn-warning upload-theme">Select File</button>
+                            </div>
+                            <div class="col-md-3 col-lg-2 col-sm-12 ">
+                                <button type="submit" class="btn btn-danger btn-install-theme">Install theme</button>
+                            </div>
+                        </div>
+                        <?php echo $errors->first('upload_file', '<span class="error-block">:message</span>'); ?>
+
+                    </div>
+                    <?php echo Form::close(); ?>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 wrap-lists-theme">
+                <?php foreach($getThemeData as $theme): ?>
+                    <div class="col-sm-4">
+                        <h4><?php echo e($theme->theme_name); ?></h4>
+                        <div class='individual-theme'>
+                            <?php if(isset($theme->thumnail_img) && !empty($theme->thumnail_img)): ?> 
+                                <img src="<?php echo e($theme->thumnail_img); ?>" alt="<?php echo e($theme->theme_name); ?>"/>
+                            <?php endif; ?> 
+                        </div>
+                        <div class='theme-action'>
+                            <?php if($theme->status == 0): ?>
+                                <a href='<?php echo e(route('package.admin.theme.activate', $theme->id)); ?>' title='Activate'>Activate</a> 
+                            <?php else: ?>
+                                <a href='<?php echo e(route('package.admin.theme.de-activate', $theme->id)); ?>' title='Deactivate'>Deactivate</a> 
+                            <?php endif; ?>
+                            / <a href="<?php echo e(route('package.admin.theme.uninstall', $theme->id)); ?>" title="Uninstall" class='text-danger'>Uninstall</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+    <?php echo Html::style('backend/css/dataTables.bootstrap.min.css'); ?>
+
+    <?php echo Html::style('backend/css/finfo/theme.css'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+<?php echo Html::script('backend/js/dataTables.bootstrap.min.js'); ?>
+
+
+<script type="text/javascript">
+    $(function(){
+        $('.upload-theme').click(function(){
+            $('#themes_file').click();
+        });
+        $('#themes_file').change(function(e) {
+            var file = this.files[0];
+            var extension = file.name.replace(/^.*\./, '');
+            if (!(extension == 'zip')) {
+                alert('Please select zip file');
+                $('#themes_file').val('');
+                $('#theme_zip').val('');
+                if ('function' == typeof pCallback) {
+                    pCallback(false);
+                }
+                return;
+            } else {
+                $('#theme_zip').val(this.files[0].name);
+            }
+        });
+    });
+</script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make($app_template['backend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

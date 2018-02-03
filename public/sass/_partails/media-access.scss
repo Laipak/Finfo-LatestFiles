@@ -1,0 +1,107 @@
+@import "pass-lib";
+$background-color : #F0F0F0;
+$text-title-color : #A4A2A2;
+$btn-color: #6aa501;
+#media-access, #investor {
+  padding-right: 15px;
+  margin: 0px;
+
+  p, label {
+    color: $text-title-color;
+  }
+  label {
+    font-weight: 500;
+  }
+  .row {
+
+    margin-bottom: 15px;
+  }
+  .sub-title {
+    margin-bottom: 15px;
+  }
+  .table-header {
+    background-color: $background-color;
+  }
+  table {
+    tr {
+      th {
+        color: $text-title-color;
+      }
+      td {
+        color: $btn-color;
+        @include media-query(414px) {
+          font-size: 10px;
+        }
+        a {
+          color: $btn-color;
+          i {
+            color: $text-title-color;
+          }
+        }
+      }
+    }
+  }
+  .paginate {
+    color: black;
+  }
+  hr {
+    border-top: 1px solid #CBC7C7;
+  }
+  .btn {
+    margin-left: 10px;
+    color: white;
+    border-radius: 0px;
+    @media (max-width: 1024px) {
+      margin-left: 0px !important;
+    }
+  }
+  .btn-export {
+    background-color: $btn-color;
+  }
+  .btn-delete {
+    background-color: $text-title-color;
+  }
+  .btn-paginate {
+    background-color: black;
+    color: white;
+  }
+  .btn-undo {
+    background-color: $btn-color;
+    opacity: 0.6;
+  }
+  .check-event{
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  table tr td {
+          color: #6aa501;
+  }
+  @media (max-width: 767px) {
+
+  }
+  @media (max-width: 767px) {
+      #calendar button{
+          font-size: 10px;
+      }
+
+      #calendar .fc-left h2{
+          font-size: 20px !important;
+      }
+      .fc-view-container{
+          font-size: 10px;
+      }
+  }
+  @media (max-width: 414px) {
+    #calendar{
+      width: 600px;
+      height: 347px;
+      overflow: auto;
+    }
+  }
+  @media (max-width: 320px) {
+     #calendar .fc-left h2{
+          font-size: 18px !important;
+      }
+  }
+}
+

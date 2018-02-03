@@ -1,0 +1,141 @@
+@extends($app_template['client.backend'])
+@section('title')
+Presentations
+@stop
+@section('content')
+    <section class="content" id="financial-annual-report">
+        <div class="row head-search">
+            <div class="col-sm-6">
+                <lable class="label-title">Add New Presentation</lable>
+            </div>
+        </div>
+        <div class="row">
+            {!! Form::open(array('route' => 'package.admin.presentation.save', 'id' => 'frm-reports', 'files'=> true)) !!}
+            <div class="col-md-6">
+               
+                <div class="form-group">
+                        {!! Form::label('quarter', 'Quarter') !!}
+                        {!! Form::select('quarter', $quarter, null, array('class' => 'form-control')); !!}
+                        {!! $errors->first('quarter', '<span class="help-block">:message</span>') !!}
+                </div>
+                <div class="form-group">
+                        {!! Form::label('year', 'Year') !!}
+                        {!! Form::select('year', $year, null, array('class' => 'form-control year')); !!}
+                        {!! $errors->first('year', '<span class="help-block">:message</span>') !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('upload', 'Upload PDF') !!}
+                    <div class="form-group">
+                        <input type="file" class="hidden" accept="application/pdf, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation" id="file" name="myfile">
+                        <div class="row">
+                            <div class="col-xs-8 upload-file">
+                                {!! Form::text('upload', Input::old('upload'), ['class' => 'file-upload-input form-control', 'placeholder' => 'Support only pdf, ptt and pptx', 'id' => 'file_upload', 'readonly' => '']) !!}
+                            </div>
+                            <div class="col-xs-4 div-sel-file">
+                                <button type="button" class="btn btn-upload upload-file">Select File</button>
+                            </div>
+                        </div>
+                        {!! $errors->first('upload', '<span class="help-block">:message</span>') !!}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {!! Form::label('publish_date', 'Publish date') !!}
+                    {!! Form::text('publish_date', Input::old('publish_date'), ['class' => 'form-control', 'id'=> 'publish_date', 'placeholder' => 'Publish date']) !!}
+                    {!! $errors->first('publish_date', '<span class="help-block">:message</span>') !!}
+                </div>
+                <div class="form-group" style="margin-top:30px;">
+                    {!! Form::submit('Save', ['class' => 'btn btn-primary btn-save']) !!}
+                    <a href="{{route('package.admin.presentation')}}" class="btn btn-danger btn-overwrite-cancel">Cancel</a>
+                </div>
+            </div>
+
+            
+            {!! Form::close() !!}
+        </div>
+    </section>
+@stop
+@section('style')
+    {!! Html::style('css/package/financial-annual-report.css') !!}
+    {!! Html::style('css/bootstrap-datetimepicker.min.css') !!}
+@stop
+
+@section('script')
+{!! Html::script('js/moment.min.js') !!}
+{!! Html::script('js/bootstrap-datetimepicker.min.js') !!}
+{!! Html::script('js/jquery.validate.min.js') !!}
+
+<script type="text/javascript">
+    $('.active').removeClass('active');
+    $('.presentation').addClass('active');
+    $('.presentation_form').addClass('active');
+
+    $('.upload-file').click(function(){
+        $('#file').click();
+    });
+    $('#publish_date').datetimepicker({
+            format: 'D MMMM, YYYY'
+    });
+    $('#file').change(function(e) {
+        $('#file_upload').val('');
+
+        var file = this.files[0];
+        var filetype = file.type;
+        var filesize = file.size;
+        var filename = file.name;
+        
+        var match = ["application/pdf", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation"];
+        if (!(filetype == match[0] || filetype == match[1] || filetype == match[2])) {
+            alert('Please select pdf, ppt, pptx file.');
+            $('#file').val('');
+            if ('function' == typeof pCallback) {
+                pCallback(false);
+            }
+            return;
+        }
+
+        if (3145728 < filesize) {
+            alert('File size should be less than 3MB.');
+            $('#file').val('');
+            if ('function' == typeof pCallback) {
+                pCallback(false);
+            }
+            return;
+        }
+
+        $('#file_upload').val(filename);
+
+    });
+    $(function(){
+        $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN':'{!! csrf_token() !!}'
+            }
+        });
+        $("#frm-reports").validate({
+            rules: {
+                'upload': 'required',
+                'quarter': {
+                    required: true,
+                    remote: {
+                        url: '/admin/presentation/check-existing-quarter',
+                        type: "post",
+                        data:{
+                            year : $('.year').val() 
+                        }
+                    }
+                }
+            },
+            messages: {
+                'quarter': {
+                    remote: "Quarter already exist with year"
+                }
+            },
+            submitHandler: function(form) {
+                form.submit();
+            }
+        }); 
+    });
+
+</script>
+
+@stop

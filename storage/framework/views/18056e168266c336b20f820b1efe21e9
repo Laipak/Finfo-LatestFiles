@@ -1,0 +1,1886 @@
+<?php $__env->startSection('content'); ?>
+
+
+
+<style>
+
+.gradient-bg {
+
+    padding-bottom: 80px;
+
+}
+
+.xs-address {
+    display: none;
+}
+
+.solution-container {
+    width: 100%;
+}
+
+@media  only screen and (min-width: 320px) and (max-width: 480px) {
+
+
+
+    .sow-icon-fontawesome {
+
+        line-height: 2.2;
+
+    }
+
+
+
+    h1 {
+
+        word-break: break-all;
+
+    }
+
+
+
+    #address-1,
+
+    #address-2 {
+
+        display: none;
+
+    }
+
+
+    .responsive-color {
+        color: #FFF;
+    }
+
+}
+
+@media  only screen and (min-width: 480px) and (max-width: 767px) {
+    .sow-icon-fontawesome {
+
+        line-height: 2.2;
+
+    }
+
+    .parallax-overlay.parallax-overlay-pattern {
+
+        padding: 80px 0 !important;
+
+    }
+
+    .appdesign .app-service .icon-container {
+        float: left;
+    }
+
+    .app-service-details, .app-service-details h4 {
+        text-align: center;
+    }
+}
+
+@media  only screen and (min-width: 320px) and (max-width: 1024px) {
+
+    .xs-address {
+        display: block;
+        margin: 15px 0;
+        text-align: center;
+    }
+
+    .small-screen-border {
+        border-left: none !important;
+    }
+
+    .google-maps {
+
+        height: 950px;
+
+    }
+        .parallax-overlay.parallax-overlay-pattern {
+
+        padding: 80px 0 !important;
+
+    }
+}
+
+</style>
+
+
+
+<div class="panel-grid" id="pg-453-0" >
+
+    <div class="panel-row-style-wide panel-row-style nav-one-page" id="home" >
+
+        <div class="panel-grid-cell" id="pgc-453-0-0" >
+
+            <div class="well well-sm panel-builder widget-builder widget_rev-slider-widget panel-first-child panel-last-child" id="panel-453-0-0-0">
+
+                <!-- START REVOLUTION SLIDER 4.6.0 fullscreen mode -->
+
+                <script type='text/javascript' src="<?php echo e(asset('plugins/revslider/rs-plugin/js/jquery.themepunch.tools.min428e.js')); ?>"></script><script type='text/javascript' src="<?php echo e(asset('plugins/revslider/rs-plugin/js/jquery.themepunch.revolution.min428e.js')); ?>"></script>
+
+                <div id="rev_slider_1_1_wrapper" class="rev_slider_wrapper fullscreen-container" style="background-color:#000;padding:0px;">
+
+                    <div id="rev_slider_1_1" class="rev_slider fullscreenbanner" style="display:none;">
+
+                        <ul>
+
+                            <!-- SLIDE  -->
+
+                            <li data-transition="slidedown" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" >
+
+                                <!-- MAIN IMAGE -->
+
+                                <img src="<?php echo e(asset('plugins/revslider/images/dummy.png')); ?>" alt="slide-2" data-lazyload="<?php echo e(asset('img/finfo/imgs/slide-2.jpg')); ?>" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+                                <!-- LAYERS -->
+
+                                <!-- LAYER NR. 1 -->
+
+                                <div class="tp-caption dikka_text_dark lfb stb tp-resizeme"
+
+                                    data-x="center" data-hoffset="0"
+
+                                    data-y="center" data-voffset="-80"
+
+                                    data-speed="1000"
+
+                                    data-start="800"
+
+                                    data-easing="Strong.easeOut"
+
+                                    data-splitin="none"
+
+                                    data-splitout="none"
+
+                                    data-elementdelay="0.1"
+
+                                    data-endelementdelay="0.1"
+
+                                    data-endspeed="600"
+
+                                    style="z-index: 2; max-width: auto; max-height: auto; white-space: nowrap;"></div>
+
+                                <!-- LAYER NR. 2 -->
+
+                                <div class="tp-caption dikka_big_dark lfb stb tp-resizeme"
+
+                                    data-x="center" data-hoffset="0"
+
+                                    data-y="center" data-voffset="-80"
+
+                                    data-speed="1000"
+
+                                    data-start="2000"
+
+                                    data-easing="Strong.easeOut"
+
+                                    data-splitin="none"
+
+                                    data-splitout="none"
+
+                                    data-elementdelay="0.1"
+
+                                    data-endelementdelay="0.1"
+
+                                    data-endspeed="600"
+
+                                    style="z-index: 2; max-width: auto; max-height: auto; white-space: nowrap;">FINFO</div>
+
+                                <!-- LAYER NR. 3 -->
+
+                                <div class="tp-caption dikka_2xtext_dark lfb stb tp-resizeme"
+
+                                    data-x="center" data-hoffset="0"
+
+                                    data-y="center" data-voffset="0"
+
+                                    data-speed="1000"
+
+                                    data-start="2100"
+
+                                    data-easing="Strong.easeOut"
+
+                                    data-splitin="none"
+
+                                    data-splitout="none"
+
+                                    data-elementdelay="0.1"
+
+                                    data-endelementdelay="0.1"
+
+                                    data-endspeed="600"
+
+                                    style="z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;">is a digital publishing platform for listed companies</div>
+
+                                <!-- LAYER NR. 4 -->
+
+                                <div class="tp-caption dikka_2xtext_dark lfb stb tp-resizeme"
+
+                                    data-x="center" data-hoffset="0"
+
+                                    data-y="center" data-voffset="50"
+
+                                    data-speed="1000"
+
+                                    data-start="2200"
+
+                                    data-easing="Strong.easeOut"
+
+                                    data-splitin="none"
+
+                                    data-splitout="none"
+
+                                    data-elementdelay="0.1"
+
+                                    data-endelementdelay="0.1"
+
+                                    data-endspeed="600"
+
+                                    style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">that allows them to better engage with investors
+
+                                </div>
+
+                            </li>
+
+                            <!-- SLIDE  -->
+
+                            <li data-transition="slidedown" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" >
+
+                                <!-- MAIN IMAGE -->
+
+                                <img src="<?php echo e(asset('plugins/revslider/images/dummy.png')); ?>"  alt="slide-1" data-lazyload="<?php echo e(asset('img/finfo/imgs/slide-1.jpg')); ?>" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+                                <!-- LAYERS -->
+
+                                <!-- LAYER NR. 1 -->
+
+                                <div div class="tp-caption dikka_big_white lfb stb tp-resizeme"
+
+                                    data-x="center" data-hoffset="0"
+
+                                    data-y="center" data-voffset="-80"
+
+                                    data-speed="1000"
+
+                                    data-start="800"
+
+                                    data-easing="Strong.easeOut"
+
+                                    data-splitin="none"
+
+                                    data-splitout="none"
+
+                                    data-elementdelay="0.1"
+
+                                    data-endelementdelay="0.1"
+
+                                    data-endspeed="600"
+
+                                    style="z-index: 2; max-width: auto; max-height: auto; white-space: nowrap;">
+
+                                    FINFO
+
+                                </div>
+
+                                <!-- LAYER NR. 2 -->
+
+                                <div class="tp-caption dikka_2xtext_white lfb stb tp-resizeme"
+
+                                    data-x="center" data-hoffset="0"
+
+                                    data-y="center" data-voffset="0"
+
+                                    data-speed="1000"
+
+                                    data-start="900"
+
+                                    data-easing="Strong.easeOut"
+
+                                    data-splitin="none"
+
+                                    data-splitout="none"
+
+                                    data-elementdelay="0.1"
+
+                                    data-endelementdelay="0.1"
+
+                                    data-endspeed="600"
+
+                                    style="z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;">Allows companies to present</div>
+
+                                <!-- LAYER NR. 3 -->
+
+                                <div class="tp-caption dikka_2xtext_white lfb stb tp-resizeme"
+
+                                    data-x="center" data-hoffset="0"
+
+                                    data-y="center" data-voffset="50"
+
+                                    data-speed="1000"
+
+                                    data-start="1000"
+
+                                    data-easing="Strong.easeOut"
+
+                                    data-splitin="none"
+
+                                    data-splitout="none"
+
+                                    data-elementdelay="0.1"
+
+                                    data-endelementdelay="0.1"
+
+                                    data-endspeed="600"
+
+                                    style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">financial info with better clarity</div>
+
+                                <!-- LAYER NR. 4 -->
+
+                                <div class="tp-caption arrowicon lfb stb tp-resizeme"
+
+                                    data-x="center" data-hoffset="2"
+
+                                    data-y="bottom" data-voffset="-45"
+
+                                    data-speed="1000"
+
+                                    data-start="1100"
+
+                                    data-easing="Strong.easeOut"
+
+                                    data-splitin="none"
+
+                                    data-splitout="none"
+
+                                    data-elementdelay="0.1"
+
+                                    data-endelementdelay="0.1"
+
+                                    data-endspeed="600"
+
+                                    style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;"></div>
+
+                            </li>
+
+                            <li data-transition="slidedown" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" >
+
+                                <!-- MAIN IMAGE -->
+
+                                <img src="<?php echo e(asset('plugins/revslider/images/dummy.png')); ?>"  alt="slide-1" data-lazyload="<?php echo e(asset('img/finfo/imgs/slide-3.jpg')); ?>" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+
+                                <!-- LAYERS -->
+
+                                <!-- LAYER NR. 1 -->
+
+                                <div div class="tp-caption dikka_big_white lfb stb tp-resizeme"
+
+                                    data-x="center" data-hoffset="0"
+
+                                    data-y="center" data-voffset="-80"
+
+                                    data-speed="1000"
+
+                                    data-start="800"
+
+                                    data-easing="Strong.easeOut"
+
+                                    data-splitin="none"
+
+                                    data-splitout="none"
+
+                                    data-elementdelay="0.1"
+
+                                    data-endelementdelay="0.1"
+
+                                    data-endspeed="600"
+
+                                    style="z-index: 2; max-width: auto; max-height: auto; white-space: nowrap;">
+
+                                    FINFO
+
+                                </div>
+
+                                <!-- LAYER NR. 2 -->
+
+                                <div class="tp-caption dikka_2xtext_white lfb stb tp-resizeme"
+
+                                    data-x="center" data-hoffset="0"
+
+                                    data-y="center" data-voffset="0"
+
+                                    data-speed="1000"
+
+                                    data-start="900"
+
+                                    data-easing="Strong.easeOut"
+
+                                    data-splitin="none"
+
+                                    data-splitout="none"
+
+                                    data-elementdelay="0.1"
+
+                                    data-endelementdelay="0.1"
+
+                                    data-endspeed="600"
+
+                                    style="z-index: 3; max-width: auto; max-height: auto; white-space: nowrap;">Turning IR communication from</div>
+
+                                <!-- LAYER NR. 3 -->
+
+                                <div class="tp-caption dikka_2xtext_white lfb stb tp-resizeme"
+
+                                    data-x="center" data-hoffset="0"
+
+                                    data-y="center" data-voffset="50"
+
+                                    data-speed="1000"
+
+                                    data-start="1000"
+
+                                    data-easing="Strong.easeOut"
+
+                                    data-splitin="none"
+
+                                    data-splitout="none"
+
+                                    data-elementdelay="0.1"
+
+                                    data-endelementdelay="0.1"
+
+                                    data-endspeed="600"
+
+                                    style="z-index: 4; max-width: auto; max-height: auto; white-space: nowrap;">a regulatory to selling platform</div>
+
+                                <!-- LAYER NR. 4 -->
+
+                                <div class="tp-caption arrowicon lfb stb tp-resizeme"
+
+                                    data-x="center" data-hoffset="2"
+
+                                    data-y="bottom" data-voffset="-45"
+
+                                    data-speed="1000"
+
+                                    data-start="1100"
+
+                                    data-easing="Strong.easeOut"
+
+                                    data-splitin="none"
+
+                                    data-splitout="none"
+
+                                    data-elementdelay="0.1"
+
+                                    data-endelementdelay="0.1"
+
+                                    data-endspeed="600"
+
+                                    style="z-index: 5; max-width: auto; max-height: auto; white-space: nowrap;"></div>
+
+                            </li>
+
+                        </ul>
+
+                        <div class="tp-bannertimer tp-bottom" style="visibility: hidden !important;"></div>
+
+                    </div>
+
+                    <script type="text/javascript">
+
+                        /******************************************
+
+                        -   PREPARE PLACEHOLDER FOR SLIDER  -
+
+                        ******************************************/
+
+                        var setREVStartSize = function() {
+
+                            var tpopt = new Object();
+
+                            tpopt.startwidth = 1170;
+
+                            tpopt.startheight = 350;
+
+                            tpopt.container = jQuery('#rev_slider_1_1');
+
+                            tpopt.fullScreen = "on";
+
+                            tpopt.forceFullWidth = "off";
+
+
+
+                            tpopt.container.closest(".rev_slider_wrapper").css({
+
+                                height: tpopt.container.height()
+
+                            });
+
+                            tpopt.width = parseInt(tpopt.container.width(), 0);
+
+                            tpopt.height = parseInt(tpopt.container.height(), 0);
+
+                            tpopt.bw = tpopt.width / tpopt.startwidth;
+
+                            tpopt.bh = tpopt.height / tpopt.startheight;
+
+                            if (tpopt.bh > tpopt.bw) tpopt.bh = tpopt.bw;
+
+                            if (tpopt.bh < tpopt.bw) tpopt.bw = tpopt.bh;
+
+                            if (tpopt.bw < tpopt.bh) tpopt.bh = tpopt.bw;
+
+                            if (tpopt.bh > 1) {
+
+                                tpopt.bw = 1;
+
+                                tpopt.bh = 1
+
+                            }
+
+                            if (tpopt.bw > 1) {
+
+                                tpopt.bw = 1;
+
+                                tpopt.bh = 1
+
+                            }
+
+                            tpopt.height = Math.round(tpopt.startheight * (tpopt.width / tpopt.startwidth));
+
+                            if (tpopt.height > tpopt.startheight && tpopt.autoHeight != "on") tpopt.height = tpopt.startheight;
+
+                            if (tpopt.fullScreen == "on") {
+
+                                tpopt.height = tpopt.bw * tpopt.startheight;
+
+                                var cow = tpopt.container.parent().width();
+
+                                var coh = jQuery(window).height();
+
+                                if (tpopt.fullScreenOffsetContainer != undefined) {
+
+                                    try {
+
+                                        var offcontainers = tpopt.fullScreenOffsetContainer.split(",");
+
+                                        jQuery.each(offcontainers, function(e, t) {
+
+                                            coh = coh - jQuery(t).outerHeight(true);
+
+                                            if (coh < tpopt.minFullScreenHeight) coh = tpopt.minFullScreenHeight
+
+                                        })
+
+                                    } catch (e) {}
+
+                                }
+
+                                tpopt.container.parent().height(coh);
+
+                                tpopt.container.height(coh);
+
+                                tpopt.container.closest(".rev_slider_wrapper").height(coh);
+
+                                tpopt.container.closest(".forcefullwidth_wrapper_tp_banner").find(".tp-fullwidth-forcer").height(coh);
+
+                                tpopt.container.css({
+
+                                    height: "100%"
+
+                                });
+
+                                tpopt.height = coh;
+
+                            } else {
+
+                                tpopt.container.height(tpopt.height);
+
+                                tpopt.container.closest(".rev_slider_wrapper").height(tpopt.height);
+
+                                tpopt.container.closest(".forcefullwidth_wrapper_tp_banner").find(".tp-fullwidth-forcer").height(tpopt.height);
+
+                            }
+
+                        };
+
+
+
+                        /* CALL PLACEHOLDER */
+
+                        setREVStartSize();
+
+
+
+
+
+                        var tpj = jQuery;
+
+                        tpj.noConflict();
+
+                        var revapi1;
+
+
+
+                        tpj(document).ready(function() {
+
+
+
+                            if (tpj('#rev_slider_1_1').revolution == undefined)
+
+                                revslider_showDoubleJqueryError('#rev_slider_1_1');
+
+                            else
+
+                                revapi1 = tpj('#rev_slider_1_1').show().revolution({
+
+                                    dottedOverlay: "none",
+
+                                    delay: 4000,
+
+                                    startwidth: 1170,
+
+                                    startheight: 350,
+
+                                    hideThumbs: 100,
+
+
+
+                                    thumbWidth: 100,
+
+                                    thumbHeight: 50,
+
+                                    thumbAmount: 2,
+
+
+
+
+
+                                    simplifyAll: "off",
+
+
+
+                                    navigationType: "none",
+
+                                    navigationArrows: "solo",
+
+                                    navigationStyle: "round",
+
+
+
+                                    touchenabled: "on",
+
+                                    onHoverStop: "on",
+
+                                    nextSlideOnWindowFocus: "off",
+
+
+
+                                    swipe_threshold: 0.7,
+
+                                    swipe_min_touches: 1,
+
+                                    drag_block_vertical: false,
+
+
+
+
+
+
+
+                                    keyboardNavigation: "off",
+
+
+
+                                    navigationHAlign: "center",
+
+                                    navigationVAlign: "bottom",
+
+                                    navigationHOffset: 0,
+
+                                    navigationVOffset: 20,
+
+
+
+                                    soloArrowLeftHalign: "left",
+
+                                    soloArrowLeftValign: "center",
+
+                                    soloArrowLeftHOffset: 20,
+
+                                    soloArrowLeftVOffset: 0,
+
+
+
+                                    soloArrowRightHalign: "right",
+
+                                    soloArrowRightValign: "center",
+
+                                    soloArrowRightHOffset: 20,
+
+                                    soloArrowRightVOffset: 0,
+
+
+
+                                    shadow: 0,
+
+                                    fullWidth: "off",
+
+                                    fullScreen: "on",
+
+
+
+                                    spinner: "spinner2",
+
+
+
+                                    stopLoop: "off",
+
+                                    stopAfterLoops: -1,
+
+                                    stopAtSlide: -1,
+
+
+
+                                    shuffle: "off",
+
+
+
+
+
+                                    forceFullWidth: "off",
+
+                                    fullScreenAlignForce: "off",
+
+                                    minFullScreenHeight: "",
+
+                                    hideTimerBar: "on",
+
+                                    hideThumbsOnMobile: "off",
+
+                                    hideNavDelayOnMobile: 1500,
+
+                                    hideBulletsOnMobile: "off",
+
+                                    hideArrowsOnMobile: "off",
+
+                                    hideThumbsUnderResolution: 0,
+
+
+
+                                    fullScreenOffsetContainer: "",
+
+                                    fullScreenOffset: "",
+
+                                    hideSliderAtLimit: 0,
+
+                                    hideCaptionAtLimit: 0,
+
+                                    hideAllCaptionAtLilmit: 0,
+
+                                    startWithSlide: 0
+
+                                });
+
+                        }); /*ready*/   
+
+                    </script>
+
+                    <style type="text/css">
+
+                        #rev_slider_1_1_wrapper .tp-loader.spinner2{ background-color: #E45D5D !important; }
+
+                    </style>
+
+                </div>
+
+                <!-- END REVOLUTION SLIDER -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+<!--
+
+MISSION AND PROBLEM SECTION
+
+-->
+
+<div class="panel-grid" id="pg-453-1" >
+
+    <div class="panel-row-style-default panel-row-style nav-one-page" style="padding-top: 80px; padding-bottom: 80px; " id="problem" >
+
+        <div class="container">
+
+            <div class="panel-grid-cell" id="pgc-453-1-0" >
+
+                <div class="panel-builder widget-builder widget_origin_title panel-first-child" id="panel-453-1-0-0">
+
+                    <div class="origin-widget origin-widget-title origin-widget-title-simple-simple align-left text-dark">
+
+                        <h1  class="align-left">
+
+                            MISSION
+
+                        </h1>
+
+                        <div class="divider colored"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="panel-builder widget-builder widget_origin_list panel-last-child" id="panel-453-1-0-1">
+
+                    <div class="origin-widget origin-widget-list origin-widget-list-default-default text-darkest">
+
+                        <div class="list-body ">
+
+                            <p style="font-family:Open Sans;font-size:20px;font-weight:normal">FINFO aims to democratize the supply of investment information</p>
+
+                            <ul>
+
+                                <li><i class='fa fa-angle-right'></i> for retail investors by giving them better quality of information and tools to make informed decisions</li>
+
+                                <li><i class='fa fa-angle-right'></i> for small to mid cap companies so they can present their story just as well if not better than larger caps </li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="panel-grid-cell" id="pgc-453-1-1" >
+
+                <div class="panel-builder widget-builder widget_origin_title panel-first-child" id="panel-453-1-1-0">
+
+                    <div class="origin-widget origin-widget-title origin-widget-title-simple-simple align-left text-dark">
+
+                        <h1  class="align-left">
+
+                            PROBLEM
+
+                        </h1>
+
+                        <div class="divider colored"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="panel-builder widget-builder widget_origin_list panel-last-child" id="panel-453-1-1-1">
+
+                    <div class="origin-widget origin-widget-list origin-widget-list-default-default text-darkest">
+
+                        <div class="list-body ">
+
+                            <ul>
+
+                                <li><i class='fa fa-angle-right'></i>Listed companies do not use IR as a selling opportunity to attract or retain investors</li>
+
+                                <li><i class='fa fa-angle-right'></i>Difficult and challenging being a retail investor trying to find financial information easily on corporate web sites</li>
+
+                                <li><i class='fa fa-angle-right'></i>Existing IR process for listed companies is time-consuming and costly; little attention to retail investors</li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!--
+
+SOLUTIONS
+
+-->
+
+<div class="panel-grid" id="pg-453-2">
+
+    <div class="panel-row-style-parallax-overlay-wide panel-row-style nav-one-page" style="background-image: url(<?php echo e(asset('img/finfo/imgs/overlay-bg.jpg')); ?>); background-position: 50% 119px; background-repeat: repeat; padding-top: 50px; padding-bottom: 400px;" overlay="background-color: rgba(3,56,115,0.8); " id="solution">
+
+        <div class="parallax-overlay parallax-overlay-pattern" style="background-color: rgba(3, 56, 115, 0.8); margin-top: -50px; margin-bottom: -400px; padding-top: 50px; padding-bottom: 400px;">
+
+            <div class="panel-grid-cell" id="pgc-453-2-0">
+
+                <div class="well well-sm panel-builder widget-builder widget_sow-images panel-first-child panel-last-child" id="panel-453-2-0-0">
+
+                    <div class="so-widget-sow-images so-widget-sow-images-base">
+
+                        <div class="image_wrapper align-left">
+
+                            <img src="<?php echo e(asset('img/finfo/imgs/solution-img-1.png')); ?>" class="animated fadeInLeft animateddone" alt="fadeInLeft" style="visibility: visible; animation-name: fadeInLeft;">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="panel-grid-cell" id="pgc-453-2-1">
+
+                <div class="container solution-container">
+
+                    <div class="panel-builder widget-builder widget_origin_title panel-first-child" id="panel-453-2-1-0">
+
+                        <div class="origin-widget origin-widget-title origin-widget-title-simple-simple align-left text-light">
+
+                            <h1 class="align-left">
+
+                                SOLUTION
+
+                            </h1>
+
+                            <div class="divider colored"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="panel-builder widget-builder widget_origin_spacer" id="panel-453-2-1-1">
+
+                        <div class="origin-widget origin-widget-spacer origin-widget-spacer-simple-blank">
+
+                            <div style="margin-bottom:20px;"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="panel-builder widget-builder widget_origin_list panel-last-child" id="panel-453-2-1-2">
+
+                        <div class="origin-widget origin-widget-list origin-widget-list-default-default text-light">
+
+                            <div class="list-body ">
+
+                                <ul>
+
+                                    <li><i class="fa fa-angle-right"></i>The FINFO platform sets up a fresh, easy-to-navigate new IR microsite that sits within the company’s corporate website</li>
+
+                                    <li><i class="fa fa-angle-right"></i>FINFO brings content alive with powerful and dynamic graphics</li>
+
+                                    <li><i class="fa fa-angle-right"></i>FINFO onboards the new microsite which becomes easy to maintain on regular basis at a much lower cost</li>
+
+                                </ul>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="panel-grid" id="pg-453-3">
+
+    <div class="panel-row-style-default panel-row-style">
+
+        <div class="container">
+
+            <div class="panel-grid-cell" id="pgc-453-3-0">
+
+                <div class="panel-builder widget-builder widget_origin_spacer panel-first-child panel-last-child" id="panel-453-3-0-0">
+
+                    <div class="origin-widget origin-widget-spacer origin-widget-spacer-simple-blank">
+
+                        <div style="margin-bottom:20px;"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="panel-grid" id="pg-453-4">
+
+    <div class="panel-row-style-default panel-row-style nav-one-page" id="value-proposition">
+
+        <div class="container">
+
+            <div class="panel-grid-cell" id="pgc-453-4-0">
+
+                <div class="panel-builder widget-builder widget_origin_title panel-first-child panel-last-child" id="panel-453-4-0-0">
+
+                    <div class="origin-widget origin-widget-title origin-widget-title-simple-simple align-left text-dark">
+
+                        <h1 class="align-left">
+
+                            VALUE<br>PROPOSITION
+
+                        </h1>
+
+                        <div class="divider colored"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="panel-grid-cell" id="pgc-453-4-1">&nbsp;</div>
+
+            <div class="panel-grid-cell" id="pgc-453-4-2">
+
+                <div class="panel-builder widget-builder widget_origin_title panel-last-child" id="panel-453-4-2-1">
+
+                    <div class="origin-widget origin-widget-title origin-widget-title-simple-simple align-left text-dark">
+
+                        <h3 class="align-left">
+
+                            Small and mid Cap companies can now look as good or better than any large Cap company
+
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="panel-grid" id="pg-453-5">
+
+    <div class="panel-row-style-default panel-row-style gradient-bg" style="background-image: url(<?php echo e(asset('img/finfo/imgs/gradient-bg-2.jpg')); ?>);background-size: cover; ">
+
+        <div class="container">
+
+            <div class="panel-grid-cell" id="pgc-453-4-0">
+
+                <div class="panel-builder widget-builder widget_origin_spacer" id="panel-453-4-0-3">
+
+                    <div class="origin-widget origin-widget-spacer origin-widget-spacer-simple-blank">
+
+                        <div style="margin-bottom:30px;"></div>
+
+                    </div>
+
+                </div>
+
+                <div class="well well-sm panel-builder widget-builder widget_spot panel-last-child" id="panel-453-4-0-4">
+
+                    <div class="panel-grid" id="pg-1671-0">
+
+                        <div class="panel-row-style-default panel-row-style">
+
+                            <div class="container">
+
+                                <div class="panel-grid-cell" id="pgc-1671-0-0">
+
+                                    <div class="well well-sm panel-builder widget-builder widget_sow-features panel-first-child panel-last-child" id="panel-1671-0-0-0">
+
+                                        <div class="so-widget-sow-features so-widget-sow-features-base">
+
+                                            <div class="sow-features-list sow-features-responsive">
+
+                                                <div class="sow-features-feature lightest " style="width: 100%">
+
+                                                    <style type="text/css" media="screen">
+
+                                                        #feature17275687730{
+
+                                                        background-color: #033873;
+
+                                                        border: 1px solid #bebebe;
+
+                                                        }
+
+                                                        #feature17275687730:hover{
+
+                                                        border: 1px solid ;
+
+                                                        }
+
+                                                        #feature17275687730:after {
+
+                                                        box-shadow: 0 0 0 1px ;
+
+                                                        }
+
+                                                    </style>
+
+                                                    <div class="appdesign   animated bounceIn animateddone" data-wow-delay="s" style="visibility: visible; animation-name: bounceIn;">
+
+                                                        <div class="appdesign-left">
+
+                                                            <div class="app-service">
+
+                                                                <!-- ICON -->
+
+                                                                <div class="icon-container">
+
+                                                                    <div id="feature17275687730" class="icon">
+
+                                                                        <div class="sow-icon-fontawesome" data-sow-icon="" style="font-size: 24px; color: #FFFFFF"></div>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <!-- DESCRIPTION -->
+
+                                                                <div class="app-service-details">
+
+                                                                    <h4 class="text-right">VISUAL</h4>
+
+                                                                    <p>Simple UI</p>
+
+                                                                    <p class="more-text">   </p>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="sow-features-clear"></div>
+
+                                                <div class="sow-features-feature lightest " style="width: 100%">
+
+                                                    <style type="text/css" media="screen">
+
+                                                        #feature17275687731{
+
+                                                        background-color: #033873;
+
+                                                        border: 1px solid #bebebe;
+
+                                                        }
+
+                                                        #feature17275687731:hover{
+
+                                                        border: 1px solid ;
+
+                                                        }
+
+                                                        #feature17275687731:after {
+
+                                                        box-shadow: 0 0 0 1px ;
+
+                                                        }
+
+                                                    </style>
+
+                                                    <div class="appdesign alternate  animated bounceIn animateddone" data-wow-delay="s" style="visibility: visible; animation-name: bounceIn;">
+
+                                                        <div class="appdesign-left">
+
+                                                            <div class="app-service">
+
+                                                                <!-- ICON -->
+
+                                                                <div class="icon-container">
+
+                                                                    <div id="feature17275687731" class="icon">
+
+                                                                        <div class="sow-icon-fontawesome" data-sow-icon="" style="font-size: 24px; color: #FFFFFF"></div>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <!-- DESCRIPTION -->
+
+                                                                <div class="app-service-details">
+
+                                                                    <h4 class="text-right">LOW COST</h4>
+
+                                                                    <p>No upfront costs</p>
+
+                                                                    <p class="more-text">
+
+                                                                    </p>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="panel-grid-cell" id="pgc-1671-0-1">
+
+                                    <div class="well well-sm panel-builder widget-builder widget_sow-images panel-first-child panel-last-child" id="panel-1671-0-1-0">
+
+                                        <div class="so-widget-sow-images so-widget-sow-images-base">
+
+                                            <div class="image_wrapper align-center">
+
+                                                <img src="<?php echo e(asset('img/finfo/imgs/phone.png')); ?>" style="max-width: 60%;" />
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="panel-grid-cell" id="pgc-1671-0-2">
+
+                                    <div class="well well-sm panel-builder widget-builder widget_sow-features panel-first-child panel-last-child" id="panel-1671-0-2-0">
+
+                                        <div class="so-widget-sow-features so-widget-sow-features-base">
+
+                                            <div class="sow-features-list sow-features-responsive">
+
+                                                <div class="sow-features-feature lightest " style="width: 100%">
+
+                                                    <style type="text/css" media="screen">
+
+                                                        #feature16532850510{
+
+                                                        background-color: #033873;
+
+                                                        border: 1px solid #bebebe;
+
+                                                        }
+
+                                                        #feature16532850510:hover{
+
+                                                        border: 1px solid ;
+
+                                                        }
+
+                                                        #feature16532850510:after {
+
+                                                        box-shadow: 0 0 0 1px ;
+
+                                                        }
+
+                                                    </style>
+
+                                                    <div class="appdesign   animated bounceIn animateddone" data-wow-delay="s" style="visibility: visible; animation-name: bounceIn;">
+
+                                                        <div class="appdesign-right">
+
+                                                            <div class="app-service">
+
+                                                                <!-- ICON -->
+
+                                                                <div class="icon-container">
+
+                                                                    <div id="feature16532850510" class="icon">
+
+                                                                        <div class="sow-icon-fontawesome" data-sow-icon="" style="font-size: 24px; color: #FFFFFF"></div>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <!-- DESCRIPTION -->
+
+                                                                <div class="app-service-details">
+
+                                                                    <h4 class="responsive-color">CONNECTIVITY</h4>
+
+                                                                    <p class="responsive-color">Link to Exchanges</p>
+
+                                                                    <p class="more-text"></p>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="sow-features-clear"></div>
+
+                                                <div class="sow-features-feature lightest " style="width: 100%">
+
+                                                    <style type="text/css" media="screen">
+
+                                                        #feature16532850511{
+
+                                                        background-color: #033873;
+
+                                                        border: 1px solid #bebebe;
+
+                                                        }
+
+                                                        #feature16532850511:hover{
+
+                                                        background-color: ;
+
+                                                        border: 1px solid ;
+
+                                                        }
+
+                                                        #feature16532850511:after {
+
+                                                        box-shadow: 0 0 0 1px ;
+
+                                                        }
+
+                                                    </style>
+
+                                                    <div class="appdesign   animated bounceIn animateddone" data-wow-delay="s" style="visibility: visible; animation-name: bounceIn;">
+
+                                                        <div class="appdesign-right">
+
+                                                            <div class="app-service">
+
+                                                                <!-- ICON -->
+
+                                                                <div class="icon-container">
+
+                                                                    <div id="feature16532850511" class="icon">
+
+                                                                        <div class="sow-icon-fontawesome" data-sow-icon="" style="font-size: 24px; color: #FFFFFF"></div>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <!-- DESCRIPTION -->
+
+                                                                <div class="app-service-details">
+
+                                                                    <h4 class="responsive-color">FAST</h4>
+
+                                                                    <p class="responsive-color">Deployed within days</p>
+
+                                                                    <p class="more-text"></p>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="panel-grid" id="pg-453-8" >
+
+    <div class="panel-row-style-default panel-row-style nav-one-page" style="background-color: #f7f7f7; padding-top: 100px; padding-bottom: 80px; " id="contact-us" ><div class="container">
+
+                <?php if(session()->has('successSendToAdmin')): ?>
+
+                    <div class="row">
+
+                        <div class="col-sm-12">
+
+                            <div class="alert alert-success">
+
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+                                <?php echo e(session('successSendToAdmin')); ?>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                <?php endif; ?>
+
+        <div class="panel-grid-cell" id="pgc-453-7-0" >
+
+            <div class="panel-builder widget-builder widget_origin_title panel-first-child" id="panel-453-7-0-0">
+
+                <div class="origin-widget origin-widget-title origin-widget-title-simple-simple align-center text-noraml">
+
+                    <h2  class="align-center">CONTACT US</h2>
+
+                </div>
+
+            </div>
+
+            <div class="panel-builder widget-builder widget_origin_title" id="panel-453-7-0-1">
+
+                <div class="origin-widget origin-widget-title origin-widget-title-simple-simple align-center text-noraml">
+
+                    <h4  class="align-center">We'll love to hear from you. Get in touch with us!</h4>
+
+                </div>
+
+            </div>
+
+            <div class="panel-builder widget-builder widget_origin_title" id="panel-453-7-0-2">
+
+                <div class="origin-widget origin-widget-title origin-widget-title-simple-simple align-center text-noraml">
+
+                    <h2  class="align-center"></h2>
+
+                    <div class="divider colored"></div>
+
+                </div>
+
+            </div>
+
+            <div class="panel-builder widget-builder widget_origin_spacer" id="panel-453-7-0-3">
+
+                <div class="origin-widget origin-widget-spacer origin-widget-spacer-simple-blank"><div style="margin-bottom:40px;"></div>
+
+                </div>
+
+            </div>
+
+            <div class="panel-builder widget-builder widget_siteorigin-panels-contact panel-last-child" id="panel-453-7-0-4">
+
+                <div role="form" class="wpcf7" id="wpcf7-f935-o1" lang="en-US" dir="ltr">
+
+                    <div class="screen-reader-response"></div>
+
+                        <?php echo Form::open(array('route' => 'finfo.contact.save', 'method' => 'post', 'class' => 'wpcf7-form', 'id' => 'frm_contact', 'novalidate'=>"novalidate")); ?>
+
+
+                        <div class="dikka-form-simple-center">
+
+                            <div class="f-name">
+
+                                <span class="wpcf7-form-control-wrap your-name">
+
+                                    <input type="text" value="<?php echo e(Input::old('name')); ?>" name="name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="NAME *" required minlength="2" />
+
+                                </span>
+
+                             <?php echo $errors->first('name', '<span class="help-block">:message</span>'); ?>
+
+
+                            </div>
+
+                            <div class="f-email">
+
+                                <span class="wpcf7-form-control-wrap your-email">
+
+                                    <input type="email" name="email" value="<?php echo e(Input::old('email')); ?>" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="EMAIL *" required email/>
+
+                                </span>
+
+                                <?php echo $errors->first('email', '<span class="help-block">:message</span>'); ?>
+
+
+                            </div>
+
+                            <div class="f-subject">
+
+                                <span class="wpcf7-form-control-wrap your-subject">
+
+                                    <input type="text" name="subject" value="<?php echo e(Input::old('subject')); ?>" size="40" minlength="2" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="SUBJECT" required/>
+
+                                </span>
+
+                                <?php echo $errors->first('subject', '<span class="help-block">:message</span>'); ?>
+
+
+                            </div>
+
+                            <div class="f-message">
+
+                                <span class="wpcf7-form-control-wrap your-message">
+
+                                    <textarea name="message" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="MESSAGE *" required minlength="2"><?php echo e(Input::old('message')); ?></textarea>
+
+                                </span>
+
+                                <?php echo $errors->first('message', '<span class="help-block">:message</span>'); ?>
+
+
+                            </div>
+
+                            <div class="bt-contact">
+
+                                <a class="btn-color btn-color-1d tp-button darkgrey" href="javascript:;">
+
+                                    <input type="submit" value="SEND EMAIL" class="wpcf7-form-control wpcf7-submit" />
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    <?php echo Form::close(); ?>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<div class="panel-grid" id="pg-453-9">
+
+    <div class="panel-row-style-default panel-row-style" style="background-color: #033873; padding-top: 30px; padding-bottom: 63px; ">
+
+        <div class="container">
+
+            <div class="panel-grid-cell" id="pgc-453-8-0">
+
+                <div class="well well-sm panel-builder widget-builder widget_sow-icons panel-first-child" id="panel-453-8-0-0">
+
+                    <div class="so-widget-sow-icons so-widget-sow-icons-base">
+
+                        <div class="sow-icons-list sow-icons-responsive">
+
+                            <div class="sow-icons-icon sow-icons-icon-last-row" style="width: 100%">
+
+                                <style>
+
+                                    #icon0{
+
+                                    background-color: transparent;
+
+                                    border: 1px solid transparent;
+
+                                    width:54px;
+
+                                    height:54px;
+
+                                    line-height:54px;
+
+                                    }
+
+                                    #icon0:hover{
+
+                                    background-color: transparent;
+
+                                    border: 1px solid transparent;
+
+                                    }
+
+                                    #icon0:after {
+
+                                    box-shadow: 0 0 0 1px transparent;
+
+                                    }
+
+                                </style>
+
+                                <div class="hi-icon-wrap hi-icon-effect-1 hi-icon-effect-1a">
+
+                                    <div id="icon0" class="hi-icon  animated bounceIn animateddone" data-wow-delay="s" style="visibility: visible; animation-name: bounceIn;">
+
+                                        <div class="sow-icon-elegantline" data-sow-icon="" style="font-size: 54px; line-height: 54px; color: #00ff00"></div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="panel-builder widget-builder widget_origin_spacer" id="panel-453-8-0-1">
+
+                    <div class="origin-widget origin-widget-spacer origin-widget-spacer-simple-blank">
+
+                        <div style="margin-bottom:5px;"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-12">
+
+                <div class="origin-widget origin-widget-title origin-widget-title-simple-simple align-center text-lightest">
+
+                    <h4 class="align-center">Visit our offices</h4>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-sm-6" id="panel-453-8-0-2">
+            
+            <div class="origin-widget origin-widget-title origin-widget-title-simple-simple align-center text-lightest">
+
+
+                <h4 class="align-center" id="address-1">14 Robinson Road, #08-01A Far East Finance Building, Singapore 048545</h4>
+
+            </div>
+
+        </div>
+
+        <div class="col-sm-6" id="panel-453-8-0-3">
+
+            <div class="origin-widget origin-widget-title origin-widget-title-simple-simple align-center text-lightest">
+
+                <h4 class="align-center" id="address-2">Level 10, 606 St Kilda Road, Melbourne, Victoria 3004</h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+    <script type="text/javascript">
+
+            function initMap() {
+
+                // Create a map object and specify the DOM element for display.
+
+                var map1 = new google.maps.Map(document.getElementById('address-1-map'), {
+
+                    center: {lat: 1.282289, lng: 103.850784},
+
+                    scrollwheel: false,
+
+                    zoom: 18
+
+                });
+
+
+
+                var marker1 = new google.maps.Marker({
+
+                      position: {lat: 1.282289, lng: 103.850784},
+
+                      map: map1
+
+                });
+
+
+
+                var map2 = new google.maps.Map(document.getElementById('address-2-map'), {
+
+                    center: {lat: -37.851468, lng: 144.980215},
+
+                    scrollwheel: false,
+
+                    zoom: 18
+
+                });
+
+
+
+                var marker2 = new google.maps.Marker({
+
+                      position: {lat: -37.851468, lng: 144.980215},
+
+                      map: map2
+
+                });
+
+            }
+
+        </script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnlzMiIoyO3VFE9BLhsuRZxKMqGgK5d60&callback=initMap"></script>
+
+<div class="panel-grid google-maps" id="pg-453-1">
+
+    <style>
+
+        .google-maps iframe {
+
+            height: 100% !important;
+
+        }
+
+    </style>
+
+    <div class="panel-row-style-default panel-row-style nav-one-page" style="height: 350px;" id="problem">
+
+        <div class="container-fluid">
+
+            <div class="panel-grid-cell" id="pgc-453-1-0">
+                
+            <div class="xs-address">14 Robinson Road, #08-01A Far East Finance Building, Singapore 048545</div>
+                <div id="address-1-map" style="height: 350px;">
+
+                    
+
+                </div>
+
+            </div>
+
+            <div class="panel-grid-cell small-screen-border" id="pgc-453-1-1" style="min-height: 350px; height: 350px; border-left: 2px solid">
+
+
+                <div class="xs-address">Level 10, 606 St Kilda Road, Melbourne, Victoria 3004</div>
+                <div id="address-2-map" style="height: 350px;">
+
+                    
+
+                </div>
+
+                
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('seo'); ?>
+
+    <title>Finfo | Home</title>
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('style'); ?>
+
+<style type='text/css'>
+
+    #cbpw-wrap4 {margin:20px 0px 60px 0px;}#cbpw-grid4 .cbp-item {width:384px;height:288px;}#cbpw-grid4 .cbp-l-caption-title {color:#FFFFFF;background-color:transparent;font-size:16px;font-family:Open Sans;font-weight:700;font-style:normal;line-height:18px;text-align:center;padding:80px 0px 0px 0px;margin:40px 0px 5px 0px;text-transform:none;}#cbpw-grid4 .cbp-l-caption-desc {color:#F0B6B6;background-color:transparent;font-size:12px;font-family:Open Sans;font-weight:400;font-style:normal;line-height:16px;text-align:center;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;text-transform:none;}#cbpw-grid4 .cbp-caption-activeWrap {background-color:#2a0c1a;}#cbpw-loadMore4 .cbp-l-loadMore-button-link {color:#f0f0f0;background-color:#242224;border-width:2px 2px 2px 2px;border-style:none;border-color:#DEDEDE;border-radius:0;font-size:12px;font-family:Open Sans;font-weight:400;font-style:normal;line-height:34px;text-align:center;padding:5px 25px 5px 25px;margin:80px 0px 0px 0px;text-transform:none;}#cbpw-loadMore4 .cbp-l-loadMore-button-link:hover {color:#FFF;background-color:#E45D5D;border-width:2px 2px 2px 2px;border-style:none;border-color:#E45D5D;border-radius:2px;font-size:12px;font-family:Open Sans;font-weight:400;font-style:normal;line-height:34px;text-align:center;padding:5px 25px 5px 25px;margin:80px 0px 0px 0px;text-transform:none;}#cbpw-loadMore4 .cbp-l-loadMore-button-loading {color:#FFF;background-color:#E45D5D;border-width:2px 2px 2px 2px;border-style:none;border-color:#DEDEDE;border-radius:0px;font-size:11px;font-family:Open Sans;font-weight:600;font-style:normal;line-height:34px;text-align:center;padding:5px 25px 5px 25px;margin:80px 0px 0px 0px;text-transform:none;}#cbpw-loadMore4 .cbp-l-loadMore-button-loading:hover {color:#FFF;background-color:#E45D5D;border-width:2px 2px 2px 2px;border-style:none;border-color:#DEDEDE;border-radius:0px;font-size:11px;font-family:Open Sans;font-weight:600;font-style:normal;line-height:34px;text-align:center;padding:5px 25px 5px 25px;margin:80px 0px 0px 0px;text-transform:none;}#cbpw-loadMore4 .cbp-l-loadMore-button-stop {color:#545454;background-color:#ebebeb;border-width:2px 2px 2px 2px;border-style:none;border-color:#DEDEDE;border-radius:0px;font-size:11px;font-family:Open Sans;font-weight:600;font-style:normal;line-height:34px;text-align:center;padding:5px 25px 5px 25px;margin:80px 0px 0px 0px;text-transform:none;}#cbpw-loadMore4 .cbp-l-loadMore-button-stop:hover {color:#545454;background-color:#ebebeb;border-width:2px 2px 2px 2px;border-style:none;border-color:#DEDEDE;border-radius:0px;font-size:11px;font-family:Open Sans;font-weight:600;font-style:normal;line-height:34px;text-align:center;padding:5px 25px 5px 25px;margin:80px 0px 0px 0px;text-transform:none;}#cbpw-singlePage4 .cbp-popup-navigation-wrap {background-color:#34425C;}#cbpw-singlePage4 .cbp-popup-singlePage-counter {color:#bbc0df;font-size:13px;font-family:Open Sans;}
+
+    </style>
+
+    <style type='text/css'>
+
+#cbpw-wrap6 {margin:30px 0px 60px 0px;}#cbpw-grid6 .cbp-item {width:384px;height:288px;}#cbpw-grid6 .cbp-l-caption-title {color:#FFFFFF;background-color:transparent;font-size:16px;font-family:Open Sans;font-weight:700;font-style:normal;line-height:18px;text-align:center;padding:80px 0px 0px 0px;margin:40px 0px 5px 0px;text-transform:none;}#cbpw-grid6 .cbp-l-caption-desc {color:#F0B6B6;background-color:transparent;font-size:12px;font-family:Open Sans;font-weight:400;font-style:normal;line-height:16px;text-align:center;padding:0px 0px 0px 0px;margin:0px 0px 0px 0px;text-transform:none;}#cbpw-grid6 .cbp-caption-activeWrap {background-color:#2a0c1a;}#cbpw-loadMore4 .cbp-l-loadMore-button-link {color:#f0f0f0;background-color:#242224;border-width:2px 2px 2px 2px;border-style:none;border-color:#DEDEDE;border-radius:0;font-size:12px;font-family:Open Sans;font-weight:400;font-style:normal;line-height:34px;text-align:center;padding:5px 25px 5px 25px;margin:80px 0px 0px 0px;text-transform:none;}#cbpw-loadMore4 .cbp-l-loadMore-button-link:hover {color:#FFF;background-color:#E45D5D;border-width:2px 2px 2px 2px;border-style:none;border-color:#E45D5D;border-radius:2px;font-size:12px;font-family:Open Sans;font-weight:400;font-style:normal;line-height:34px;text-align:center;padding:5px 25px 5px 25px;margin:80px 0px 0px 0px;text-transform:none;}#cbpw-loadMore4 .cbp-l-loadMore-button-loading {color:#FFF;background-color:#E45D5D;border-width:2px 2px 2px 2px;border-style:none;border-color:#DEDEDE;border-radius:0px;font-size:11px;font-family:Open Sans;font-weight:600;font-style:normal;line-height:34px;text-align:center;padding:5px 25px 5px 25px;margin:80px 0px 0px 0px;text-transform:none;}#cbpw-loadMore4 .cbp-l-loadMore-button-loading:hover {color:#FFF;background-color:#E45D5D;border-width:2px 2px 2px 2px;border-style:none;border-color:#DEDEDE;border-radius:0px;font-size:11px;font-family:Open Sans;font-weight:600;font-style:normal;line-height:34px;text-align:center;padding:5px 25px 5px 25px;margin:80px 0px 0px 0px;text-transform:none;}#cbpw-loadMore4 .cbp-l-loadMore-button-stop {color:#545454;background-color:#ebebeb;border-width:2px 2px 2px 2px;border-style:none;border-color:#DEDEDE;border-radius:0px;font-size:11px;font-family:Open Sans;font-weight:600;font-style:normal;line-height:34px;text-align:center;padding:5px 25px 5px 25px;margin:80px 0px 0px 0px;text-transform:none;}#cbpw-loadMore4 .cbp-l-loadMore-button-stop:hover {color:#545454;background-color:#ebebeb;border-width:2px 2px 2px 2px;border-style:none;border-color:#DEDEDE;border-radius:0px;font-size:11px;font-family:Open Sans;font-weight:600;font-style:normal;line-height:34px;text-align:center;padding:5px 25px 5px 25px;margin:80px 0px 0px 0px;text-transform:none;}#cbpw-singlePage4 .cbp-popup-navigation-wrap {background-color:#34425C;}#cbpw-singlePage4 .cbp-popup-singlePage-counter {color:#bbc0df;font-size:13px;font-family:Open Sans;}
+
+
+
+    </style>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:700normal,400normal,600normal,NaN" type="text/css" media="all" />
+
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+
+<script type="text/javascript">
+
+    jQuery.fn.cubeportfolio.initCBP(4, {"layoutMode":"grid","showNavigation":true,"showPagination":true,"rewindNav":true,"scrollByPage":false,"defaultFilter":"*","filterDeeplinking":false,"animationType":"scaleDown","gridAdjustment":"responsive","mediaQueries":false,"gapHorizontal":2,"gapVertical":2,"caption":"zoom","displayType":"lazyLoading","displayTypeSpeed":100,"lightboxDelegate":".cbp-lightbox","lightboxGallery":true,"lightboxTitleSrc":"data-title","lightboxCounter":"<div class=\"cbp-popup-lightbox-counter\"></div>","singlePageDelegate":".cbp-singlePage","singlePageDeeplinking":true,"singlePageStickyNavigation":true,"singlePageCounter":"<div class=\"cbp-popup-singlePage-counter\"></div>","singlePageAnimation":"left","singlePageInlineDelegate":".cbp-singlePageInline","singlePageInlinePosition":"above","singlePageInlineInFocus":true,"lightboxShowCounter":true,"singlePageShowCounter":true,"singlePageInlineShowCounter":true,"displayItemsLoadMore":4});
+
+    jQuery.fn.cubeportfolio.initCBP(6, {"layoutMode":"grid","showNavigation":true,"showPagination":true,"rewindNav":true,"scrollByPage":false,"defaultFilter":"*","filterDeeplinking":false,"animationType":"scaleDown","gridAdjustment":"responsive","mediaQueries":false,"gapHorizontal":2,"gapVertical":2,"caption":"zoom","displayType":"lazyLoading","displayTypeSpeed":100,"lightboxDelegate":".cbp-lightbox","lightboxGallery":true,"lightboxTitleSrc":"data-title","lightboxCounter":"<div class=\"cbp-popup-lightbox-counter\"></div>","singlePageDelegate":".cbp-singlePage","singlePageDeeplinking":true,"singlePageStickyNavigation":true,"singlePageCounter":"<div class=\"cbp-popup-singlePage-counter\"></div>","singlePageAnimation":"left","singlePageInlineDelegate":".cbp-singlePageInline","singlePageInlinePosition":"above","singlePageInlineInFocus":true,"lightboxShowCounter":true,"singlePageShowCounter":true,"singlePageInlineShowCounter":true,"displayItemsLoadMore":4});
+
+</script>
+
+<script>
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+
+
+  ga('create', 'UA-72254320-1', 'auto');
+
+  ga('send', 'pageview');
+
+</script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make($app_template['frontend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,100 @@
+<?php $__env->startSection('content'); ?>
+
+<?php 
+$account = \Session::get('account_data');
+?>
+<style>
+#snavvy-menu{
+display:none;
+}
+
+footer
+{
+    
+  border-top: none!important;
+}
+
+body{
+    
+     overflow: hidden!important;
+}
+
+footer p {
+    font-size: 14px;
+}
+.bk-lgn-unme.bk-lgn-fpwd-unme, .bk-lgn-unme-icn.bk-lgn-fpwd-icn
+{
+    border-bottom: 1px solid #ced4da;
+}
+.fpwd-link-sec
+{
+    float: right;
+    margin-top: 32.5px;
+}
+</style>
+        
+<div class="back-lgn-bg back-lgn-sec">	
+		<div  style="margin: 0 auto; text-align:center;" >
+        <?php if(count($errors) > 0): ?>
+          <div class="alert alert-danger text-center" style="margin:0 auto;display: inline-block;">               
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>               
+              <?php foreach($errors->all() as $error): ?>
+                <?php echo e($error); ?><br>
+              <?php endforeach; ?>               
+          </div>
+        <?php endif; ?>
+</div>
+
+
+		<div class="back-lgn-bg-lay thm-bdrclr" style="min-height: 370px;">
+		    	<?php if(Session::has('message')): ?>
+			    		<?php
+			    			$alert 		= 'danger';
+			    			$message 	= Session::get('message');
+
+			    			if($message['status'] == 1){
+			    				$alert = 'success';
+			    			}
+			    		?>
+			    		
+		<div class="alert alert-<?php echo e($alert); ?> text-center">               
+				            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>              
+				                <?php echo e($message['message']); ?>				                             
+			            </div>
+		<?php endif; ?>
+			<div class="bk-logo-sec-cvr"><img class="bk-logo-sec" src="../<?php echo e($account->company_logo); ?>"/ style="max-width: 140px;"></div>			
+			<?php echo Form::open(array('route' => 'client.users.do.forget.password')); ?>
+
+			
+              <div class="input-group mb-2 mr-sm-2 mb-sm-0 back-lgn-sec-unme<?php echo e($errors->has('email_address') ? ' has-error' : ''); ?>">
+				<div class="input-group-addon bk-lgn-unme-icn bk-lgn-fpwd-icn"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
+				<input type="email" name="email_address" class="form-control bk-lgn-unme bk-lgn-fpwd-unme"
+			                   placeholder="Email" required value="<?php echo e(Input::old('email_address')); ?>" />
+			            	
+			  </div>			  
+			  
+			  <button type="submit" class="btn btn-primary thm-hgt-bgclr">Reset Password</button>	
+			  
+			   <p class="fpwd-link-sec"><a class="back-lgn-lnk" href="<?php echo e(URL::to('admin/login')); ?>">Back to Login</a></p>
+			<?php echo Form::close(); ?>			
+		</div>
+		
+		<footer class="ftr-bl-lgn">
+		  <div class="container-fluid">
+			<div class="row">
+				<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+					<p class="cpy-txt">Copyright © 2017 <a href="#"><?php echo e($setting->company_name); ?></a>. All rights reserved.</p>
+				</div>
+				<div class="col-12 col-sm-12 col-md-6 col-lg-6">	
+					<p class="ftr-bk-lgn-rt">Powered by &nbsp;&nbsp;&nbsp; <img src="https://wizwerx.info/img/finfo/imgs/finfo-logo.png"/></p>
+				</div>
+			</div>
+		  </div>      
+    </footer>
+		
+		
+	</div>
+	
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('resources.views.templates.client.template2.frontendhome', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,112 @@
+
+$button-color: #75b600;
+$btn-undo-color: #bfd990;
+$btn-cancel-color: #272c30;
+$hr-color: #d7d7d7;
+
+#finan-highlight {
+	h1, h3, h4, h5, label {
+		text-transform: capitalize;
+	}
+
+	h4.heading, h5, label {
+		color: #bababa;
+	}
+
+	h4.title {
+		margin: 10px;
+		color: #000;
+	}
+
+	hr {
+		border: 1px solid $hr-color;
+	}
+
+	.input-group-addon {
+		padding: 6px 28px;
+	}
+
+	.img-thumbnail {
+		padding: 0;
+		border-radius: 0;
+		border: 2px solid #ddd;
+	}
+
+	input[type="radio"] {
+		transform: scale(2);
+		margin-bottom: 15px;
+	}
+
+	.btn {
+		border-radius: 0;
+		border: 0;
+		color: #fff;
+		text-transform: uppercase;
+		padding: 8px 30px;
+	}
+        .btn-save {
+           background: $button-color
+        }
+	.btn-undo {
+		background: $btn-undo-color;
+		margin: 0 13px;
+	}
+
+	.btn-cancel {
+		background: $btn-cancel-color;
+		margin: 0 13px;
+	}
+
+	.fa-plus {
+		font-size: 27px;
+		color: #fff;
+		padding: 5px 9px;
+		background: $button-color;
+	}
+
+	.file-upload-input, .file-upload-button {
+		padding: 6px;
+	}
+
+	.file-upload-input {
+		width: 54%;
+	}
+
+	.file-upload-button {
+		background: $button-color;
+		margin: 0 25px;
+		text-transform: uppercase;
+		color: #fff;
+		padding: 8px 15px;
+		border: 0;
+	}
+        .input_fields_wrap .col-md-3 .form-control{
+            margin-bottom: 5px;
+        }
+
+	
+    .edit-finan {
+    	.remove_field {
+	        position: absolute;
+	        top: 6px;
+	        @media (max-width: 767px){
+	        	left: 340px;
+		    }
+		    @media (max-width: 375px){
+	        	left: 315px;
+		    }
+		     @media (max-width: 320px){
+	        	left: 265px;
+		    }
+	    }
+    }
+	
+
+    
+}
+#box-table-latest-financial{
+    .btn-action-delete { 
+        cursor: pointer;
+    }
+}
+

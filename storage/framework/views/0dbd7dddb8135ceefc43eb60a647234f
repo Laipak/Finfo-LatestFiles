@@ -1,0 +1,34 @@
+<?php $__env->startSection('content'); ?>
+    <section class="content" id="leadership">
+         <?php if(isset($slugContents) && !empty($slugContents)): ?>
+                <div class="row main-title">
+                    <div class="col-md-12">                        
+                        <?php if($active_theme == "default"): ?>
+                            <?php echo $slugContents->title; ?>
+
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <div class="content-data"><?php echo $slugContents->description; ?></div>
+        <?php endif; ?>
+    </section>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+    <?php echo Html::style('css/client/leadership.css'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
+    <script type="text/javascript">
+        $('.active').removeClass('menu-active');
+        $('#announcements').addClass('menu-active');
+    </script>
+<?php $__env->stopSection(); ?>
+  
+<?php $__env->startSection('seo'); ?>
+<?php if(isset($slugContents) && !empty($slugContents)): ?>
+<title><?php echo e(ucfirst(Session::get('company_name'))); ?> | <?php echo e($slugContents->title); ?></title>
+<meta name="description" content="<?php echo e($slugContents->description); ?>">
+<meta name="keywords" content="<?php echo e($slugContents->title); ?>">
+<?php endif; ?>    
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make($app_template['client.frontend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,137 @@
+<?php $__env->startSection('content'); ?>
+     
+<?php 
+
+$actual_link ="$_SERVER[REQUEST_URI]";
+	
+$link = substr($actual_link, 14);
+
+?>
+     <?php echo $__env->make('resources.views.templates.client.template2.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+   <style type="text/css">
+   .page-cnt-sec h5.cmpy-info-hd
+    {
+    	padding-bottom:30px;
+    }
+    .cmpy-info-hd a
+    {
+    	font-size: 45px;
+    	position: relative;
+    	top: -20px;
+    }
+    .cmpy-info-hd a.cmpy-info-hd-lft
+    {
+    	float: left;
+    	left: -13px;
+        top: -18px
+    	
+    }
+    .cmpy-info-hd a.cmpy-info-hd-rgt
+    {
+    	float:right;
+    	right: -10px;
+        top: -16px;
+    }
+   </style>
+     
+	<div class="clearfix"></div>
+    <header class="pge-header thm-bgclr">
+      <div class="container">        
+        <div class="row">          
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12">           
+              <h3 class="secondaryBackground">Company Info</h3>  
+          </div>          
+        </div>        
+      </div>
+    </header>
+
+
+    <!--cmpy Info -->
+    <section class="page-cnt-sec">
+      <div class="container">
+		<div class="page-cnt-sec-lay">
+			<div class="page-cnt-sec-inr">						
+				<div class="row">		
+					<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+					     
+					     <?php if(isset($slugContents) && !empty($slugContents)): ?>
+                           <?php foreach($slugContents as $page): ?>	
+						<h5 class="cmpy-info-hd">
+						    <ul class="cmpy-info-hd-ul-lt">
+						  	<?php if(isset($title) && !empty($title)): ?>
+                              <?php foreach($title as $titles): ?>
+                              
+                               <?php if($link == $titles->name): ?>
+                                <?php $linkcss ="active"; ?>
+                               <?php else: ?>
+                                <?php $linkcss =""; ?> 
+                               <?php endif; ?>
+                              
+                               <li class =<?php echo e($linkcss); ?> >
+                              <a href="<?php echo e(url('company-info/'.$titles->name)); ?>" class="cmpy-info-hd-lft thm-hgt-clr" style="position:absolute">&#8592;</a>
+                                   </li>
+              	              <?php endforeach; ?>
+				            <?php endif; ?>
+				            </ul>  
+						    <?php echo $page['title']; ?>
+
+						    
+						   <ul class="cmpy-info-hd-ul-rgt">
+						  	<?php if(isset($title) && !empty($title)): ?>
+                              <?php foreach($title as $titles): ?>
+                              
+                               <?php if($link == $titles->name): ?>
+                                <?php $linkcss ="active"; ?>
+                               <?php else: ?>
+                                <?php $linkcss =""; ?> 
+                               <?php endif; ?>
+                              
+                               <li class =<?php echo e($linkcss); ?> >
+						    <a href="<?php echo e(url('company-info/'.$titles->name)); ?>" class="cmpy-info-hd-rgt thm-hgt-clr" style="position:absolute">&#8594;
+						    </a>  
+						    </li>
+              	              <?php endforeach; ?>
+				            <?php endif; ?>
+				            </ul>  
+						    
+						    </h5>
+						  <?php endforeach; ?>  
+                        <?php endif; ?>
+						 
+				 
+                    
+					</div>
+					<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+						<div class="abt-cnt-sec">
+						     <?php if(isset($slugContents) && !empty($slugContents)): ?>
+                                 <?php foreach($slugContents as $page): ?>
+                    
+                        		<p style="font-family: 'source_sans_proregular'">  <?php echo $page['content_description']; ?></p>
+						     <?php endforeach; ?>
+                            <?php endif; ?> 	
+						</div>
+					</div>
+				</div>		
+			</div>			
+		</div>
+	  </div>
+    </section>	
+
+<script type="text/javascript">
+
+ 
+
+
+</script>
+
+<?php echo $__env->make('resources.views.templates.client.template2.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <!-- Footer -->
+
+ 
+<?php $__env->stopSection(); ?>
+
+
+
+
+
+<?php echo $__env->make('resources.views.templates.client.template2.frontendhome', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

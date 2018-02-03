@@ -1,0 +1,12 @@
+.feature-image {
+      margin-top: 15px;
+      width: 223px;
+      min-height: 177px;
+      background-color: #F0F0F0;
+      cursor: pointer;
+      background-image: url("/img/uploader_text.png");
+      background-position: 3px -26px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      position: relative;
+}

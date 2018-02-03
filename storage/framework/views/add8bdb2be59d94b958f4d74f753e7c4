@@ -1,0 +1,365 @@
+<?php $__env->startSection('title'); ?>
+Financial Highlights
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+	<section class="content">
+                <?php if(session()->has('success')): ?>        
+                    <div class="alert alert-success">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <?php echo e(session('success')); ?>
+
+                    </div>
+                <?php endif; ?>
+		<?php echo Form::open(array('route' => 'package.admin.latest-financial-highlights.save', 'method' => 'post','id' => 'myform')); ?>
+
+			<div class="row" id="finan-highlight">
+				<div class="col-md-12">
+				<lable class="label-title">Add New Financial Highlights</lable>
+				<h4>Select Financial Term</h4>
+				<div class="row">
+					<div class="col-xs-8 col-md-3">
+						<h5>Select Quarter</h5>
+                                                <?php echo Form::select('select_quarter',
+                                                        $quarter, 
+                                                        Input::old('select_quarter'), array('id' => 'input', 'class'=> 'form-control','required' => 'true')); ?>
+
+						<?php echo $errors->first('select_quarter', '<span class="help-block"  style="color:red">:message</span>'); ?>
+
+					</div>
+					<div class="col-xs-8 col-md-3">
+						<h5>Select Year</h5>
+                                                
+                                                <?php echo Form::select('select_year',
+                                                                $year, 
+                                                                date('Y'), array('id' => 'input', 'class'=> 'form-control','required' => 'true')); ?>
+
+						<?php echo $errors->first('select_year', '<span class="help-block"  style="color:red">:message</span>'); ?>
+
+					</div>
+				</div>
+                                <div class="row">
+                                    <div class="col-xs-8 col-md-3">
+                                        <h5>Financial Results End Date</h5>
+                                            <?php echo Form::text('financial_highlight_title', Input::old('financial_highlight_title'), array('id' => 'input','required', 'class'=> 'form-control','required' => 'true')); ?>
+
+                                            <?php echo $errors->first('financial_highlight_title', '<span class="help-block"  style="color:red">:message</span>'); ?>
+
+					</div>
+					<div class="col-xs-4 col-md-3">
+                            <h5>Publish Date</h5>
+	                            <?php echo Form::text('publish_date', Input::old('publish_date'), array('id' => 'publish_date', 'class'=> 'form-control','required' => 'true')); ?>
+
+	                            <?php echo $errors->first('publish_date', '<span class="help-block"  style="color:red">:message</span>'); ?>
+
+						</div>
+                                </div>
+				<div class="row">
+				<div class="input_fields_wrap">
+					<div class="col-md-12">
+						<div class="row">
+							<div class="col-xs-5 col-md-3 <?php echo e($errors->has('titles') ? ' has-error has-feedback' : ''); ?>">
+								<h5>Insert Title</h5>
+								<input type="text" name="titles[]" id="input" value="<?php echo e(old('titles.0')); ?>" class="form-control">
+								<?php echo $errors->first('titles', '<span class="help-block" style="color:red">:message</span>'); ?>
+
+							</div>
+							<div class="col-xs-5 col-md-3 <?php echo e($errors->has('values') ? ' has-error has-feedback' : ''); ?>">
+								<h5>Value</h5>
+                                                                <input type="number" name="values[]" value="<?php echo e(old('values.0')); ?>" class="form-control" step="any">
+								<?php echo $errors->first('values', '<span class="help-block" style="color:red"	>:message</span>'); ?>
+
+							</div>
+						</div>
+					</div>					
+					
+				</div> <!-- end input_fields_wrap -->
+
+				</div> <!-- end insert results -->
+				<div class="row">
+					<div class="col-md-1">
+						<a class="add_field_button" href="#">
+							<div><i class="fa fa-plus"></i></div>
+						</a>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+
+
+
+				   <?php  $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/financial-result";  ?> 
+                                    <div class="col-md-12 col-sm-12">
+                                            <button name="save" class="btn btn-primary btn-save">Save</button>
+                                            <a href="<?php echo e(route('package.admin.latest-financial-highlights')); ?>" class="btn btn-danger btn-overwrite-cancel">Cancel</a>
+
+
+
+
+                                            <input type="button" name="savepreview" class='btn btn-primary btn-overwrite-cancel' id="button" value="Preview and Save">
+                                    </div>
+
+
+				</div>
+				
+				  <?php  $actual_link = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]/financial-result";  ?>
+
+		</div><!--  end main row -->	
+		</form>
+	</section>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('style'); ?>
+	<?php echo Html::style('css/client/finan-highlight.css'); ?>
+
+	<?php echo Html::style('//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css'); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
+<meta name="_token" content="<?php echo csrf_token(); ?>"/>
+<script type="text/javascript">
+$.ajaxSetup({
+   headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+});
+</script>
+<script>
+$(document).ready(function(){
+function toObject(arr) {
+  var rv = {};
+  for (var i = 0; i < arr.length; ++i)
+    rv[i] = arr[i];
+  return rv;
+}
+/*  $("#button").click(function(e){
+        e.preventDefault();
+  		var form = jQuery('#myform');
+        var dataString = form.serializeArray();
+        dataString.push({'name': 'preview','value': 'value'});
+        console.log(dataString);
+        var formAction = form.attr('action');*/
+        
+        
+        
+        
+        
+          $("#button").on('click', function(e) {
+        e.preventDefault();
+        
+      var formvalid = $("#myform").valid();
+  		var form = jQuery('#myform');
+        var dataString = form.serializeArray();
+        dataString.push({'name': 'preview','value': 'value'});
+        var formAction = form.attr('action');
+
+
+if(formvalid)
+        
+        
+        
+        
+        
+
+        $.ajax({
+                type: "POST",
+                url : formAction,
+                data : dataString,
+               
+                success : function(data){
+                  
+                window.open('<?php echo  $actual_link ?>'); 
+                },
+                error: function (jqXHR, exception) {
+                    var msg = '';
+                    if (jqXHR.status === 0) {
+                        msg = 'Not connect.\n Verify Network.';
+                    } else if (jqXHR.status == 404) {
+                        msg = 'Requested page not found. [404]';
+                    } else if (jqXHR.status == 500) {
+                        msg = 'Internal Server Error [500].';
+                    } else if (exception === 'parsererror') {
+                        msg = 'Requested JSON parse failed.';
+                    } else if (exception === 'timeout') {
+                        msg = 'Time out error.';
+                    } else if (exception === 'abort') {
+                        msg = 'Ajax request aborted.';
+                    } else {
+                        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                    }
+                    alert(msg);
+                },
+            });
+    
+      });
+});
+</script>
+
+	<script type="text/javascript">
+	$('.active').removeClass('active');
+    $('.last_fin_hig').addClass('active');
+    $('.last_fin_hig_form').addClass('active');
+    
+		(function($) {
+ 
+	    	$( "#publish_date" ).datepicker({
+	    			dateFormat: "dd M yy"
+	    		}
+			);
+	 
+		// Add more field
+	    var max_fields      = 50; //maximum input boxes allowed
+	    var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+	    var add_button      = $(".add_field_button"); //Add button ID
+
+	    var x = 1; //initlal text box count
+	    $(add_button).click(function(e){ //on add input button click
+	        e.preventDefault();
+	        if(x < max_fields){ //max input box allowed
+	            x++; //text box increment
+	            $(wrapper).append('<div class="col-md-12"><div class="row"><div class="col-xs-5 col-md-3"><h5 class="hide-md">Insert Title</h5><input type="text" name="titles[]" id="input" class="form-control"></div><div class="col-xs-11 col-xs-5 col-md-3"><h5 class="hide-md">Value</h5><input type="number" name="values[]" class="form-control" step="any"></div><a href="#" class="remove_field" title="remove"><i class="fa fa-trash-o fa-lg" style="color:red"></i></a></div></div>'); //add input box
+	        }
+	    });
+
+	    $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+	        e.preventDefault(); $(this).parent('div').parent('div').remove(); x--;
+	    });
+
+
+		  // Browser supports HTML5 multiple file?
+		  var multipleSupport = typeof $('<input/>')[0].multiple !== 'undefined',
+		      isIE = /msie/i.test( navigator.userAgent );
+
+		  $.fn.customFile = function() {
+
+		    return this.each(function() {
+
+		      var $file = $(this).addClass('custom-file-upload-hidden'), // the original file input
+		          $wrap = $('<div class="form-group">'),
+		          $input = $('<div class="col-md-3"><input type="text" class="file-upload-input form-control col-md-3" /></div>'),
+		          // Button that will be used in non-IE browsers
+		          $button = $('<div class="col-md-3"><button type="button" class="btn">Select File</button></div>'),
+		          // Hack for IE
+		          $label = $('<label class="btn" for="'+ $file[0].id +'">Select  File</label>');
+
+		      // Hide by shifting to the left so we
+		      // can still trigger events
+		      $file.css({
+		        position: 'absolute',
+		        left: '-9999px'
+		      });
+
+		      $wrap.insertAfter( $file )
+		        .append( $file, $input, ( isIE ? $label : $button ) );
+
+		      // Prevent focus
+		      $file.attr('tabIndex', -1);
+		      $button.attr('tabIndex', -1);
+
+		      $button.click(function () {
+		        $file.focus().click(); // Open dialog
+		      });
+
+		      $file.change(function() {
+
+		        var files = [], fileArr, filename;
+
+		        // If multiple is supported then extract
+		        // all filenames from the file array
+		        if ( multipleSupport ) {
+		          fileArr = $file[0].files;
+		          for ( var i = 0, len = fileArr.length; i < len; i++ ) {
+		            files.push( fileArr[i].name );
+		          }
+		          filename = files.join(', ');
+
+		        // If not supported then just take the value
+		        // and remove the path to just show the filename
+		        } else {
+		          filename = $file.val().split('\\').pop();
+		        }
+
+		        $input.val( filename ) // Set the value
+		          .attr('title', filename) // Show filename in title tootlip
+		          .focus(); // Regain focus
+
+		      });
+
+		      $input.on({
+		        blur: function() { $file.trigger('blur'); },
+		        keydown: function( e ) {
+		          if ( e.which === 13 ) { // Enter
+		            if ( !isIE ) { $file.trigger('click'); }
+		          } else if ( e.which === 8 || e.which === 46 ) { // Backspace & Del
+		            // On some browsers the value is read-only
+		            // with this trick we remove the old input and add
+		            // a clean clone with all the original events attached
+		            $file.replaceWith( $file = $file.clone( true ) );
+		            $file.trigger('change');
+		            $input.val('');
+		          } else if ( e.which === 9 ){ // TAB
+		            return;
+		          } else { // All other keys
+		            return false;
+		          }
+		        }
+		      });
+
+		    });
+
+		  };
+
+		  // Old browser fallback
+		  if ( !multipleSupport ) {
+		    $( document ).on('change', 'input.customfile', function() {
+
+		      var $this = $(this),
+		          // Create a unique ID so we
+		          // can attach the label to the input
+		          uniqId = 'customfile_'+ (new Date()).getTime(),
+		          $wrap = $this.parent(),
+
+		          // Filter empty input
+		          $inputs = $wrap.siblings().find('.file-upload-input')
+		            .filter(function(){ return !this.value }),
+
+		          $file = $('<input type="file" id="'+ uniqId +'" name="'+ $this.attr('name') +'"/>');
+
+		      // 1ms timeout so it runs after all other events
+		      // that modify the value have triggered
+		      setTimeout(function() {
+		        // Add a new input
+		        if ( $this.val() ) {
+		          // Check for empty fields to prevent
+		          // creating new inputs when changing files
+		          if ( !$inputs.length ) {
+		            $wrap.after( $file );
+		            $file.customFile();
+		          }
+		        // Remove and reorganize inputs
+		        } else {
+		          $inputs.parent().remove();
+		          // Move the input so it's always last on the list
+		          $wrap.appendTo( $wrap.parent() );
+		          $wrap.find('input').focus();
+		        }
+		      }, 1);
+
+		    });
+		  }
+
+}(jQuery));
+
+$('input[type=file]').customFile();
+
+
+
+
+
+
+
+
+
+	</script>
+
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make($app_template['client.backend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

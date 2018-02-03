@@ -1,0 +1,11 @@
+<h1>Account Rejected</h1>
+<p>
+Dear, <?php echo e($value['first_name']); ?>
+
+<br>
+Sorry, your account has been rejected.
+</p>
+<p>
+    <strong>Below information Why we rejected your account:</strong><br>
+    <strong>Reason: </strong><?php echo e($reason); ?><br>
+</p>

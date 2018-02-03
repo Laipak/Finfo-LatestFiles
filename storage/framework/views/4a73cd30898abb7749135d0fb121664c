@@ -1,0 +1,159 @@
+<?php $__env->startSection('content'); ?>
+<?php if($active_theme == "default"): ?>
+<section class="content">
+<div class="row title" id="annual-report">
+    <div class="col-md-12">
+        Annual Reports
+    </div>
+</div>
+
+
+<div class="row content-annual-report">
+    <div class="col-sm-3 col-md-3 left-col">
+        <p class="description">List of Annual Reports</p>
+    </div>
+
+    <div class="col-sm-9 col-md-9 right-col">
+        <div class="row report-row">
+        <?php $i = 0; ?>
+          <?php foreach($data as $report): ?>
+
+            <div class="col-xs-12 col-sm-4 col-md-4 report-box">
+                <div class="row">                        
+                    <div class="col-xs-6 col-sm-12 col-md-6 report-cover">
+                      <img src="<?php echo e(asset(($report->cover_image != '')? $report->cover_image: 'backend/img/client/annual-report/annual_report_2007.jpg')); ?>" alt="">
+                    </div>
+                    <div class="col-xs-6 col-sm-12 col-md-6 report-desc">                        
+                        <div class="caption">
+                            <div class="report-title"><?php echo e($report->title); ?></div>  
+                            <div class="report-description">
+                            <?php echo e(substr($report->description, 0,100)); ?> 
+                            <?php if(strlen($report->description) > 100): ?>
+                                ..
+                            <?php endif; ?>
+                            </div>               
+                        </div>
+                       <div class="download"><a href="<?php echo e($report->file_pdf); ?>" target="_blank" class="btn btn-download">Download</a></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <?php $i++ ?>
+            <?php if($i  == 3): ?>
+            <div class="col-xs-12 col-sm-12 col-md-12 ruller">&nbsp;</div>
+            <?php $i = 0; ?>
+            <?php endif; ?>
+          <?php endforeach; ?>
+
+        </div><!-- end third row -->
+    </div>
+
+</div>
+</section>
+<?php else: ?>
+    <h2>Annual Reports</h2>
+    <div class="row">
+        
+        <?php foreach($data as $report): ?>
+        <div class="col-md-2 portfolio-item">
+            <p>
+                <b><?php echo e($report->title); ?></b>
+            </p>
+            <a href="#">
+                <img class="img-thumbnails" src="<?php echo e(asset(($report->cover_image != '')? $report->cover_image: 'backend/img/client/annual-report/annual_report_2007.jpg')); ?>" alt="">
+            </a>            
+            <p>
+                <?php echo e(substr($report->description, 0,100)); ?> 
+                <?php if(strlen($report->description) > 100): ?>
+                    .....
+                <?php endif; ?>
+            </p>
+            <a href="<?php echo e($report->file_pdf); ?>" target="_blank" class="btn btn-warning">Download</a>
+        </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('seo'); ?>
+    <title><?php echo e(ucfirst(Session::get('company_name'))); ?> | Annual reports</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+<?php if($active_theme == "default"): ?>
+	<?php echo Html::style('backend/css/package/general-style.css'); ?>
+
+    <style type="text/css">
+        .content-annual-report{
+            border-bottom: 1px solid #ddd;
+        }
+    .report-desc{
+        padding: 0px 5px;
+    }
+    .report-title{
+        top: 10px; 
+        font-weight: 600;
+        margin-bottom: 10px;
+        line-height: 1.3;
+        height: 52px;
+    }
+    .download {
+        top: 0px;
+    }
+    .caption{
+        height: 140px;
+    }
+    .report-description{
+        line-height: 1.2;
+        font-size: 12px;
+    }
+    .report-cover{
+        width: 45% !important;
+    }
+    @media (min-width: 1200px){
+        .report-cover{
+            width: 40% !important
+        }
+        .report-cover>img {
+            width: 100px;
+        }
+    }
+    @media (min-width: 768px){
+        .ruller {
+            border-top: 1px solid;
+        }
+        
+    }
+    @media (min-width: 767px) and (max-width: 992px){
+        .caption{
+            margin-top: 10px;
+        }
+    }
+    @media (min-width: 993px) and (max-width: 1199px){
+        .report-cover>img {
+            width: 90px;
+        }
+        .report-title{
+            line-height: 1;
+            font-size: 13px;
+        }
+        .report-description {
+            line-height: 1.1;
+            font-size: 11px;
+        }
+
+    }
+    
+    </style>
+<?php endif; ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+
+<script type="text/javascript">
+    $('.menu-active').removeClass('menu-active');
+    $('#annual-rp').addClass('menu-active');
+</script>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make($app_template['client.frontend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

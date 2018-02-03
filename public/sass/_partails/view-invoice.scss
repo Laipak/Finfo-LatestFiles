@@ -1,0 +1,50 @@
+@import "pass-lib";
+.content-wrapper{
+	background-color: #414950;
+}
+#view-invoice {
+    margin: 15px auto;
+    padding: 70px;
+    max-width: 850px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+    padding-top: 15px;
+    .invoice-status {
+	    margin: 20px 0 0 0;
+	    text-transform: uppercase;
+	    font-size: 24px;
+	    font-weight: bold;
+	}
+	.unpaid {
+	    color: #cc0000;
+	}
+	.payment-btn-container {
+	    margin-top: 5px;
+	    text-align: center;
+	}
+	.select-inline {
+	    display: inline-block;
+	    width: auto;
+	}
+	.table{
+		margin-bottom: 0px;
+	}
+	.table>tbody>tr>td{
+		border: 0;
+	}
+	td.total-row {
+	    background-color: #f8f8f8;
+	}
+	@media (min-width: 768px){
+		.text-right-sm {
+		    text-align: right;
+		}
+		.pull-sm-right {
+		    float: right;
+		}
+	}
+}

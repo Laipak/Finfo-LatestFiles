@@ -1,0 +1,30 @@
+@import "pass-lib";
+.content-wrapper{
+	background-color: #f0f0f0;
+}
+#annual-report {
+	padding: 15px 30px 15px 30px;
+	.content-annual{
+		min-width: 185px;
+		padding: 0;
+		margin: 15px;
+	}
+	.box-annual-rp{
+		.img-annual-rp{
+			width: 100%;
+		}
+		.text-year{
+			padding: 15px;
+			text-align: center;
+		}
+	}
+
+
+	.content-annual:nth-child(odd) {
+	  background-color: #e53840;
+	}
+
+	.content-annual:nth-child(even) {
+	  background-color: #c7a036;
+	}
+}

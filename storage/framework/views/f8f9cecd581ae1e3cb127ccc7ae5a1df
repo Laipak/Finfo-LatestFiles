@@ -1,0 +1,228 @@
+<?php $__env->startSection('content'); ?>
+
+<?php 
+$actual_link ="$_SERVER[REQUEST_URI]";
+$year = date("Y");
+$currently_selected = date('Y'); 
+$earliest_year = 2015; 
+$latest_year = date('Y');
+
+if($actual_link == '/announcements'){
+   $selectedyear = $year;    
+}else{
+   $selectedyear = $selected_year;    
+}
+
+?>
+
+<style type="text/css">
+.selectclass {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+.selectcolor{
+    
+    color: <?php echo e($setting->background_color); ?> !important;
+    
+}
+</style>
+  
+  <?php echo $__env->make('resources.views.templates.client.template2.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+	<div class="clearfix"></div>
+    <header class="pge-header thm-bgclr">
+      <div class="container">        
+        <div class="row">          
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12">           
+              <h3 class="secondaryBackground">Announcements</h3>  
+          </div>          
+        </div>        
+      </div>
+    </header>
+
+    <!--cmpy Info -->
+    <section class="page-cnt-sec">
+      <div class="container">
+	<div class="page-cnt-sec-lay">
+	   <div class="page-cnt-sec-inr">						
+	     <div class="ance-pge-sec">
+	 	<div class="row">
+		  <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+		    <div class="ance-pge-info-sec-inr">
+			<h2>View <br>
+			Announcements  <br> listed in <span class="ance-pge-btn thm-hgt-clr"> </span> <br>								
+		    <div>
+		
+			    <?php echo Form::open(array('route' => 'package.announcements.filter', 'method' => 'post')); ?> 
+			    
+			<?php if($selectedyear == 'All Year'): ?> 
+			    
+		     <?php $j = 0; ?>
+			 <?php foreach($announc as $i ): ?>
+			 <?php  $j++; ?>
+			 <?php endforeach; ?> 
+			  <?php if($j > 1 ): ?>
+			  <select name="year" aria-labelledby="dropdownMenuButton"  onchange="this.form.submit()" style="border: 0px;outline:0px;"class="selectcolor">
+		  	  <option id="dropdownMenuButton" style="font-size: 25px;" selected>
+			 All Year  </option>
+			
+			 <?php else: ?>
+			 <select name="year" aria-labelledby="dropdownMenuButton"  onchange="this.form.submit()" class="selectclass thm-hgt-clr" style="border: 0px;outline:0px;">
+			 <?php endif; ?>  
+	
+			 
+		     <?php $j = 0; ?>
+			 <?php foreach($announc as $i ): ?>
+			 <?php  $j++; ?>
+			 	 <?php if($j > 1 ): ?>
+			 
+			 <?php $d = date("Y", strtotime($i->announce_at)); ?>
+			 <?php if($d == $selectedyear): ?>
+             <option style="font-size: 25px;" value="<?php echo e(date("Y", strtotime($i->announce_at))); ?>"  ><?php echo e(date("Y", strtotime($i->announce_at))); ?></option>
+             <?php else: ?>
+			 <option style="font-size: 25px;" value="<?php echo e(date("Y", strtotime($i->announce_at))); ?>"><?php echo e(date("Y", strtotime($i->announce_at))); ?></option>
+			 <?php endif; ?> 
+			 
+			  <?php else: ?>
+			   <option style="font-size: 25px;" value="<?php echo e(date("Y", strtotime($i->announce_at))); ?>"  ><?php echo e(date("Y", strtotime($i->announce_at))); ?></option>
+			  
+			 <?php endif; ?>  
+			 <?php endforeach; ?>
+		     </select>
+		     
+		     <?php else: ?>
+		     
+		    <?php $j = 0; ?>
+			 <?php foreach($announc as $i ): ?>
+			 <?php  $j++; ?>
+			 <?php endforeach; ?> 
+			  <?php if($j > 1 ): ?>
+			  <select name="year" aria-labelledby="dropdownMenuButton"  onchange="this.form.submit()" style="border: 0px;outline:0px;"class="selectcolor">
+		  	  <option id="dropdownMenuButton" style="font-size: 25px;" selected>
+			 All Year  </option>
+			
+			 <?php else: ?>
+			 <select name="year" aria-labelledby="dropdownMenuButton"  onchange="this.form.submit()" class="selectclass thm-hgt-clr" style="border: 0px;outline:0px;">
+			 <?php endif; ?>  
+	
+			 
+		     <?php $j = 0; ?>
+			 <?php foreach($announc as $i ): ?>
+			 <?php  $j++; ?>
+			 	 <?php if($j > 1 ): ?>
+			 
+			 <?php $d = date("Y", strtotime($i->announce_at)); ?>
+			 <?php if($d == $selectedyear): ?>
+             <option style="font-size: 25px;" value="<?php echo e(date("Y", strtotime($i->announce_at))); ?>" selected ><?php echo e(date("Y", strtotime($i->announce_at))); ?></option>
+             <?php else: ?>
+			 <option style="font-size: 25px;" value="<?php echo e(date("Y", strtotime($i->announce_at))); ?>"><?php echo e(date("Y", strtotime($i->announce_at))); ?></option>
+			 <?php endif; ?> 
+			 
+			  <?php else: ?>
+			   <option style="font-size: 25px;" value="<?php echo e(date("Y", strtotime($i->announce_at))); ?>" selected ><?php echo e(date("Y", strtotime($i->announce_at))); ?></option>
+			  
+			 <?php endif; ?>  
+			 <?php endforeach; ?>
+		     </select>
+		     
+		     
+		     
+		     
+		     
+		     <?php endif; ?>
+		     
+		     
+		     
+		     
+		     
+		     
+		    <?php echo Form::close(); ?>  
+		</div>
+		  </h2>
+		<p>To view listing for specific year, change “All Year” from the dropdown.	</p>
+	   </div>
+	</div>
+	                    
+	                    <?php $i = 0; ?>
+						<?php foreach($data as $announ): ?>
+					     <?php  $i++; ?>
+						<div class="col-12 col-sm-12 col-md-6 col-lg-4">
+							<div class="ance-pge-sec-inr">
+								<p class="ance-pge-sec-dte"><?php echo e(date("d M Y", strtotime($announ->announce_at))); ?></p>
+								<div class="ance-pge-sec-inr-lay">
+								    
+								    <?php $title = html_entity_decode(strip_tags($announ->title));
+                                        if (strlen($title) > '90')
+                                            $title = substr($title, 0, 90). '';
+                                            else
+                                            $title = substr($title, 0, 90);
+                                         
+                                        ?> 
+									<h3><?php echo e($title); ?></h3>
+									
+									
+									<?php if(!empty($announ->description)): ?>
+									<?php $anno = html_entity_decode(strip_tags($announ->description));
+                                        if (strlen($anno) > '249')
+                                            $annou = substr($anno, 0, 249). '...';
+                                            else
+                                            $annou = substr($anno, 0, 249);
+                                    ?>               
+									<p style="min-height: 260px;"><?php echo e($annou); ?></p>
+									<?php else: ?>
+									<p>Nunc magna eros, porta tincidunt pharetra quis, tristique sed libero. Quisque consequat...</p>
+									<?php endif; ?>
+								</div>
+								<p class="ance-prels-itm-lnk">
+								 <?php if(!empty($announ->file_upload)): ?>
+									<span><i class="fa fa-link" aria-hidden="true"></i><a href="/files/announcements/<?php echo e($announ->file_upload); ?>" target="_brank">&nbsp;&nbsp;READ MORE</a></span>
+								 <?php else: ?>
+								    <span><i class="fa fa-link" aria-hidden="true"></i><a href="#">&nbsp;&nbsp;READ MORE</a></span>
+								 <?php endif; ?>    
+								<!--	<span><i class="fa fa-share-alt" aria-hidden="true"></i>&nbsp;&nbsp; SHARE </span> -->
+								</p>
+							</div>
+						</div>
+					
+				 	<?php endforeach; ?>
+				 
+				 	<?php if(empty($announ)): ?>
+				 	<div class="col-12 col-sm-12 col-md-12 col-lg-8">
+					    <div class="ance-pge-sec-inr">
+						<p>No Announcements</p>
+					    </div>
+					</div>
+					<?php else: ?>
+					 <?php if($actual_link == '/announcements'): ?> 
+					 <?php if($i > 5 ): ?>
+				 	<div class="col-12 col-sm-12 col-md-12 col-lg-12">		
+					 <?php echo Form::open(array('route' => 'package.announcements.filter', 'method' => 'post')); ?> 
+					 <input type="hidden" name="year" value="<?php echo e($year); ?>">
+					   <p class="page-btn-sec"><button type="submit" class="page-btn thm-hgt-bgclr" style="border: none;">Load more</button></p>
+						<?php echo Form::close(); ?> 
+					</div>
+					<?php endif; ?>
+					<?php endif; ?>
+				    <?php endif; ?>
+				  </div>	
+				</div>		
+			</div>			
+		</div>
+	  </div>
+    </section>	
+	
+
+<?php echo $__env->make('resources.views.templates.client.template2.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+    <!-- Footer -->
+ 
+
+
+
+
+
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('resources.views.templates.client.template2.frontendhome', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,39 @@
+<?php $__env->startSection('title'); ?>
+Google Report Views
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+    <section class="content" id="google-report-views">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <label class="form-group ">Client ID</label>
+                <?php echo Form::open(array('route' => 'google.clientid.add', 'method'=> 'post')); ?>
+
+                    <div class="form-group col-md-10 col-sm-8">
+                        <?php echo Form::text('client-id', isset($data) ? $data : "", ['class' => 'form-control', 'placeholder' => 'Google Client ID for Web application']); ?>
+
+                    </div>
+                    <div class="col-md-2 col-sm-4">
+                        <?php echo Form::submit('Save', ['class' => 'btn btn-primary btn-save']); ?>
+
+                    </div>
+                <?php echo Form::close(); ?>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-6">
+                <div id="embed-api-auth-container"></div>
+                <div id="chart-container"></div>
+                <div id="view-selector-container"></div>
+            </div>
+        </div>
+    </section>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+    <style>
+        .btn-save{
+            margin: 0px !important;
+        }
+    </style>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make($app_template['client.backend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

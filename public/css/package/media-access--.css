@@ -1,0 +1,75 @@
+section#header{
+      background: #f0f0f0;
+      min-height: 168px;
+    }
+
+    .content-wrapper {
+      background: #e6e6e7;
+    }
+
+		h3 {
+			font-weight: bold;
+			color: #e53840;
+		}
+
+    a,
+    h5 {
+      color: #272c30;
+    }
+
+    a,
+    a:hover {
+      text-decoration: underline;
+      color: #272c30;
+    }
+
+    p {
+      color: #a9a9a9;
+    }
+
+    .form-horizontal .control-label {
+      text-align: left !important;
+      font-weight: normal;
+    }
+
+    .form-control {
+      height: 45px;
+      border: none;
+    }
+
+    textarea {
+      border: none;
+    }
+
+    .form-group div.required {
+        position:relative;
+        margin-right:-3px;
+    }
+
+    .form-group div.required:after {
+        position:absolute;
+        content:'*';
+        color:red;
+        right:8px;
+        top:0;
+    }
+
+    .btn-group {
+      margin: 0 5px;
+    }
+
+    .btn-red {
+      background: #e53840;
+      border-radius: 0;
+      color: #fff;
+      text-transform: uppercase;      
+      border: none;
+      padding: 13px 45px;
+    }
+
+    .btn-danger {
+      background-color: #e53840;
+      border-radius: 0;
+      text-transform: uppercase;  
+      line-height: 31px;
+    }

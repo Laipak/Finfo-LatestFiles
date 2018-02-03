@@ -1,0 +1,83 @@
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+          <!-- Sidebar user panel -->
+          <div class="user-panel">
+            <div class="row">
+              <div class="col-md-12">
+                <!-- <div class="image">
+                  <img src="/img/logo-com.png" class="img-responsive" alt="logo" />
+                </div>  -->
+                          
+              </div>
+            </div>
+          </div>
+          
+          <ul class="sidebar-menu" id="menu">
+            <li class="treeview" id="dashboard">
+              <a href="<?php echo e(route('finfo.admin.dashboard')); ?>" id="dash-border-left">
+                <span>Dashboard</span>
+              </a>              
+            </li>
+            <?php if(\Auth::check() && \Auth::user()->user_type_id == 3): ?>
+            <li class="treeview" id="user">
+              <a href="#" id="lfh-border-left">
+                <span>User Manager</span>
+                <i class="fa fa-angle-down pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="<?php echo e(route('finfo.user.backend.list')); ?>">List</a></li>
+                <li><a href="<?php echo e(route('finfo.user.backend.create')); ?>"> Add New</a></li>
+              </ul>
+            </li>
+              <?php endif; ?>
+            <li class="treeview" id="page">
+              <a href="<?php echo e(route('finfo.webpage.backend.list')); ?>" id="dash-border-left">
+                <span>Web page</span>
+              </a>
+            </li>
+            <li class="treeview" id="menu">
+              <a href="<?php echo e(route('finfo.menus.backend.list')); ?>" id="dash-border-left">
+                <span>Menus</span>
+              </a>
+            </li>
+            <li class="treeview" id="client">
+              <a href="<?php echo e(route('finfo.admin.clients.list')); ?>" id="lfh-border-left">
+                <span>Client</span>
+              </a>
+            </li>
+            <li class="treeview" id="billing">
+              <a href="#" id="dash-border-left">
+                <span>Billing</span>
+                <i class="fa fa-angle-down pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li id="m-invoice-1"><a href="<?php echo e(route('finfo.admin.billing.invoice', 1)); ?>">Invoice Paid</a></li>
+                <li id="m-invoice-0"><a href="<?php echo e(route('finfo.admin.billing.invoice', 0)); ?>">Unpaid</a></li>
+                <li id="m-invoice-2"><a href="<?php echo e(route('finfo.admin.billing.invoice', 2)); ?>">Overdue</a></li>
+                <li id="m-invoice-3"><a href="<?php echo e(route('finfo.admin.billing.invoice', 3)); ?>">Cancelled</a></li>
+              </ul>
+              </a>
+            </li>
+            <li class="treeview" id="revenue">
+              <a href="<?php echo e(route('finfo.admin.revenue.list')); ?>" id="lfh-border-left">
+                <span>Revenue/Profit</span>
+              </a>
+            </li>
+            <?php if(Auth::check() && \Auth::user()->user_type_id == 3): ?>
+            <li class="treeview" id="setting">
+              <a href="<?php echo e(route('finfo.admin.setting')); ?>" id="lfh-border-left">
+                <span>Setting</span>
+              </a>
+            </li>
+            <li class="treeview" id="theme">
+              <a href="<?php echo e(route('finfo.admin.theme')); ?>" id="lfh-border-left">
+                <span>Themes</span>
+              </a>
+            </li>
+            <?php endif; ?>
+          </ul>
+        </section>
+        <!-- /.sidebar -->
+      </aside>

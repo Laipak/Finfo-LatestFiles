@@ -1,0 +1,62 @@
+<?php $__env->startSection('title'); ?>
+Newsletter & Broadcast
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+    <section class="content" id="press-release">
+        <?php if(Session::has('global')): ?>
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <?php echo e(Session::get('global')); ?>
+
+            </div>
+        <?php endif; ?>
+        <?php if(Session::has('global-danger')): ?>
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <?php echo e(Session::get('global-danger')); ?>
+
+            </div>
+        <?php endif; ?>
+        <div class="row head-search">
+            <div class="col-sm-6 title-mobile">
+                <lable class="label-title">Subscription</lable>
+            </div>
+       </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div id="box-user" class="box-body">
+                        <table id="table-user" class="table table-bordered table-striped">
+                            <thead>
+                                <tr class="table-header">
+                                 <th>Email</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach($email_sl as $email): ?>
+                                <tr>
+                                    <td><?php echo e($email->email); ?></td>
+                                 </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <input type="hidden" id="url" value="<?php echo e(route('package.admin.newsletter-broadcast.email-seed-list')); ?>">
+        </form>
+    </section>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+    <?php echo Html::style('css/package/press-release.css'); ?>
+
+    <?php echo Html::style('css/dataTables.bootstrap.min.css'); ?>
+
+<?php $__env->stopSection(); ?>
+
+
+
+<?php echo $__env->make($app_template['client.backend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,412 @@
+ .social-scrch-inpt
+    {
+       padding: 12px 18px;
+       border: none;
+       height: auto;
+       line-height: 18px;
+      -webkit-box-shadow: 0px 0px 14px -12px rgba(0,0,0,0.75);
+      -moz-box-shadow: 0px 0px 14px -12px rgba(0,0,0,0.75);
+       box-shadow: 0px 0px 14px -12px rgba(0,0,0,0.75);
+    }
+    .social-scrch-btn
+    {
+       background: #449d44;
+       border: none;
+       border-radius:0!important;
+       color: #fff;
+       padding: 11px 45px;
+       font-size:15px;
+       -webkit-box-shadow: 0px 0px 14px -12px rgba(0,0,0,0.75);
+       -moz-box-shadow: 0px 0px 14px -12px rgba(0,0,0,0.75);
+       box-shadow: 0px 0px 14px -12px rgba(0,0,0,0.75);
+    }
+    
+     .social-update-btn
+    {
+       background: #449d44;
+       border: none;
+       border-radius:0!important;
+       color: #fff;
+       padding: 8px 30px;
+       font-size:15px;
+       -webkit-box-shadow: 0px 0px 14px -12px rgba(0,0,0,0.75);
+       -moz-box-shadow: 0px 0px 14px -12px rgba(0,0,0,0.75);
+       box-shadow: 0px 0px 14px -12px rgba(0,0,0,0.75);
+    }
+    .social-update-btn:hover
+    {
+        background:#449d44!important;
+        color: #fff;
+    }
+    
+     .social-scrch-btn:hover
+    {
+        background:#449d44!important;
+        color: #fff;
+    }
+    
+    .img-circle1{
+        
+    display: inline-block;
+	max-width: 100%;
+	height: auto;
+	padding: 4px;
+	line-height: 1.42857143;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 50px;
+	-webkit-transition: all .2s ease-in-out;
+	-o-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
+        
+        
+    }
+    .head-social-scrch
+    {
+       margin: 50px 0 60px;
+    }
+    .social-hd-sec{
+        background:#fff;
+        padding:17px;
+    }
+    .social-hd-sec-img
+    {
+        float:right;
+    }
+    .social-hd-sec-fb
+    {
+        border-bottom:3px solid #49659f;
+        -webkit-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+        -moz-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+        box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+    }
+    .social-hd-sec-twt
+    {
+        border-bottom:3px solid #45d0ff;
+        -webkit-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+        -moz-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+        box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+    }
+    .social-hd-sec-lkn
+    {
+         border-bottom:3px solid #1d77a5;
+        -webkit-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+        -moz-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+        box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+        
+    }
+    .social-cnt-sec-fb
+    {
+        background:#fff;
+        padding:15px;
+        border-bottom:3px solid #dcdcdc;
+        margin-top:6px;
+        -webkit-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+        -moz-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+        box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+        margin-bottom:15px;
+        /*max-height: 700px;
+        overflow-y: scroll;*/
+        height: 700px;
+        overflow: auto;
+    }
+    
+    .social-cnt-sec-fb-mention{
+        
+          background:#fff;
+        padding:15px;
+        border-bottom:3px solid #dcdcdc;
+        margin-top:6px;
+        -webkit-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+        -moz-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+        box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+        margin-bottom:15px;
+        /*max-height: 700px;
+        overflow-y: scroll;*/
+        height: auto;
+        
+        
+        
+        
+    }
+    
+    
+.social-btn-sec{
+    
+     background: #fff;
+    padding: 15px;
+    border-bottom: 3px solid #dcdcdc;
+    margin-top: 6px;
+    -webkit-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+    -moz-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+    box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+    margin-bottom: 15px;
+    height:140px;
+    width:280px;
+}
+    
+    
+.social-cnt-sec-fb-new{
+    background: #fff;
+    padding: 15px;
+    border-bottom: 3px solid #dcdcdc;
+    margin-top: 6px;
+    -webkit-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+    -moz-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+    box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+    margin-bottom: 15px;
+    height:260px;
+    
+}
+
+
+.social-cnt-sec-fb-new-one{
+    background: #fff;
+    padding: 5px;
+    border-bottom: 3px solid #dcdcdc;
+    margin-top: 6px;
+    -webkit-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+    -moz-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+    box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+    margin-bottom: 15px;
+    
+}
+
+
+.influence-report{
+    width:280px;
+}
+
+/* For Accordian */
+
+.accordion{
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 14px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 13px;
+    transition: 0.4s;
+}
+
+
+
+/* End of Accordian */
+
+.location-style{
+    width:280px;
+    padding-top:10px;
+    padding-left:20px;
+    padding-right:20px;
+    margin-top: -18px;
+}
+
+
+    
+    
+    .social-cnt-sec-fb-itm{
+        border-bottom:1px solid #f0eded;
+        border-bottom: 1px solid #f0eded;
+        padding-left: 50px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        position:relative;
+    }
+    .fb-icon
+    {
+        content:'';
+        display:inline-block;
+      /*background:url('../../img/social/fb-icn.png');*/
+        width:40px;
+        height:42px;
+        position:absolute;
+        top: 16px;
+        left: 1px;
+    }
+    .social-cnt-sec-fb > div:last-child
+    {
+        border:none;
+        margin-bottom: 15px;
+    }
+    .social-cnt-sec-fb-itm h3
+    {
+        font-size: 13px;
+        color: #333;
+        font-weight: 600;
+        margin: 0 0 2px;
+    }
+    .social-cnt-sec-fb-athr
+    {
+        color:#999999;
+        margin-bottom:5px;
+        font-size: 14px;
+    }
+    
+    .social-cnt-sec-fb-athr-1
+    {
+        color:#999999;
+        margin-bottom:5px;
+        font-size: 11px;
+    }
+    .social-cnt-sec-fb-des
+    {
+        color:#777777;
+        margin-bottom:0;
+    }
+    .social-cnt-sec-twit{
+        background:#fff;
+        padding:15px;
+        border-bottom:3px solid #dcdcdc;
+        margin-top:6px;
+        -webkit-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+        -moz-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+        box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+         margin-bottom:15px;
+        /*max-height: 700px;
+        overflow-y: scroll;*/
+        height: 700px;
+        overflow: auto;
+    }
+    .social-cnt-sec-twit-itm{
+        border-bottom:1px solid #f0eded;
+        border-bottom: 1px solid #f0eded;
+        padding-left: 50px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        position:relative;
+    }
+    .twt-icon
+    {
+        content:'';
+        display:inline-block;
+        /*background:url('../../img/social/twit-icn.png');*/
+        width:42px;
+        height:42px;
+        position:absolute;
+        top: 16px;
+        left: 1px;
+    }
+    .social-cnt-sec-twit > div:last-child
+    {
+        border:none;
+        margin-bottom: 15px;
+    }
+    .social-cnt-sec-twit-itm h3
+    {
+        font-size: 15px;
+        color: #333;
+        font-weight: 600;
+        margin: 0 0 7px;
+        display: block;
+        float: left;
+        width: 100%;
+    }
+    .social-cnt-sec-twit-athr
+    {
+        font-size: 14px;
+        color: #999;
+        font-weight: normal;
+    }
+    .social-cnt-sec-twit-dte
+    {
+        float:right;
+        font-weight:normal;
+    }
+    .social-cnt-sec-twit-des
+    {
+        color:#777777;
+        margin-bottom:0;
+    }
+   
+    .social-cnt-sec-lnkin{
+        background:#fff;
+        padding:15px;
+        border-bottom:3px solid #dcdcdc;
+        margin-top:6px;
+        -webkit-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+        -moz-box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+        box-shadow: 0px 0px 10px -2px rgba(209,207,209,0.69);
+         margin-bottom:15px;
+        /* max-height: 700px;
+        overflow-y: scroll;*/
+        
+         height: 700px;
+        overflow: auto;
+        
+    }
+    .social-cnt-sec-lnkin-itm{
+        border-bottom:1px solid #f0eded;
+        border-bottom: 1px solid #f0eded;
+        padding-left: 50px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        position:relative;
+    }
+    .social-cnt-sec-lnkin-itm:after
+    {
+        content:'';
+        display:inline-block;
+        background:url('../../img/social/link-icn.png');
+        width:37px;
+        height:37px;
+        position:absolute;
+        top: 16px;
+        left: 1px;
+    }
+    .social-cnt-sec-lnkin > div:last-child
+    {
+        border:none;
+        margin-bottom: 15px;
+    }
+    .social-cnt-sec-lnkin-itm h3
+    {
+        font-size: 15px;
+        color: #333;
+        font-weight: 600;
+        margin: 0 0 2px;
+    }
+    .social-cnt-sec-lnkin-athr
+    {
+        color:#999999;
+        margin-bottom:5px;
+    }
+    .social-cnt-sec-lnkin-des
+    {
+        color:#777777;
+        margin-bottom:0;
+    }
+    .social-cnt-sec-twit a
+    {
+        color:#33ccff;
+    }
+    .social-xl-sec
+    {
+        text-align:right;
+        margin-top:20px;
+        margin-bottom:0;
+    }
+   .social-xl-sec a {
+        color:#0552d2;
+        font-size:15px;
+        font-weight:normal;
+        text-decoration:underline;
+    }
+    .social-xl-sec a:hover{
+        color:#043874;
+    }
+    .scl-load-sec
+    {
+        text-align:center;
+        margin:35px 0 50px;
+    }
+   .scl-load-sec a {
+     background: #286090;
+     padding: 10px 37px;
+     color: #fff;
+     border-radius: 2px;
+     font-size: 16px;
+     display: inline-block;
+    }

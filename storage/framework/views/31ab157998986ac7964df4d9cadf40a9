@@ -1,0 +1,270 @@
+<?php $__env->startSection('content'); ?>
+	<section class="content" id="list-user">
+		<?php if(Session::has('global')): ?>
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <?php echo e(Session::get('global')); ?>
+
+            </div>
+        <?php endif; ?>
+        <div class="row">
+            <div class="col-sm-6">
+            	<div class="head-search">
+		            <h2 style="margin:0;">Update Profile</h2>
+		        </div>
+                <div class="box">
+                    <div class="box-body">
+                        <?php echo Form::open(array('route' => 'client.admin.profile.update', 'id' => 'frm_profile')); ?>
+
+                            <div class="form-group<?php echo e($errors->has('first_name') ? ' has-error' : ''); ?>">
+                                <?php echo Form::label('first_name', 'First Name'); ?>
+
+                                <?php echo Form::text('first_name', $data['first_name'], ['class' => 'form-control', 'placeholder' => 'First Name']); ?>
+
+                                <?php echo $errors->first('first_name', '<span class="help-block">:message</span>'); ?>
+
+                            </div>
+                        
+                            <div class="form-group<?php echo e($errors->has('last_name') ? ' has-error' : ''); ?>">
+                                <?php echo Form::label('last_name', 'Last Name'); ?>
+
+                                <?php echo Form::text('last_name', $data['last_name'], ['class' => 'form-control', 'placeholder' => 'Last Name']); ?>
+
+                                <?php echo $errors->first('last_name', '<span class="help-block">:message</span>'); ?>
+
+                            </div>
+
+                            <div class="form-group<?php echo e($errors->has('phone') ? ' has-error' : ''); ?>">
+                                <?php echo Form::label('phone', 'Phone'); ?>
+
+                                <?php echo Form::tel('phone', $data['phone'], ['class' => 'form-control', 'placeholder' => 'Phone',' minlength' => 6,  'maxlength' => 20]); ?>
+
+                                <?php echo $errors->first('phone', '<span class="help-block">:message</span>'); ?>
+
+                            </div>
+
+                            <div class="form-group<?php echo e($errors->has('email_address') ? ' has-error' : ''); ?>">
+                                <?php echo Form::label('email_address', 'Email'); ?>
+
+                                <?php echo Form::text('email_address', $data['email_address'], ['class' => 'form-control', 'placeholder' => 'Email']); ?>
+
+                                <?php echo $errors->first('email_address', '<span class="help-block">:message</span>'); ?>
+
+                            </div>
+
+                            <div class="form-group<?php echo e($errors->has('profile_picture') ? ' has-error' : ''); ?>">
+                                <?php echo Form::label('profile_picture', 'Profile picture'); ?>
+
+                                <div class="profile-pic"></div>
+                                <input type="file"  class="hidden" id="profile-pic" name="profile_pic">
+                                <input type="hidden" id="profile_picture" name="profile_picture" value="<?php echo e($data['profile_picture']); ?>">
+                                <?php echo $errors->first('profile_picture', '<span class="help-block">:message</span>'); ?>
+
+                            </div>
+                       
+
+                            <div class="form-group pull-right">
+                                <?php echo Form::submit('Update', ['class' => 'btn btn-primary btn-save']); ?>
+
+                                <a href="<?php echo e(route('client.admin.dashboard')); ?>" class='btn btn-danger btn-overwrite-cancel'>Cancel</a>
+                                
+                            </div>
+
+                            
+                        <?php echo Form::close(); ?>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+            	<div class="head-search">
+		            <h2 style="margin:0;">Update Password</h2>
+		        </div>
+                <div class="box">
+                    <div class="box-body">
+                        <?php echo Form::open(array('route' => 'client.admin.profile.update.password', 'id' => 'frm_password')); ?>
+
+                        	<div class="form-group<?php echo e($errors->has('current_password') || Session::has('message') ? ' has-error' : ''); ?>">
+                                <?php echo Form::label('current_password', 'Current Password'); ?>
+
+                                <?php echo Form::password('current_password', ['class' => 'form-control', 'placeholder' => 'Current Password']); ?>
+
+                                <?php echo $errors->first('current_password', '<span class="help-block">:message</span>'); ?>
+
+
+                                <?php if(Session::has('message')): ?>
+                                    <span class="help-block"><?php echo e(Session::get('message')); ?></span>
+                                <?php endif; ?>
+                            </div>
+
+                            <div class="form-group<?php echo e($errors->has('new_password') ? ' has-error' : ''); ?>">
+                                <?php echo Form::label('new_password', 'New Password'); ?>
+
+                                <?php echo Form::password('new_password',['class' => 'form-control', 'placeholder' => 'New Password', 'minlength' => 8]); ?>
+
+                                <?php echo $errors->first('new_password', '<span class="help-block">:message</span>'); ?>
+
+                            </div>
+                        
+                            <div class="form-group<?php echo e($errors->has('new_password_confirmation') ? ' has-error' : ''); ?>">
+                                <?php echo Form::label('new_password_confirmation', 'Confirm New Password'); ?>
+
+                                <?php echo Form::password('new_password_confirmation', ['class' => 'form-control', 'placeholder' => 'Confirm New Password', 'minlength' => 8]); ?>
+
+                                <?php echo $errors->first('new_password_confirmation', '<span class="help-block">:message</span>'); ?>
+
+                            </div>
+
+                            <div class="form-group pull-right">
+                                <?php echo Form::submit('Update', ['class' => 'btn btn-primary btn-save']); ?>
+
+                                <a href="<?php echo e(route('client.admin.dashboard')); ?>" class="btn btn-danger btn-overwrite-cancel">Cancel</a>
+                            </div>
+                            
+                        <?php echo Form::close(); ?>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+	</section>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('style'); ?>
+	<?php echo Html::style('backend/css/finfo/list-user.css'); ?>
+
+    <style type="text/css">
+        .error{
+            color: red;
+            font-weight: 500;
+        }
+        .profile-pic{
+            margin-top: 15px;
+            width: 100px;
+            min-height: 100px;
+            background-color: #F0F0F0;
+            cursor: pointer;
+            background-image: url("/img/uploader_text.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: 15px;
+            position: relative;
+        }
+        .img-logo{
+            background-color: #DDDDDD;
+            border-radius: 15px;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+    </style>
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('script'); ?>
+<?php echo Html::script('backend/js/jquery.validate.min.js'); ?>
+
+
+<script type="text/javascript">
+    $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN':'<?php echo csrf_token(); ?>'
+            }
+        });
+
+    jQuery.validator.addMethod("pwcheck", function(value, element) {
+       return   /([A-Z])/.test(value) // upper case
+            &&  /([!,%,&,@,#,$,^,*,?,_,~])/.test(value) // has spacial character
+            &&  /[a-z]/.test(value) // has a lowercase letter
+            &&  /\d/.test(value) // has a digit
+    }, "Password must contain at least one letter, one capital letter, number and special character.");
+
+     $("#frm_profile").validate({
+        rules: {
+
+        'email_address'    :{
+                required:   true,
+                email:      true,
+                remote: {
+                          url: '/backend/admin/profile/check-exit-email',
+                          type: "post"
+                      }
+            },
+        'phone' : 'number'
+
+        },
+        messages: {
+                email_address: {
+                    remote: "Email already in use!"
+                }
+            },
+
+        submitHandler: function(form) {
+            form.submit();
+        }
+     });
+
+     $("#frm_password").validate({
+        rules: {
+            'current_password'  : {
+                required: true,
+                pwcheck: true
+            },
+            'new_password'      :   {
+                required:   true,
+                pwcheck: true,
+            },
+            'new_password_confirmation':   {
+                required:   true,
+                pwcheck: true,
+                equalTo: "#new_password"
+            },
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+     });
+    $('.profile-pic').click(function(){
+        $("#profile-pic").click();
+    });
+
+
+
+
+    var logo = $('#profile_picture').val();
+
+    if(logo != ""){
+        $('.profile-pic').html('<img src="/'+logo+'" class="img-logo" style="width:100%;position: absolute; margin: auto;top: 0;left: 0;right: 0;bottom: 0;" >');
+    }
+
+    $("#profile-pic").on('change', function() {
+        var file = this.files[0];
+        var imagefile = file.type;
+
+        var match = ["image/jpeg", "image/png", "image/jpg"];
+        // validate file extension
+        if (!((imagefile == match[0]) || (imagefile == match[1]) || (imagefile == match[2]))) {
+            alert('Please select image file.');
+            $('#profile-pic').val('');
+            return false;
+        } else {
+            var formData = new FormData($('#frm_profile')[0]);
+            $.ajax({
+                url: baseUrl + '/backend/admin/profile/upload/picture',
+                processData: false,
+                contentType: false,
+                type: "POST",
+                data: formData,
+                success: function(data) {
+                    console.log(data);
+                    $('#profile_picture').val(data);
+                    $('.profile-pic').html('<img src="/'+data+'" class="img-logo" style="width:100%;position: absolute; margin: auto;top: 0;left: 0;right: 0;bottom: 0;" >');
+                },
+            });
+        }
+    });
+
+</script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make($app_template['client.backend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,83 @@
+<style>
+a {
+    text-decoration: none!important;
+  }
+</style>
+
+  <!-- Navigation -->
+    <nav class="pge-nvbar navbar navbar-expand-lg thm-bgclr">
+      <div class="container">
+	     <div>
+		 <?php
+            if (!empty($setting->company_logo))
+            {
+            if ($actual_link == '/announcements')
+            { ?>
+               <a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img class="site-logo" src="<?php echo e(!empty($setting->company_logo) ? $setting->company_logo : "/img/banner.jpg"); ?>"/ ></a>
+            <?php } else { ?>
+               <a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img class="site-logo" src="../../../<?php echo e(!empty($setting->company_logo) ? $setting->company_logo : "../img/banner.jpg"); ?>"/ ></a>   
+            <?php } } ?>		
+			<ul class = "fullmenu">
+              <li> <a id="snavvy">
+                <div id="nav-icon"> <span></span> <span></span> <span></span> <span></span> </div>
+                </a> </li>
+              <div class="snavvy-links" id="snavvy-links">
+                <ul class="links">
+                  <li> <a href="<?php echo e(url('/')); ?>"> Home </a> </li>
+                    <li> <a class="sub-ul-lnk"> Company Info  <i class="material-icons">expand_more</i> </a>
+					<ul class="sub-ul" style="display:none;max-height: 200px;overflow-y:scroll">
+				    <?php if(isset($title) && !empty($title)): ?>
+                      <?php foreach($title as $titles): ?>
+                       <li> <a href="<?php echo e(url('company-info/'.$titles->name)); ?>"><?php echo e($titles->title); ?> </a> </li>
+                      <?php endforeach; ?>
+                    <?php endif; ?> 
+					</ul>
+				  </li>
+				  
+		         <?php if(isset($menuPermissions) && !empty($menuPermissions)): ?>
+	 
+            	  	<?php foreach($menuPermissions as $menuPer): ?>
+            	  	
+            	  	<?php if($menuPer->name == 'Financials'): ?>
+  
+                   <li> <a href="<?php echo e(url('/financial-result')); ?>"> Financials </a> </li>
+                   
+                   <?php endif; ?>
+                   <?php if($menuPer->name == 'Stock Info'): ?>
+                  <li> <a href="<?php echo e(url('/stock-information')); ?>"> Stock Info </a> </li>
+                  <?php endif; ?>
+                  <?php if($menuPer->name == 'Annual Reports'): ?>
+                  <li> <a href="<?php echo e(url('/annual-report')); ?>"> Annual Reports </a> </li>
+                  <?php endif; ?>
+                  <?php if($menuPer->name == 'Events'): ?>
+                  <li> <a href="<?php echo e(url('/investor-relations-events')); ?>"> Events </a> </li>
+                  <?php endif; ?>
+                  <?php if($menuPer->name == 'Press Releases'): ?>
+                  <li> <a href="<?php echo e(url('/press-releases')); ?>"> Press Releases </a> </li>
+                  <?php endif; ?>
+                  <?php if($menuPer->name == 'Announcements'): ?>
+                  <li> <a href="<?php echo e(url('/announcements')); ?>"> Announcements </a> </li>
+                  <?php endif; ?>
+                  
+                 
+                <?php endforeach; ?>
+                <?php endif; ?>
+                </ul>
+              </div>
+            </ul>				
+		</div>		
+
+    	<?php if(isset($menuPermissions) && !empty($menuPermissions)): ?>
+          	<?php foreach($menuPermissions as $menuPer): ?>
+          	  	<?php if($menuPer->name == 'Stock Info'): ?>
+          	  	<?php if(isset($resultid) && !empty($resultid)): ?>
+          		<div class="head-stk-info">
+        		<?php echo e($resultid); ?>  <i class="material-icons">keyboard_arrow_up</i>  <?php echo e($result); ?>
+
+          		</div>
+            	<?php endif; ?>	
+       	 	<?php endif; ?>
+            <?php endforeach; ?>
+            <?php endif; ?>
+      </div>
+    </nav>

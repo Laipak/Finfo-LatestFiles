@@ -1,0 +1,187 @@
+@import "pass-lib";
+#top-navbar-1{
+	@media (max-width: 767px) {
+		padding: 0;
+	}
+}
+.logo{
+	height: 80px;
+    margin-top: 10px;
+}
+.navbar-inverse{
+	background-color: transparent;
+	border: none;
+	margin-bottom: 0;
+	border-radius: 0;
+	@media (max-width: 767px) {
+		margin-top: 30px;
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+	//.container{
+		background-color: #b82226;
+		@media (min-width: 767px) {
+			min-height: 100px;
+			padding: 0;
+			.collapse{
+				padding: 0;
+			}
+		}
+	//}
+	.navbar-nav{
+		width: 100%;
+		#home{
+			background-image: url("/img/client/home.png");
+		}
+		#home:hover, #home.menu-active{
+			background-image: url("/img/client/home-red.png") !important;
+		}
+		#leadership{
+			background-image: url("/img/client/board.png");
+		}
+		#leadership:hover, #leadership.menu-active{
+			background-image: url("/img/client/board-red.png");
+		}
+		#stock{
+			background-image: url("/img/client/stock.png");
+		}
+		#stock:hover, #stock.menu-active{
+			background-image: url("/img/client/stock-red.png");
+		}
+		#financial-result{
+			background-image: url("/img/client/finacial.png");
+		}
+		#financial-result:hover, #financial-result.menu-active{
+			background-image: url("/img/client/finacial-red.png");
+		}
+		#annual-rp{
+			background-image: url("/img/client/report.png");
+		}
+		#annual-rp:hover, #annual-rp.menu-active{
+			background-image: url("/img/client/report-red.png");
+		}
+		#press-release{
+			background-image: url("/img/client/press.png");
+		}
+		#press-release:hover, #press-release.menu-active{
+			background-image: url("/img/client/press-red.png");
+		}
+		#announcements{
+			background-image: url("/img/client/announcement.png");
+		}
+		#announcements:hover, #announcements.menu-active{
+			background-image: url("/img/client/announcement-red.png");
+		}
+		#ir-calendar{
+			background-image: url("/img/client/calendar.png");
+		}
+		#ir-calendar:hover, #ir-calendar.menu-active{
+			background-image: url("/img/client/calendar-red.png");
+		}
+		#email-alerts{
+			background-image: url("/img/client/email.png");
+		}
+		#email-alerts:hover, #email-alerts.menu-active{
+			background-image: url("/img/client/email-red.png");
+		}
+		#media-access{
+			background-image: url("/img/client/media.png");
+		}
+		#media-access:hover, #media-access.menu-active{
+			background-image: url("/img/client/media-red.png");
+		}
+		.menu{
+			background-repeat: no-repeat;
+		    background-position: center 20px;
+		    @media (max-width: 767px) {
+			    background-size: 15px;
+			    background-position: 15px;
+			}
+		}
+		@media (max-width: 767px) {
+			margin: 0;
+			border: 1px solid;
+		}
+	}
+	.navbar-nav>li {
+		text-align: center;
+		color: #fff;
+		@media (min-width: 767px) {
+			border-left: 1px solid #fff;
+	    	width: 10%;
+	    	min-height: 100px;
+		}
+		@media (max-width: 767px) {
+			padding: 6px;
+    		border: 1px solid;
+		}
+		.fa{
+			@media (min-width: 767px) {
+				width: 100%;
+				margin-bottom: 15px;
+			}
+		}
+		a{
+			text-decoration: none;
+			color: inherit;
+			padding: 0;
+		    text-align: center;
+			@media (min-width: 767px) {
+			    position: absolute;
+			    height: 100px;
+			    bottom: 0px;
+			    padding-top: 70px;
+			    width: 100%;
+			}
+
+			@media (max-width: 1500px) {
+				font-size: 13px;
+			}
+			@media (max-width: 1200px) {
+				font-size: 12px;
+			}
+			@media (max-width: 991px) {
+				font-size: 9px;
+			}
+			@media (max-width: 767px) {
+				font-size: 15px;
+				text-align: left;
+				padding-left: 40px;
+			}
+		}
+		a:hover{
+			color: inherit;
+		}
+	}
+	.navbar-nav>li:first{
+		border-left: none;
+	}
+	.navbar-nav>li:hover, .menu-active {
+		background-color: #e1e1e1;
+		color: #b82226 !important;
+	}
+}
+.top-content{
+	padding-bottom: 70px;
+	margin-left: 1px;
+}
+.main-footer {
+    background: #fff;
+    padding: 15px;
+    color: #444;
+    //border-top: 1px solid #d2d6de;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+}
+
+
+.main-title {
+    background: #e1e1e1;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 12px 3px;
+}
+
+

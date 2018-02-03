@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEC,eAAM,CACL,UAAU,CAAE,IAAI,CAEjB,sBAAa,CACX,aAAa,CAAE,IAAI,CAErB,iDAAmD,CAClD,oBAAW,CACV,KAAK,CAAE,KAAK,CAGZ,mCAAY,CACX,SAAS,CAAE,IAAI",
+"sources": ["../../sass/_partails/package.scss"],
+"names": [],
+"file": "package.css"
+}

@@ -1,0 +1,86 @@
+<?php $__env->startSection('content'); ?>
+    <section class="content" id="list-menus">
+        <div class="row head-search">
+            <div class="col-sm-6">
+                <h2 style="margin:0;">Edit Menu</h2>
+            </div>
+        </div>
+        <div class="row">
+        <div class="col-sm-6">
+            <div class="box">
+                <div class="box-body">
+                    <?php echo Form::open(array('route' => ['finfo.menus.backend.store', $data->id], 'id' => 'frm_add_menu')); ?>
+
+                        <div class="form-group<?php echo e($errors->has('title') ? ' has-error' : ''); ?>">
+                            <?php echo Form::label('title', 'Title'); ?>
+
+                            <?php echo Form::text('title', $data->title, ['class' => 'form-control', 'placeholder' => 'Title']); ?>
+
+                            <?php echo $errors->first('title', '<span class="help-block">:message</span>'); ?>
+
+                        </div>
+                        <div class="form-group<?php echo e($errors->has('link') ? ' has-error' : ''); ?>">
+                            <?php echo Form::label('link', 'URL: '); ?>
+
+                             <select name="link" class ='form-control'>
+                                <?php foreach( $pageData as $page): ?>
+                                    <?php if($data->link == $page->name): ?>
+                                        <option value="<?php echo e($page->name); ?>" selected='selected'><?php echo e($page->title); ?></option>
+                                    <?php else: ?>
+                                        <option value="<?php echo e($page->name); ?>"><?php echo e($page->title); ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
+                            <?php echo $errors->first('link', '<span class="help-block">:message</span>'); ?>
+
+                        </div>
+                        <div class="form-group<?php echo e($errors->has('ordering') ? ' has-error' : ''); ?>">
+                            <?php echo Form::label('ordering', 'Order: '); ?>
+
+                            <?php echo Form::text('ordering', $data->ordering, ['class' => 'form-control']); ?>
+
+                            <?php echo $errors->first('ordering', '<span class="help-block">:message</span>'); ?>
+
+                        </div>
+                        <div class="form-group" style="margin-top:30px;">
+                            <?php echo Form::submit('Update', ['class' => 'btn btn-primary btn-save']); ?>
+
+                            <a href="<?php echo e(route('finfo.menus.backend.list')); ?>" class='btn btn-danger btn-overwrite-cancel'>Cancel</a>
+                        </div>
+                       
+                    <?php echo Form::close(); ?>
+
+                </div>
+            </div>
+        </div>
+    </section>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+    <?php echo Html::style('css/finfo/customize.css'); ?>
+
+    <style type="text/css">
+        .error{
+            color: red;
+            font-weight: 500;
+        }
+    </style>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('script'); ?>
+<script type="text/javascript">
+    $(document).ready(function(){
+         $("#frm_add_menu").validate({
+            rules: {
+                'title':{required:   true},
+                'link':{required:   true}
+            },
+            submitHandler: function(form) {
+                form.submit();
+            }
+         });
+    });
+</script>
+    <?php echo Html::script('js/jquery.validate.min.js'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make($app_template['backend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

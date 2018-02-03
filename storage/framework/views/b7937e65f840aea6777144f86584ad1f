@@ -1,0 +1,7 @@
+<h2>New newsletter</h2>
+
+
+<p>To unsubscribe newsletter, <a href="<?php echo e($route_unsubscribe); ?>">click here.</a></p>
+
+Best Regards,
+<?php echo e(Session::get('company_name')); ?> Team

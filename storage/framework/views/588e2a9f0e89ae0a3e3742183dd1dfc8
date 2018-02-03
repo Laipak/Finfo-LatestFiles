@@ -1,0 +1,163 @@
+<?php $__env->startSection('content'); ?>
+	<section class="content" id="list-user">
+		<div class="row head-search">
+			<div class="col-sm-6">
+				<h2 style="margin:0;">Edit Page</h2>
+			</div>
+			
+      	</div>
+            
+        <div class="row">
+            <div class="col-md-12">
+                <?php if(Session::has('page_success_updated')): ?>
+                    <div class="col-md-12 alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <?php echo e(trans(Session::get('page_success_updated'))); ?>
+
+                    </div>
+                <?php endif; ?>  
+            </div>
+            <div class="col-md-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <?php echo Form::open(array('route' => ['finfo.webpage.backend.update', $pageData->id ], 'id' => 'frm_edit_page')); ?>
+
+                            <div class="col-sm-12 col-md-6">
+                                <h2>Page Information</h2>
+                                <div class="form-group<?php echo e($errors->has('title') ? ' has-error' : ''); ?>">
+                                    <?php echo Form::label('title', 'Title'); ?>
+
+                                    <?php echo Form::text('title', $pageData->title, ['class' => 'form-control title', 'placeholder' => 'Title']); ?>
+
+                                    <?php echo $errors->first('title', '<span class="help-block">:message</span>'); ?>
+
+                                </div>
+                                <div class="form-group<?php echo e($errors->has('tempate') ? ' has-error' : ''); ?>">
+                                    <p class='url_link'><?php echo 'URL: '.url($pageData->name); ?></p>
+                                </div>
+                                <div class="form-group<?php echo e($errors->has('body') ? ' has-error' : ''); ?>">
+                                    <?php echo Form::label('body', 'Body'); ?>
+
+                                    <?php echo Form::textarea('body', $pageData->content_description, ['class' => 'form-control',  'id' => 'bodyEditor']); ?>
+
+                                    <?php echo $errors->first('slug', '<span class="help-block">:message</span>'); ?>
+
+                                </div>
+                                <h2>SEO(Search Engine Optimize) (Optional)</h2>
+                                <div class="form-group">
+                                    <?php echo Form::label('meta', 'Meta'); ?>
+
+                                    <?php echo Form::text('meta',  $pageData->meta_keyword, ['class' => 'form-control', 'placeholder' => 'Keyword']); ?>
+
+                                </div>
+                                <div class="form-group">
+                                    <?php echo Form::label('description', 'Meta Description'); ?>
+
+                                    <?php echo Form::textarea('description', $pageData->meta_description, ['class' => 'form-control', 'placeholder' => 'Meta Description']); ?>
+
+                                </div>
+                                
+                                <div class="form-group">
+                                    <?php echo Form::submit('Update', ['class' => 'btn btn-primary btn-save ']);; ?>
+
+                                    <a href="<?php echo e(route('finfo.webpage.backend.list')); ?>" class='btn btn-danger btn-overwrite-cancel'>Cancel</a>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-sm-6">
+                                <h2>Settings</h2>
+                                <div class="form-group<?php echo e($errors->has('order') ? ' has-error' : ''); ?>">
+                                    <?php echo Form::label('order', 'Order'); ?>
+
+                                    <?php echo Form::text('order', $pageData->ordering, ['class' => 'form-control', 'placeholder' => '0']); ?>
+
+                                    <?php echo $errors->first('order', '<span class="help-block">:message</span>'); ?>
+
+                                </div>
+                                <div class="form-group<?php echo e($errors->has('tempate') ? ' has-error' : ''); ?>">
+                                    <?php echo Form::label('status', 'Status'); ?>
+
+                                    <?php echo Form::select('status', array('1' => 'Live', '0' => 'Draft' ), $pageData->is_active, ['class' => 'form-control'] ); ?>
+
+                                </div>
+                                <div class="form-group<?php echo e($errors->has('name') ? ' has-error' : ''); ?>">
+                                    <?php echo Form::label('name', 'Page Url'); ?>
+
+                                    <?php echo Form::text('name', $pageData->name, ['class' => 'form-control name', 'placeholder' => 'Slug']); ?>
+
+                                    <?php echo $errors->first('name', '<span class="help-block">:message</span>'); ?>
+
+                                </div>
+                                <input type='hidden' id="baseUrl" value="<?php echo e(url()); ?>"/>
+                            </div>
+                            <?php echo Form::close(); ?>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+    <?php echo Html::style('backend/css/finfo/summernote.css'); ?>
+
+    <?php echo Html::style('backend/css/finfo/customize.css'); ?>
+
+    <style type="text/css">
+        .error{
+            color: red;
+            font-weight: 500;
+        }
+    </style>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+<script>
+    $(document).ready(function(){
+        function sendFile(file, editor, welEditable) {
+            data = new FormData();
+            data.append("file", file);
+            $.ajax({
+                url: "/backend/admin/webpage/move-upload-image",
+                data: data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                type: 'POST',
+                success: function(data){
+                    $('.note-editable').append('<img src="/'+data+'" >');
+                    $('#bodyEditor').summernote("insertImage", data, 'filename');
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus+" "+ errorThrown);
+                }
+            });
+        }
+        $('#bodyEditor').summernote({
+                onImageUpload: function(files, editor, $editable) {
+                    sendFile(files[0],editor,$editable);
+                },      
+                height: 200
+        });
+        $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN':'<?php echo csrf_token(); ?>'
+            }
+        });
+        $('.title').blur(function(){
+            var page_name = $(this).val();
+            if ($('.name').val() !== "") {
+                page_name = $('.name').val();
+            }
+            $('.url_link').html('URL: '+ $('#baseUrl').val()+ '/' + page_name);
+        });
+        $('.name').blur(function(){
+            var page_name = $(this).val(); 
+            $('.url_link').html('URL: '+ $('#baseUrl').val()+ '/' + page_name);
+        });
+    });
+</script>
+<?php echo Html::script('backend/js/finfo/summernote.min.js'); ?>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make($app_template['backend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,180 @@
+<?php $__env->startSection('content'); ?>
+
+<?php 
+$actual_link ="$_SERVER[REQUEST_URI]";
+
+?>
+
+<style type="text/css">
+.selectclass {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+</style>
+    <!-- Navigation -->
+    <nav class="pge-nvbar navbar navbar-expand-lg thm-bgclr">
+      <div class="container">
+	     <div>
+		 <?php
+            if (!empty($setting->company_logo))
+            {
+            if ($actual_link == '/announcements')
+            { ?>
+               <a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img class="site-logo" src="<?php echo e(!empty($setting->company_logo) ? $setting->company_logo : "/img/banner.jpg"); ?>"/ ></a>
+            <?php } else { ?>
+               <a class="navbar-brand" href="<?php echo e(url('/')); ?>"><img class="site-logo" src="../<?php echo e(!empty($setting->company_logo) ? $setting->company_logo : "../img/banner.jpg"); ?>"/ ></a>   
+            <?php } } ?>		
+			<ul class = "fullmenu">
+              <li> <a id="snavvy">
+                <div id="nav-icon"> <span></span> <span></span> <span></span> <span></span> </div>
+                </a> </li>
+              <div class="snavvy-links" id="snavvy-links">
+                <ul class="links">
+                  <li> <a href="<?php echo e(url('/')); ?>"> Home </a> </li>
+                    <li> <a class="sub-ul-lnk"> Company Info  <i class="material-icons">expand_more</i> </a>
+					<ul class="sub-ul" style="display:none;">
+				    <?php if(isset($title) && !empty($title)): ?>
+                      <?php foreach($title as $titles): ?>
+                       <li> <a href="<?php echo e(url('company-info/'.$titles->name)); ?>"><?php echo e($titles->title); ?> </a> </li>
+                      <?php endforeach; ?>
+                    <?php endif; ?> 
+					</ul>
+				  </li>
+                <?php if(isset($menuPermissions) && !empty($menuPermissions)): ?>
+	 
+            	  	<?php foreach($menuPermissions as $menuPer): ?>
+            	  	
+            	  	<?php if($menuPer->name == 'Financials'): ?>
+  
+                   <li> <a href="<?php echo e(url('/financial-result')); ?>"> Financials </a> </li>
+                   
+                   <?php endif; ?>
+                   <?php if($menuPer->name == 'Stock Info'): ?>
+                  <li> <a href="<?php echo e(url('/stock-information')); ?>"> Stock Info </a> </li>
+                  <?php endif; ?>
+                  <?php if($menuPer->name == 'Annual Reports'): ?>
+                  <li> <a href="<?php echo e(url('/annual-report')); ?>"> Annual Reports </a> </li>
+                  <?php endif; ?>
+                  <?php if($menuPer->name == 'Events'): ?>
+                  <li> <a href="<?php echo e(url('/investor-relations-events')); ?>"> Events </a> </li>
+                  <?php endif; ?>
+                  <?php if($menuPer->name == 'Press Releases'): ?>
+                  <li> <a href="<?php echo e(url('/press-releases')); ?>"> Press Releases </a> </li>
+                  <?php endif; ?>
+                  <?php if($menuPer->name == 'Announcements'): ?>
+                  <li> <a href="<?php echo e(url('/announcements')); ?>"> Announcements </a> </li>
+                  <?php endif; ?>
+                  
+                 
+                <?php endforeach; ?>
+                <?php endif; ?>
+                </ul>
+              </div>
+            </ul>				
+		</div>		
+		<?php if(isset($menuPermissions) && !empty($menuPermissions)): ?>
+          	<?php foreach($menuPermissions as $menuPer): ?>
+          	  	<?php if($menuPer->name == 'Stock Info'): ?>
+          	  	<?php if(isset($resultid) && !empty($resultid)): ?>
+          		<div class="head-stk-info">
+        		<?php echo e($resultid); ?>  <i class="material-icons">keyboard_arrow_up</i>  <?php echo e($result); ?>
+
+          		</div>
+            	<?php endif; ?>	
+       	 	<?php endif; ?>
+            <?php endforeach; ?>
+            <?php endif; ?>
+      </div>
+    </nav>
+	<div class="clearfix"></div>
+    <header class="pge-header thm-bgclr">
+      <div class="container">        
+        <div class="row">          
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12">           
+              <h3>Sitemap</h3>  
+          </div>          
+        </div>        
+      </div>
+    </header>
+
+    <!--cmpy Info -->
+    <section class="page-cnt-sec">
+      <div class="container">
+	<div class="page-cnt-sec-lay">
+	   <div class="page-cnt-sec-inr">						
+	     <div class="ance-pge-sec">
+	 	<div class="row">
+		  
+		         <div class="col-md-12" id="table">
+        <div class="content-data sitemap">
+            <ul>
+                <li><a href='/' title='Home'>Home</a></li>
+                <?php if(Session::get('set_package_id') != 1): ?> 
+                    <li>
+                        <a href='<?php echo e(route('client.company_info.slug')); ?>' title='Home'>Company info</a>
+                        <ul class="sub-title">
+                            <?php foreach($sitemap['pages'] as $sitemapPages): ?>
+                                <li><a href='<?php echo e(route('client.company_info.slug',$sitemapPages->name)); ?>' title='<?php echo e($sitemapPages->title); ?>'><?php echo e($sitemapPages->title); ?></a></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </li>
+                <?php endif; ?>
+                <?php foreach($sitemap['modules'] as $sitemapModules): ?>
+                    <?php if(!empty($sitemapModules->route_frontend)): ?>
+                        <li><a href='<?php echo e(route($sitemapModules->route_frontend)); ?>' title='<?php echo e($sitemapModules->name); ?>'><?php echo e($controller->getMenuNavigation($sitemapModules->route_frontend)); ?></a></li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                
+            </ul>
+        </div>
+    </div>
+	
+					
+		</div>
+	  </div>
+	  </div>
+	  </div>
+	  </div>
+    </section>	
+	
+
+    <!-- Footer -->
+      <footer>
+      <div class="container">
+		<div class="row">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-6">
+				<p class="cpy-txt">Copyright &copy; 2017 <?php echo e($setting->company_name); ?> (SINGAPORE) PTE LTD. All rights reserved.</p>
+			</div>
+			<div class="col-12 col-sm-12 col-md-12 col-lg-6">
+			<form class="form-inline">
+			  <div class="form-group col-12 col-sm-3 col-md-3 col-lg-3">				
+				<a href="<?php echo e(route('client.sitemap')); ?>" class="sit-map-txt hme-anc-itm-lnk">Sitemap</a>
+			  </div>
+			  <div class="form-group col-8 col-sm-8 col-md-8 col-lg-8 nws-subs-sec">				
+				<input type="email" class="form-control subemail" id="email" placeholder="Enter email to subscribe to newsletter">
+			  </div>
+			  <div class="form-group col-3 col-sm-1 col-md-1 col-lg-1">	
+				<div class="row"><button type="submit" class="btn subs-btn"><i class="material-icons">send</i></button></div>
+			</div>
+			</form>		
+			</div>
+		</div>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+
+
+
+
+
+<?php $__env->stopSection(); ?>
+
+
+
+
+
+
+<?php echo $__env->make('resources.views.templates.client.template2.frontendhome', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

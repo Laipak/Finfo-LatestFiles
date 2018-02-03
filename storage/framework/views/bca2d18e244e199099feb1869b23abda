@@ -1,0 +1,76 @@
+    <?php $__env->startSection('content'); ?>
+        <section class="content" id="leadership">
+            <ul id="sub-menu1">
+            <?php if(isset($contents) && !empty($contents)): ?>
+                <?php foreach($contents as $content): ?>
+                    <li><a href="<?php echo e(route('client.company_info.slug', $content->name)); ?>"><?php echo e($content->title); ?></a></li>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            </ul>
+
+            <?php if(isset($dataContents) && !empty($dataContents)): ?>
+                <?php foreach($dataContents as $contentPage): ?>
+                    <div class="row main-title">
+                        <div class="col-md-12">
+                             <?php echo e($contentPage['title']); ?>
+
+                        </div>
+                    </div>                
+                    <?php echo $contentPage['content_description']; ?>
+
+                <?php endforeach; ?>
+            <?php endif; ?>    
+        </section>
+
+    <?php $__env->stopSection(); ?>
+    <?php $__env->startSection('style'); ?>
+            <?php echo Html::style('backend/css/client/leadership.css'); ?>
+
+        <style type="text/css">
+            #leadership .img-profile { margin-bottom: 24px; }
+            .top-content{
+                position: relative;
+            }
+            @media(max-width: 767px) {
+                .top-content, ul#sub-menu1 { margin-top: 0 !important;}
+                
+            }
+            @media (max-width: 375px) {
+                ul#sub-menu1 {
+                    width: 111%;
+                }
+            }
+        </style>
+        <?php if(isset($contents) && !empty($contents)): ?>
+             <style type="text/css">
+                    
+                    @media(max-width: 767px) {
+                        ul#sub-menu1 { 
+                            display: flex;
+                        }
+                        .top-content{
+                            margin-top: 30px;
+                        }                       
+                    }
+             </style>
+
+        <?php endif; ?>
+    <?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+    <script type="text/javascript">
+        $('.active').removeClass('menu-active');
+        $('#leadership').addClass('menu-active');
+    </script>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('seo'); ?>
+<?php if(isset($dataContents) && !empty($dataContents)): ?>
+<?php foreach($dataContents as $contentPage): ?>
+<title><?php echo e(ucfirst(Session::get('company_name'))); ?> | <?php echo e($contentPage['title']); ?></title>
+<meta name="description" content="<?php echo e(isset($contentPage['meta_description']) ?  $contentPage['meta_description'] : ""); ?>">
+<meta name="keywords" content="<?php echo e(isset($contentPage['meta_keyword']) ? $contentPage['meta_keyword'] : ""); ?>">
+<?php endforeach; ?>
+<?php endif; ?>    
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make($app_template['client.frontend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

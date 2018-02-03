@@ -1,0 +1,430 @@
+<?php $__env->startSection('content'); ?>
+<?php if($active_theme == "default"): ?>
+<section class="content">
+<div class="row title" id="ir-calendar">
+    <div class="col-md-12">
+        Investor Relations Events
+    </div>
+</div>
+<div class="row option-row" style="margin-bottom: 25px;">
+    <div class="col-xs-6 col-md-2">  
+   <!--  <div class="col-xs-6 col-md-2">   -->  
+        <?php echo Form::open(
+                    array(
+                    'url'=>route('package.investor-relations-calendar'),
+                    'method' => 'GET', 
+                    'onchange'=>'this.submit()')
+                ); ?>
+
+            <!-- <select class="form-control option-events" name="filter">
+                <option value="desc" <?php echo e(isset($_GET['filter']) && $_GET['filter'] == 'desc'? "selected" : ""); ?>>Upcoming</option>
+                <option value="asc"  <?php echo e(isset($_GET['filter']) && $_GET['filter'] == 'asc'? "selected" : ""); ?>>Past</option>
+            </select>  -->   
+        <?php echo Form::close(); ?>
+
+    </div>
+	<div class="col-xs-12 col-md-11">		
+        <div class="box-body table-responsive">
+            <div id='calendar'></div>
+        </div>        
+	</div>
+    <div class="col-xs-12 col-md-1 btn-events">    
+        <div class="button-more btn_list"><i class="fa fa-list-ul"></i></div><div class="button-more btn_calendar"><i class="fa fa-calendar"></i></div>    
+    </div>
+</div>
+</section>
+<?php else: ?> 
+
+    <h2>Calendar</h2>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <span style="font-size: 17px">View</span>
+                <div class="btn-group">
+                    <?php $value = ['calendar'=>"Events", 'listing'=> 'Listing'] ?>
+                    <?php echo Form::open(array('url'=>route('package.investor-relations-calenda.get-filter-data-listing'),'method' => 'GET')); ?>
+
+                        <?php echo Form::select('view', $value , (isset($_GET['view']))?$_GET['view']:'' , array('class'=>'form-control sort','onchange'=>'this.form.submit()')); ?>
+
+                    <?php echo Form::close(); ?>
+
+                </div>
+            </div>            
+        </div>
+
+        <div class="col-md-10">
+
+            <?php if(isset($_GET['view']) && $_GET['view'] == 'listing'): ?>
+                <div class="row title-row">
+                    <div class="col-xs-12 col-sm-9 col-md-9 right-td-col">
+                        New Event
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 left-td-col">
+                        Date
+                    </div>                   
+                </div>
+                <?php foreach($data as $even): ?>    
+                <div class="row event-row">
+                    <div class="col-xs-12 col-sm-9 col-md-9 right-td-col">
+                        <a href="/<?php echo e($even->upload); ?>" target="_brank"><?php echo e($even->event_title); ?></a>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 left-td-col">
+                        <?php echo e(date("d F, Y", strtotime($even->event_datetime))); ?>
+
+                    </div>                   
+                </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="row option-row" style="margin-bottom: 25px;">
+                    <div class="col-md-12">     
+                        <div class="box-body table-responsive">
+                            <div id='calendar'></div>
+                        </div>        
+                    </div>
+                </div>
+            <?php endif; ?>
+        </div>
+
+    </div>
+
+<?php endif; ?>
+<input type="hidden" id="view_type" value="listing">
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('seo'); ?>
+    <title><?php echo e(ucfirst(Session::get('company_name'))); ?> | Investor relations events</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+    <?php if($active_theme == "default"): ?>
+        <?php echo Html::style('backend/css/package/general-style.css'); ?>
+
+        <style>
+            .title-row {
+            margin-top: 15px;
+            background: #414950;            
+            }
+            .title-row .left-td-col,
+            .title-row .right-td-col {            
+                color: #fff;
+                font-weight: bold;
+                padding: 8px 15px;
+            }
+            .event-row:nth-child(even) {
+                background: #f0f0f0;
+            }
+
+            .left-td-col,
+            .right-td-col {
+                padding: 15px;
+            }
+
+            .left-td-col {
+                color: #272c30;
+            }
+
+            .right-td-col a {
+                color: #e53840;
+                text-decoration: none;
+            }
+
+.fc-future
+{
+
+
+background-color: #dfdfe2 !important;
+
+}
+.fc-past
+
+
+{
+
+background-color: #92bf9d !important;
+color:#fff !important;
+
+}
+.fc-today
+
+{
+
+background-color: #96bfe9 !important;
+
+}
+
+.fc-other-month
+{
+background-color: #ccb366 !important;
+
+}
+
+
+
+            @media (max-width: 1024px) {
+                .left-td-col{
+                    padding-bottom: 0px;
+                }
+                .right-td-col {
+                    padding-top: 5px;
+                } 
+                .option-events{
+                    margin-bottom: 20px;
+                    margin-left: 0px !important;
+                }
+                .btn-events {
+                    margin-top: 10px;
+                }
+            }
+            .option-events {
+                padding-left:5px !important;
+                padding-right:5px !important;
+            }
+        </style>
+    <?php endif; ?>
+	<?php echo Html::style('backend/plugins/fullcalendar/fullcalendar.css'); ?>
+
+	<style type="text/css">
+        .btn_list{
+            margin-bottom: 10px !important;
+        }
+        div.table-responsive {
+            overflow-x: visible;
+        }
+        th{
+            background-color: #414950;
+            color: #ffffff;
+        }
+        .sort {
+            height: 38px !important;
+        }
+        #calendar, #content .col-md-10 #calendar{
+            background-color: #fff;
+            min-width: 600px;
+        }
+		.fc-toolbar {
+			border: 1px solid #ddd;
+            background-color: #f0f0f0;
+			margin: 0;
+            padding: 10px 9px;
+		}
+		.fc-toolbar button {
+		    border: none;
+		}
+		.fc table {
+			background: transparent;
+		}
+		.fc th {
+		    padding: 5px 0;
+		    border: none;
+		    font-size: 16px;
+		    font-weight: normal;
+		}
+		.fc-ltr .fc-basic-view .fc-day-number {
+		    text-align: left;
+		    color: #75b600;
+		    padding-left: 14px;
+		    font-size: 14px;
+		}
+		.fc td {
+			border-color: #fff;
+			border-width: 0px;
+		    padding: 1px 0;
+		    border: 1px solid #fff;
+		}
+		.fc-event {
+			border-radius: 0;
+			padding: 4px;
+			padding-left: 11px;
+			background: #56cccb;
+            border: 0px solid #56cccb;
+		}
+		.fc-other-month {
+			background-color:#92bf9d;
+            opacity: 1 !important;
+            color: #fff !important;
+		}
+        .fc-past{
+            color: #fff;
+        }
+        .fc-day{
+            border: 1px solid #f0f0f0 !important;
+        }
+        .fc-day-header{
+            background-color: #fff !important;
+            color: #6D6565;
+        }
+        .fc-left, .fc-right{
+            margin-top: 0px;
+        }
+        .fc-state-default {
+            background-color: #F0F0F0 !important; 
+            border: 0;
+            background-image: none !important;
+            box-shadow: none !important;
+            color: #b5b5b5 !important;
+        }
+        .fc-center{
+            color: #b5b5b5 !important;
+        }
+        .fc-center h2{
+            font-size: 24px;
+        }
+        .fc-other-event {
+            background: red;
+        }
+        .fc-day-grid-event > .fc-content {
+            white-space: normal;
+        }
+        tr:nth-child(odd) {
+            background-color: transparent;
+        }
+        
+        /*overide style*/
+        .fc-toolbar{
+            width: 100%;
+            display: inline-table;
+        }
+        .button-more{
+            width: 5%;
+            display: inline-table;
+            border: 1px solid #ddd;
+            background-color: #f0f0f0;
+            margin: -1px;
+            padding: 12px 20px;
+            font-size: 22px;
+            height: 46px;
+            padding-bottom: 8px;
+            cursor: pointer;
+        }
+        #calendar .title-row, #calendar .event-row{
+            margin: 0;
+        }
+        .fa-caret-right, .fa-caret-left, .button-more{
+                color: #a9a9a9;
+        }
+     
+	</style>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+	<?php echo Html::script('backend/plugins/fullcalendar/moment.min.js'); ?>
+
+    <?php echo Html::script('backend/plugins/fullcalendar/fullcalendar.js'); ?>
+
+    <script type="application/javascript">
+    	$('.menu-active').removeClass('menu-active');
+	    $('#ir-calendar').addClass('menu-active');
+
+        $(document).ready(function() {
+            render_calendar();
+            <?php if(!isset($_GET['type'])): ?> 
+                getListing();
+            <?php else: ?> 
+                $('#view_type').val('calendar');
+            <?php endif; ?>
+            
+            var content_calendar = '';
+            // var content_listing = '<div class="row title-row"><div class="col-xs-12 col-sm-3 col-md-3 left-td-col">Date</div><div class="col-xs-12 col-sm-8 col-md-8 right-td-col">New Event</div></div><div class="row event-row"><div class="col-xs-12 col-sm-3 col-md-3 left-td-col">2016-01-13</div><div class="col-xs-12 col-sm-8 col-md-8 right-td-col"><a href="/" target="_brank">testing </a></div></div>';
+            // var content_other = '<div class="button-more btn_list"><i class="fa fa-list-ul"></i></div><div class="button-more btn_calendar"><i class="fa fa-calendar"></i></div>';
+
+            //$('#calendar .fc-toolbar').after(content_other);
+
+            $('body .btn_list').click(function(){
+                $('#view_type').val('listing');
+                //console.log($('#view_type').val());
+                getListing();
+            });
+
+            $('body .btn_calendar').click(function(){
+                window.location.href = "<?php echo e(URL::to('/backend/investor-relations-events?type=calendar')); ?>";
+            });
+
+            $('body .fc-left').click(function(){
+                getListing();
+            });
+
+            $('body .fc-right').click(function(){
+                getListing();
+            });
+
+
+        });
+
+        function render_calendar(){
+            var value = '';
+            $.ajax({
+                url: '/backend/event/get-data',
+                async: false,
+                data: [''],
+                    success: function(data) {
+                        value = data;
+                    }
+                        
+            }).done(function(){
+                //console.log(value);
+                var date = new Date();
+                var d = date.getDate(),
+                        m = date.getMonth(),
+                        y = date.getFullYear();
+                $('#calendar').fullCalendar({
+                    //aspectRatio: 5,
+                    header: {
+                        right: 'next',
+                        center: 'title',
+                        left: 'prev,',
+                        //right: 'month,agendaWeek,agendaDay'
+                    },
+                    titleFormat: 'MMMM',
+                    buttonText: {
+                        today: 'today',
+                        // month: 'month',
+                        // week: 'week',
+                        // day: 'day'
+                    },
+                    columnFormat: {
+                        month: 'dddd',
+                    },
+
+                    eventRender: function(event, element, view) {
+                        var timeText = moment(event.start).format("hh:mm a");
+                        //console.log(timeText);           
+                        //return $('<a class="fc-day-grid-event fc-event fc-start fc-end"><div class="fc-content"><span class="fc-title">'+event.title+'</span>  <span class="fc-time">('+timeText+')</span> </div></a>'); 
+                        return $('<a class="fc-day-grid-event fc-event fc-start fc-end"><div class="fc-content"><span class="fc-title">'+event.title+'</span>  </div></a>');       
+                    },
+
+                    //Random default events
+                    events: value,
+                });
+            });
+            //value = [];
+
+
+        }
+
+        function getListing()
+        {
+            if($('#view_type').val() == 'listing'){
+                content_calendar = $('body .fc-view-container').html();
+                var moment = $('#calendar').fullCalendar('getDate');
+                month = moment.format("M");
+                year = moment.format("YYYY");
+
+                listing_value = '';
+                $.ajax({
+                    url: '/backend/event/ajax-get-data-listing',
+                    async: false,
+                    type: "POST",
+                    data: {month : month, year: year},
+                        success: function(data) {
+                            listing_value = data;
+                        }
+                            
+                }).done(function() {
+                    $('body .fc-view-container').html(listing_value);
+                });
+            }
+        }
+        
+    </script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make($app_template['client.frontend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

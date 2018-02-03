@@ -1,0 +1,66 @@
+<?php $__env->startSection('content'); ?>
+    <section class="content" id="leadership">
+        <ul id="sub-menu1">
+            <?php if(isset($contents) && !empty($contents)): ?>
+                <?php foreach($contents as $content): ?>
+                   <li><a href="<?php echo e(route('client.company_info.slug', $content->name)); ?>"><?php echo e($content->title); ?></a></li>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            </ul>
+         <?php if(isset($slugContents) && !empty($slugContents)): ?>
+            <?php foreach($slugContents as $page): ?>
+          
+                <div class="row main-title">
+                    <div class="col-md-12">
+                         <?php echo $page['title']; ?>
+
+                    </div>
+                </div>
+           <?php echo $page['content_description']; ?>
+
+            <?php endforeach; ?>  
+        <?php endif; ?>
+    </section>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+	<?php echo Html::style('backend/css/client/leadership.css'); ?>
+
+    <style type="text/css">
+        #leadership .img-profile { margin-bottom: 24px; }
+    </style>
+    <?php if(isset($contents) && !empty($contents)): ?>
+         <style type="text/css">
+                
+                @media(max-width: 767px) {
+                    ul#sub-menu1 { 
+                        display: flex;
+                    }
+                    .top-content{
+                        margin-top: 30px;
+                    }
+                    .top-content, ul#sub-menu1 { margin-top: 0 !important;}
+                }
+                
+         </style>
+    <?php endif; ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+
+ <script type="text/javascript">
+        $('.active').removeClass('menu-active');
+        $('#leadership').addClass('menu-active');
+    </script>
+
+<?php $__env->stopSection(); ?>
+  
+<?php $__env->startSection('seo'); ?>
+<?php if(isset($slugContents) && !empty($slugContents)): ?>
+<?php foreach($slugContents as $page): ?>
+<title><?php echo e(ucfirst(Session::get('company_name'))); ?> | <?php echo e($page['title']); ?></title>
+<meta name="description" content="<?php echo e(isset($page['meta_description']) ?  $page['meta_description'] : ""); ?>">
+<meta name="keywords" content="<?php echo e(isset($page['meta_keyword']) ? $page['meta_keyword'] : ""); ?>">
+<?php endforeach; ?>
+<?php endif; ?>    
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make($app_template['client.frontend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

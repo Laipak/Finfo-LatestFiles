@@ -1,0 +1,33 @@
+// =========================== media query mixin ===============================
+@mixin media-query-max($screen) {
+    @media (max-width: $screen) { @content; }
+}
+@mixin media-query($screen) {
+    @media only screen and (max-width: $screen) { @content; } // <=
+}
+@mixin media-query-min($screen) {
+    @media only screen and (min-width: $screen) { @content; } //>=
+}
+@mixin media-query-max-min($min,$max) {
+    @media (min-width: $min) and  (max-width: $max) { @content; }
+}
+@mixin media-height($screen){
+	 @media only screen and (max-height: $screen) { @content; } // <=
+}
+@mixin media-height-min($screen){
+	 @media only screen and (min-height: $screen) { @content; } // <=
+}
+@mixin radius($px){
+	border-radius: $px !important;
+	-moz-border-radius: $px;
+	-webkit-border-radius: $px;
+}
+
+@mixin  media-query-device-max-min($min,$max){
+  @media only screen and (min-device-width : $min) and (max-device-width : $max){ @content; }
+}
+@mixin media-query-max-min-orientation($min, $max,$orientation ){
+  @media only screen and (min-device-width : $min) and (max-device-width : $max) and (orientation : portrait) { @content;}
+}
+
+

@@ -1,0 +1,194 @@
+<?php $__env->startSection('title'); ?>
+Company Profile
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+	<section class="content" id="company">
+		<?php if(Session::has('global')): ?>
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <?php echo e(Session::get('global')); ?>
+
+            </div>
+        <?php endif; ?>
+        <div class="row head-search">
+            <div class="col-sm-6">
+                <lable class="label-title">Edit Company Profile</lable>
+            </div>
+        </div>
+
+            <div class="box">
+                <div class="box-body">
+                <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <?php echo Form::open(array('route' => 'client.admin.company.update','files'=> true, 'id' => 'frm-company')); ?>
+
+                        <div class="form-group<?php echo e($errors->has('company_name') ? ' has-error' : ''); ?>">
+                            <?php echo Form::label('company_name', 'Company Name'); ?>
+
+                            <?php echo Form::text('company_name', $data['company_name'], ['class' => 'form-control', 'placeholder' => 'Company Name', 'readonly']); ?>
+
+                            <?php echo $errors->first('company_name', '<span class="help-block">:message</span>'); ?>
+
+                        </div>
+                    
+                        <div class="form-group<?php echo e($errors->has('finfo_account_name') ? ' has-error' : ''); ?>">
+                            <?php echo Form::label('finfo_account_name', 'Finfo Account Name'); ?>
+
+                            <?php echo Form::text('finfo_account_name', $data['finfo_account_name'], ['class' => 'form-control', 'placeholder' => 'Finfo Account Name', 'readonly']); ?>
+
+                            <?php echo $errors->first('finfo_account_name', '<span class="help-block">:message</span>'); ?>
+
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('phone') ? ' has-error' : ''); ?>">
+                            <?php echo Form::label('phone', 'Phone'); ?>
+
+                            <?php echo Form::tel('phone', $data['phone'], ['class' => 'form-control', 'placeholder' => 'Phone', 'minlength' => '6', 'maxlength' => '20']); ?>
+
+                            <?php echo $errors->first('phone', '<span class="help-block">:message</span>'); ?>
+
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('address') ? ' has-error' : ''); ?>">
+                            <?php echo Form::label('address', 'Address'); ?>
+
+                            <?php echo Form::text('address', $data['address'], ['class' => 'form-control', 'placeholder' => 'Address']); ?>
+
+                            <?php echo $errors->first('address', '<span class="help-block">:message</span>'); ?>
+
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('email_address') ? ' has-error' : ''); ?>">
+                            <?php echo Form::label('email_address', 'Email'); ?>
+
+                            <?php echo Form::text('email_address', $data['email_address'], ['class' => 'form-control', 'placeholder' => 'Email']); ?>
+
+                            <?php echo $errors->first('email_address', '<span class="help-block">:message</span>'); ?>
+
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('website') ? ' has-error' : ''); ?>">
+                            <?php echo Form::label('website', 'Website'); ?>
+
+                            <?php echo Form::text('website', $data['website'], ['class' => 'form-control', 'placeholder' => 'Website']); ?>
+
+                            <?php echo $errors->first('website', '<span class="help-block">:message</span>'); ?>
+
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('established') ? ' has-error' : ''); ?>">
+                            <?php echo Form::label('established', 'Established'); ?>
+
+                            <?php echo Form::text('established', strtotime($data['established_at']) > 0 ? date('d F, Y' , strtotime($data['established_at'])) : "", ['class' => 'form-control', 'placeholder' => 'established', 'id' => 'established']); ?>
+
+                            <?php echo $errors->first('established', '<span class="help-block">:message</span>'); ?>
+
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('number_of_employee') ? ' has-error' : ''); ?>">
+                            <?php echo Form::label('number_of_employee', 'Number of Employee'); ?>
+
+                            <?php echo Form::number('number_of_employee', $data['number_of_employee'], ['class' => 'form-control', 'placeholder' => 'Number of Employee']); ?>
+
+                            <?php echo $errors->first('number_of_employee', '<span class="help-block">:message</span>'); ?>
+
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('common_stock') ? ' has-error' : ''); ?>">
+                            <?php echo Form::label('common_stock', 'Common Stock'); ?>
+
+                            <?php echo Form::number('common_stock', $data['common_stock'], ['class' => 'form-control', 'placeholder' => 'Common Stock']); ?>
+
+                            <?php echo $errors->first('common_stock', '<span class="help-block">:message</span>'); ?>
+
+                        </div>
+
+                        <div class="form-group<?php echo e($errors->has('main_business_activities') ? ' has-error' : ''); ?>">
+                            <?php echo Form::label('main_business_activities', 'Main Business Activities'); ?>
+
+                            <?php echo Form::text('main_business_activities', $data['main_business_activities'], ['class' => 'form-control', 'placeholder' => 'Main Business Activities']); ?>
+
+                            <?php echo $errors->first('main_business_activities', '<span class="help-block">:message</span>'); ?>
+
+                        </div>
+                        
+                        <div class="form-group footer">
+                            <?php echo Form::submit('Update', ['class' => 'btn btn-primary btn-save']); ?>
+
+                            <a href="<?php echo e(route('client.admin.dashboard')); ?>" class='btn btn-danger btn-overwrite-cancel'>Cancel</a>
+                        </div>
+
+    
+                        
+                    <?php echo Form::close(); ?>
+
+                </div>
+                </div>
+            </div>
+        </div>
+	</section>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('style'); ?>
+    <?php echo Html::style('backend/css/bootstrap-datetimepicker.min.css'); ?>
+
+	<?php echo Html::style('backend/css/client/company.css'); ?>
+
+    <style type="text/css">
+    .error{
+        color: red;
+        font-weight: 500;
+    }
+    </style>
+
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('script'); ?>
+<?php echo Html::script('backend/js/jquery.validate.min.js'); ?>
+
+<?php echo Html::script('backend/js/moment.min.js'); ?>
+
+<?php echo Html::script('backend/js/bootstrap-datetimepicker.min.js'); ?>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.active').removeClass('active');
+        $('#menu-account-info').addClass('active');
+        $('#m-company').addClass('active');
+        
+        $("#frm-reset-password").validate({
+            rules: {
+                    'password'		: "required",
+                    'password_confirmation'	:{
+                            required: true,
+                            equalTo: "#password"
+                    }
+            },
+            submitHandler: function(form) {
+                    form.submit();
+            }
+        });
+
+        $('#established').datetimepicker({
+             format: 'D MMMM, YYYY'
+        });
+
+        $("#frm-company").validate({
+            rules: {
+                    'company_name'  : "required",
+                    'phone'         : "number",
+                    'address'       : "required",
+
+            },
+            submitHandler: function(form) {
+                    form.submit();
+            }
+        });
+
+    });
+</script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make($app_template['client.backend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

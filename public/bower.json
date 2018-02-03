@@ -1,0 +1,23 @@
+{
+  "name": "public",
+  "version": "0.0.0",
+  "homepage": "https://github.com/pathmazing/FINFO",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "datatables": "DataTables#~1.10.9",
+    "eonasdan-bootstrap-datetimepicker": "~4.17.37",
+    "fullcalendar": "~2.4.0",
+    "jquery-ui": "~1.11.4",
+    "jquery-validation": "~1.14.0",
+    "mjolnic-bootstrap-colorpicker": "~2.3.0",
+    "moment": "~2.10.6"
+  }
+}

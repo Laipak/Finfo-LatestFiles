@@ -1,0 +1,41 @@
+<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
+    <div class="navbar-header">
+
+            <div class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+                <div class="row">
+                    <div class="col-xs-6">
+                     <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                         <span class="icon-bar"></span>
+                     </div>
+                     <div class="col-xs-6" style="padding:0">
+                         <span>Menu</span>
+                     </div>
+                </div>
+             </div>
+          </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="top-navbar-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li class="menu" id="home"><a href="<?php echo e(route('client.home')); ?>">Home</a></li>
+                <?php if(Session::get('package_id') != 1): ?>
+                    <li class="menu dropdown" id="leadership"><a href="<?php echo e(route('client.company_info')); ?>" >Company Info</a>
+                        <?php if(Session::get('content')): ?>
+                            <ul id="sub-menu">
+                            <?php foreach(Session::get('content') as $content): ?>
+                                <li><a href="<?php echo e(route('client.company_info.slug', $content->name)); ?>"><?php echo e($content->title); ?></a></li>
+                            <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
+                    </li>
+                <?php endif; ?>
+                <?php foreach(Session::get('frontend_menus') as $menu): ?>
+                    <?php if(!empty($menu->route_frontend)): ?>
+                        <li class="menu" id="<?php echo e($menu->css_id); ?>"><a href="<?php echo e(route(trim($menu->route_frontend))); ?>"><?php echo e($menu->nav_frontend); ?></a></li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    
+</nav>

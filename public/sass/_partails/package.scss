@@ -1,0 +1,19 @@
+@import "pass-lib";
+#package {
+	#plans{
+		margin-top: 30px;
+	}
+	.unsubscribed{
+			margin-bottom: 15px;
+		}
+	@media (min-width: 992px) and  (max-width: 1024px) {
+		.dev-select{
+			width: 500px;
+		}
+		.panel-footer{
+			.btn-success{
+				font-size: 15px;
+			}
+		}
+	}
+}

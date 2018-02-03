@@ -1,0 +1,191 @@
+<?php $__env->startSection('content'); ?>
+<?php if($active_theme == "default"): ?>
+<section class="content">
+<div class="row title" id="press-release">
+    <div class="col-md-12">
+    	 Press Releases
+    </div>
+</div>
+<?php if($is_enable): ?>
+<div class="row option-row">
+	<div class="col-md-12 search-box">
+		<div class="form-inline" role="form">
+                    <div class="btn-group btn-group-overwrite">
+                    <?php echo Form::open(array('route' => 'package.admin.press-releases.filter', 'method' => 'post')); ?>
+
+                        <div class="form-group">
+                            <?php echo Form::select('month', $month , $selected_month, array('class' => 'form-control'));; ?>
+
+                        </div> 
+                        <div class="form-group">
+                            <?php echo Form::select('year', $year, $selected_year, array('class' => 'form-control'));; ?>
+
+                        </div> 
+                        <div class="form-group">
+                            <button type="submit" class="add-on"><i class="glyphicon glyphicon-search btn-search"></i></button>
+                        </div>
+                    <?php echo Form::close(); ?>
+
+                    </div>
+		</div>
+	</div>
+</div>
+<?php endif; ?>
+<?php if(count($data) > 0): ?> 
+    <?php foreach($data as $press): ?>
+        <div class="row data-press-row">
+            <div class="col-xs-12 col-sm-3 col-md-3 left-td-col">
+                <?php echo e(date("d.m.y", strtotime($press->press_date))); ?>
+
+            </div>
+            <div class="col-xs-12 col-sm-9 col-md-9 right-td-col">
+                <?php if($press->option_selected == 'wysiwyg'): ?>
+                    <a href="/backend/press-releases/<?php echo e($press->link); ?>"><?php echo e($press->title); ?></a>
+                <?php else: ?>
+                    <a href="/backend/<?php echo e($press->upload); ?>" target="_brank"><?php echo e($press->title); ?></a>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+<?php else: ?> 
+<div class="row data-press-row text-center"><p>No Data</p></div>
+<?php endif; ?>
+<div class='row text-center'>
+    <?php /**/ $sort = null /**/ ?>
+    <?php if( isset($_GET['sort']) ): ?> 
+        <?php /**/ $sort = array('sort'=>$_GET['sort']) /**/ ?>   
+    <?php endif; ?>
+    <?php echo $data->appends($sort)->render(); ?>
+
+</div>
+</section>
+<?php else: ?> 
+    <section class="content" id="press-release">
+        <h2>Press Releases</h2>
+        <?php if($is_enable): ?>
+        <form class="form-inline" role="form">
+          <div class="form-group">
+            <span style="font-size: 17px">Sort</span>
+              <div class="btn-group">
+                <?php $value = ['all'=> 'All Years' ,'asc'=>"Month & Year Ascending", 'desc'=> 'Month & Year Descending'] ?>
+                <?php echo Form::open(array('route'=>'package.admin.press-releases.filter','method' => 'POST')); ?>
+
+                    <?php echo Form::select('sort', $value , (isset($_GET['sort']))?$_GET['sort']:'' , array('class'=>'form-control sort','onchange'=>'this.form.submit()')); ?>
+
+                <?php echo Form::close(); ?>
+
+              </div>
+          </div>
+        </form>
+        <?php endif; ?>
+        <?php foreach($data as $press): ?>
+            <div class="main-row">
+                <div class="row" id="press-row">
+                    <div class="col-xs-12 col-sm-9 col-md-9 right-td-col">
+                        
+                        <?php if($press->option_selected == 'wysiwyg'): ?>
+                            <a href="/backend/press-releases/<?php echo e($press->link); ?>"><?php echo e($press->title); ?></a>
+                        <?php else: ?>
+                            <a href="/backend/<?php echo e($press->upload); ?>" target="_brank"><?php echo e($press->title); ?></a>
+                        <?php endif; ?>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 left-td-col">
+                        <?php echo e(date("d F, Y", strtotime($press->press_date))); ?>
+
+                    </div>                
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </section>
+<?php endif; ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('seo'); ?>
+    <title><?php echo e(ucfirst(Session::get('company_name'))); ?> | Press release</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('style'); ?>
+<?php if($active_theme == "default"): ?>
+	<?php echo Html::style('backend/css/package/general-style.css'); ?>
+
+    <style type="text/css">
+    .content-data{
+        min-height: 400px;
+    }
+    .top-content{
+        padding-bottom: 0px !important;
+    }
+    .btn-group-overwrite select{
+        border: 0 !important;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance:none;
+        <?php if(isset($filter)): ?>
+            background: #414950 url(../img/arrow.png) no-repeat 90% center;
+        <?php else: ?>
+            background: #414950 url(img/arrow.png) no-repeat 90% center;
+        <?php endif; ?>
+        width: 250px !important;
+        text-indent: 0.01px;
+        text-overflow: "";
+        font-size: 14px;
+        padding-right: 10px;
+    }
+    <?php if($is_enable): ?>
+        .data-press-row:nth-child(even) {
+            background: #f0f0f0;
+        }
+    <?php else: ?>
+        .data-press-row:nth-child(odd) {
+            background: #f0f0f0;
+        }
+    <?php endif; ?>
+   
+    .top-content {
+        border-bottom: 2px solid #e9e9e9;
+    }
+    .left-td-col,
+    .right-td-col {
+        padding: 15px;
+    }
+
+    .left-td-col {
+        color: #272c30;
+    }
+
+    .right-td-col a {
+        color: #e53840;
+        text-decoration: none;
+    }
+
+    @media (max-width: 767px) {
+        .left-td-col{
+            padding-bottom: 0px;
+        }
+        .right-td-col {
+            padding-top: 5px;
+        } 
+        .add-on {
+            margin-left: 11px !important;
+        }
+    }
+    .btn-search {
+        padding: 13px;
+    }
+    .search-box {
+        padding-left: 0px;
+    }
+    .add-on {
+        margin-left: 6px;
+    }
+    </style>
+<?php endif; ?>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('script'); ?>
+	<script type="text/javascript">
+	$('.menu-active').removeClass('menu-active');
+	$('#press-release').addClass('menu-active');
+	</script>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make($app_template['client.frontend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

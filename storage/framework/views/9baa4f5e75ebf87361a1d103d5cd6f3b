@@ -1,0 +1,181 @@
+<?php $__env->startSection('title'); ?>
+Package Information
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
+	<section class="content" id="package">
+        <?php if(Session::has('global')): ?>
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <?php echo e(Session::get('global')); ?>
+
+            </div>
+        <?php endif; ?>
+        <?php if($is_expire): ?>
+            <div class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                Your account have been expired. Please renew your account.
+            </div>
+        <?php endif; ?>
+        <div class="row head-search">
+            <div class="col-sm-6">
+                <lable class="label-title">Package Information</lable>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-11 col-md-6 dev-select" style="margin-top: 30px;">
+                <div class="form-group">
+                <lable class="col-sm-2 control-labe" style="margin-top: 6px; font-size:15px;"><strong>Currency:</strong></lable>
+                <div class="col-sm-10">
+                    <?php echo Form::open(array('url'=>route('client.admin.package'),'method' => 'GET')); ?>
+
+                        <?php echo Form::select('currency', $currency , (isset($_GET['currency']))?$_GET['currency']:$currency_id , array('class'=>'form-control','onchange'=>'this.form.submit()')); ?>
+
+                    <?php echo Form::close(); ?>
+
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+            <?php echo Form::open(); ?>
+
+                <section id="plans">
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12 pull-right unsubscribed">
+                            <a class="btn btn-lg btn-block btn-danger no-radius btn-unsubscribed" href="<?php echo e(URL::route('client.admin.cancel.package')); ?>">UNSUBSCRIBE</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+                        <?php foreach($package_module as $packages): ?>
+                        <!-- item -->
+                        <div class="col-md-4 text-center">
+                            <div class="panel panel-info panel-pricing">
+                                <div class="panel-heading">                                     
+                                    <h3><?php echo e($packages['package']['name']); ?></h3>
+                                </div>
+                                <div class="panel-body text-center">
+                                    <p><strong>
+
+                                    <?php if(@$exchange->id == 11): ?>
+                                        <?php echo e($exchange->symbol); ?> 
+                                        <?php echo e(number_format(round($packages['package']['price_aud']), 2 , ".", "," )); ?>
+
+                                    <?php else: ?>
+                                        <?php echo e((isset($exchange->symbol))?$exchange->symbol: '$'); ?>
+
+                                        <?php echo e(number_format(round((isset($exchange->exchange_rate))? $packages['package']['price'] * $exchange->exchange_rate : $packages['package']['price']), 2 , ".", "," )); ?>
+
+                                    <?php endif; ?>
+                                            </strong>/ Month</p>
+                                </div>
+                                <ul class="list-group" style="text-align:left">
+                                                <?php foreach($packages['module'] as $module): ?>
+                                                    <li class="list-group-item"><i class="fa fa-check"></i> <?php echo e($module->name); ?></li>
+
+                                                    <?php if($module->ordering == 4): ?>
+                                                        <li class="list-group-item"><i class="fa fa-check"></i> Past Financial Results</li>
+                                                    <?php endif; ?>
+                                                    <!-- 
+                                                    <?php if($module->ordering == 6): ?>
+                                                        <li class="list-group-item"><i class="fa fa-check"></i> Page Manager</li>
+                                                    <?php endif; ?> 
+                                                    -->
+                                                    <?php if($packages['package']['name'] == 'Enterprise' && $module->ordering == 6): ?>
+                                                        <li class="list-group-item"><i class="fa fa-check"></i> Subscription Tool</li>
+                                                    <?php endif; ?>
+                                                <?php endforeach; ?>
+                                </ul>
+                                <div class="panel-footer">
+                                                <?php /**/ $currencyType = 1 /**/ ?>
+                                                <?php if(isset($_GET['currency'])): ?>
+                                                    <?php /**/ $currencyType = $_GET['currency'] /**/ ?>
+                                                <?php endif; ?>
+                                    <?php if($packages['package']['id'] == $package_id): ?>
+                                        <?php if($is_expire): ?>
+                                            <a class="btn btn-lg btn-block btn-success" href="<?php echo e(route('client.admin.upgrade.package', $packages['package']['id'])); ?>">RENEW SUBSCRIPTION</a>
+                                        <?php else: ?>
+                                            <label class="btn btn-lg btn-block btn-success no-radius" style="cursor: unset;">CURRENT SUBSCRIBE</label>
+                                        <?php endif; ?>
+                                    <?php elseif($packages['package']['id'] > $package_id): ?>
+                                        <a class="btn btn-lg btn-block btn-info" href="<?php echo e(($is_expire)? 'javascript:void(0)': route('client.admin.upgrade.package', $packages['package']['id'])); ?>" <?php echo e(($is_expire)? 'disabled': ''); ?>>UPGRADE</a>                                
+                                        <input type="hidden" name="h_package_id" value="$packages['package']['id']">
+                                    <?php endif; ?>
+
+                                </div>
+                            </div>
+                        </div>                        
+                        <!-- /item -->
+                            <?php endforeach; ?>
+                    </div>
+                </section>
+            <?php echo Form::close(); ?>
+
+            </div>
+            <hr>
+            <div class="row">
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="content-history">
+                    <div class="col-lg-12">
+                        <h4>Package history</h4>
+                    </div>
+                    <div class="col-lg-12">
+                        
+                    
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Package Name</th>
+                            <th>Subscribe Date</th>
+                            <th>Expired Date</th>
+                        </tr>
+                        <?php foreach($history as $his): ?>
+                        <tr>
+                        <?php if($his->is_current == 1): ?>
+                            <td style="background-color:#83CB83;"><?php echo e($his->name); ?></td>
+                            <td style="background-color:#83CB83;"><?php echo e(date('d-M-Y', strtotime($his->start_date))); ?></td>
+                            <td style="background-color:#83CB83;"><?php echo e(date('d-M-Y', strtotime($his->expire_date))); ?></td>
+                        <?php else: ?>
+                            <td><?php echo e($his->name); ?></td>
+                            <td><?php echo e(date('d-M-Y', strtotime($his->start_date))); ?></td>
+                            <td><?php echo e(date('d-M-Y', strtotime($his->expire_date))); ?></td>
+                        <?php endif; ?>
+                        </tr>
+                        <?php endforeach; ?>
+                    </table>
+                    </div>
+            </div>
+        </div>
+        
+	</section>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('style'); ?>
+	<?php echo Html::style('css/client/package.css'); ?>
+
+
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('script'); ?>
+
+<script type="text/javascript">
+    $('.btn-unsubscribed').click(function(e){
+        e.preventDefault();
+        if(confirm('Do you want to cancel your current subscription?')){
+            window.location.href = $(this).attr('href');
+        }else{
+            return false;
+        }
+    });
+    $('.active').removeClass('active');
+    $('#menu-account-info').addClass('active');
+    $('#package-info1').addClass('active');
+</script>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make($app_template['client.backend'], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
